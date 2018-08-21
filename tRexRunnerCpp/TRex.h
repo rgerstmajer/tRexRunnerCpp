@@ -5,6 +5,8 @@ class TRex :
 {
 public:
 	TRex();
+	void Draw();
+	void Move();
 	~TRex();
 };
 

@@ -5,6 +5,8 @@ class Cactus :
 {
 public:
 	Cactus();
+	void Draw();
+	void Move();
 	~Cactus();
 };
 

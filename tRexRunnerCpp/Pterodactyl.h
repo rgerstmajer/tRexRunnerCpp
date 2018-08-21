@@ -6,6 +6,10 @@ class Pterodactyl :
 public:
 	Pterodactyl();
 
+	void Draw();
+
+	void Move();
+
 	void Init();
 
 	void Update();

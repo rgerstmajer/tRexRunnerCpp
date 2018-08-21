@@ -6,7 +6,8 @@ class Horizon :
 
 public:
 	Horizon();
-
+	void Move();
+	void Draw();
 	~Horizon();
 };
 

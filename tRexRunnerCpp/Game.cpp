@@ -4,6 +4,7 @@ TRex *tRex;
 Cactus *cactus;
 Pterodactyl *pterodactyl;
 Horizon *horizon;
+
 sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
 
 void InitGame()
@@ -16,10 +17,14 @@ void InitGame()
 
 void Draw()
 {
-	horizon->Draw();
-	tRex->Draw();
-	cactus->Draw();
-	pterodactyl->Draw();
+	//horizon->Draw();
+	//tRex->Draw();
+	//cactus->Draw();
+	//pterodactyl->Draw();
+	//window.clear();
+	//window.display();
+
+	sf::RectangleShape line(sf::Vector2f(256, 2));
 	window.clear();
 	window.display();
 }
