@@ -6,7 +6,16 @@ class TRex :
 public:
 	TRex();
 	void Draw();
+	gameObjectType GetGameObjectType() { return TREX; }
 	void Move();
+
+	enum TRexStates
+	{
+		RUNNING,
+		JUMPING,
+		DUCKING
+	};
+
 	~TRex();
 };
 

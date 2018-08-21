@@ -6,6 +6,7 @@ class Horizon :
 
 public:
 	Horizon();
+	gameObjectType GetGameObjectType() { return HORIZON; }
 	void Move();
 	void Draw();
 	~Horizon();

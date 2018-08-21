@@ -5,6 +5,7 @@ class Obstacle :
 {
 public:
 	Obstacle();
+	gameObjectType GetGameObjectType() { return OBSTACLE; }
 	~Obstacle();
 };
 

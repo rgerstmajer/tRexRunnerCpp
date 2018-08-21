@@ -4,12 +4,14 @@
 
 GameObject::GameObject()
 {
+
 }
 
-void GameObject::Draw()
+void GameObject::Draw() // Display the sprite
 {
 
 }
+
 
 void GameObject::Move() // TRex jump/duck -- Obstacles/Horizon left to right
 {
@@ -18,4 +20,5 @@ void GameObject::Move() // TRex jump/duck -- Obstacles/Horizon left to right
 
 GameObject::~GameObject()
 {
+
 }

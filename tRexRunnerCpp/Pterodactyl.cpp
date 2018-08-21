@@ -16,12 +16,7 @@ void Pterodactyl::Move() // Right to left
 
 }
 
-void Pterodactyl::Init()
-{
-
-}
-
-void Pterodactyl::Update()
+void Pterodactyl::Init() // Initialize at new time
 {
 
 }
