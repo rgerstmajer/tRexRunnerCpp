@@ -8,6 +8,7 @@
 
 #include <windows.h>
 #include <ctime>
+#include <math.h>
 
 
 bool Colliding();

@@ -5,6 +5,8 @@ Cactus *cactus;
 Pterodactyl *pterodactyl;
 Horizon *horizon;
 
+bool firstFrame = false;
+
 clock_t beginTime = clock();
 
 sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
@@ -15,12 +17,13 @@ void InitGame()
 	cactus = new Cactus();
 	pterodactyl = new Pterodactyl();
 	horizon = new Horizon();
+
+    cactus->Init();
 }
 
 void Run()
 {
     sf::RectangleShape line(sf::Vector2f(256, 2));
-    cactus->Init();
     line.setPosition(0, 50);
     while (window.isOpen())
     {
@@ -52,8 +55,14 @@ void Run()
 
                 if (GetKeyState(VK_UP) & 0x8000)
                 {
+                    firstFrame = true;
                     line.setFillColor(sf::Color::Red);
+                    
+                    delete tRex;
+                    delete cactus;
+                    delete horizon;
                     InitGame();
+
                 }
             }
             else
@@ -88,11 +97,17 @@ void Run()
                         }
                     line.setFillColor(sf::Color::White);
                 }
-                cactus->Move();
                 window.clear();
                 window.draw(line);
-                cactus->Draw(&window);
                 tRex->Draw(&window);
+                if (firstFrame)
+                    firstFrame = false;
+                else
+                {
+                    cactus->Move();
+                    cactus->Draw(&window);
+                }
+                
                 window.display();
             }
         }
@@ -104,16 +119,24 @@ bool Colliding()
 {
     bool isCollision = false;
 
-    /*int tRexCenterX = tRex->getPositionX() + tRex->getRadius();
+    int tRexCenterX = tRex->getPositionX() + tRex->getRadius();
     int tRexCenterY = tRex->getPositionY() + tRex->getRadius();
 
     int cactusCenterX = cactus->getPositionX() + cactus->getRadius();
     int cactusCenterY = cactus->getPositionY() + cactus->getRadius();
 
+    int xDistance = cactusCenterX - tRexCenterX;
+    int yDistance = cactusCenterY - tRexCenterY;
+    float distance = sqrt(pow(xDistance, 2) + pow(yDistance, 2));
+    int maxAllowedDistance = cactus->getRadius() + tRex->getRadius();
+
     if (tRexCenterX < cactusCenterX)
     {
-        isCollision = (sqrt((cactusCenterX - tRexCenterX) ^ 2 + (cactusCenterY - tRexCenterY) ^ 2) > (cactus->getRadius() + tRex->getRadius())) ? isCollision = false : isCollision = true;
-    }*/
+        if (distance > maxAllowedDistance)
+            isCollision = false;
+        else
+            isCollision = true;
+    }
 
     return isCollision;
 }

@@ -11,6 +11,7 @@ void Cactus::Init()
 {
     
     sprite->setPosition(rand()%100 + 300, 38);
+    sprite->setFillColor(sf::Color::Green);
 }
 
 void Cactus::Move() //Right to left

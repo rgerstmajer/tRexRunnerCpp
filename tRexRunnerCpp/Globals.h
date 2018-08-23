@@ -4,7 +4,7 @@
 #define HEIGHT 64
 
 
-#define GRAVITY 0.5f
+#define GRAVITY 1
 #define GAME_SPEED 3
 
 #define JUMPING_SPEED 2
