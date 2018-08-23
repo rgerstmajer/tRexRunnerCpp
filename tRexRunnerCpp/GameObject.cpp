@@ -4,16 +4,10 @@
 
 GameObject::GameObject()
 {
-
+    sprite = new sf::CircleShape(10);
 }
 
-void GameObject::Draw() // Display the sprite
-{
-
-}
-
-
-void GameObject::Move() // TRex jump/duck -- Obstacles/Horizon left to right
+void GameObject::Draw(sf::RenderWindow* window) // Display the sprite
 {
 
 }

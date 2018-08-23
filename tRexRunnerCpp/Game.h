@@ -7,9 +7,10 @@
 #include "Globals.h"
 
 #include <windows.h>
+#include <ctime>
 
 
-
+bool Colliding();
 void RunGame();
 void InitGame();
-void Draw();
+void Run();

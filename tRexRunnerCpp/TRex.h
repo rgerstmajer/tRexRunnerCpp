@@ -4,17 +4,27 @@ class TRex :
 	public GameObject
 {
 public:
-	TRex();
-	void Draw();
-	gameObjectType GetGameObjectType() { return TREX; }
-	void Move();
+    enum TRexStates
+    {
+        RUNNING,
+        JUMPING,
+        DUCKING
+    } State;
 
-	enum TRexStates
-	{
-		RUNNING,
-		JUMPING,
-		DUCKING
-	};
+	TRex();
+	void Draw(sf::RenderWindow* window);
+    void Jump();
+    void Duck();
+    void Run();
+
+    
+
+
+	gameObjectType GetGameObjectType() { return TREX; }
+    void Move();
+	void Move(TRex::TRexStates newState);
+
+	
 
 	~TRex();
 };

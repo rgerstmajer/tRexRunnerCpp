@@ -4,12 +4,16 @@
 
 class GameObject
 {
-private:
-	
+protected:
+    sf::CircleShape* sprite;
 public:
 	GameObject();
-	virtual void Draw() = 0;
-	virtual void Move() = 0;
+    virtual void Draw(sf::RenderWindow* window);
+
+    float getPositionX() { return sprite->getPosition().x; }
+    float getPositionY() { return sprite->getPosition().y; }
+    float getRadius() { return sprite->getRadius(); }
+
 	~GameObject();
 };
 

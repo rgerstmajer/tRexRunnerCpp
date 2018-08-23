@@ -5,7 +5,8 @@ class Cactus :
 {
 public:
 	Cactus();
-	void Draw();
+	void Draw(sf::RenderWindow* window);
+    void Init();
 	void Move();
 	~Cactus();
 };
