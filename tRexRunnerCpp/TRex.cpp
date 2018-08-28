@@ -12,7 +12,7 @@ void TRex::Draw(sf::RenderWindow* window)
 {
     TRex::LoadShapes();
     window->draw(*sprite);
-    window->draw(*StandingSprite);
+    window->draw(StandingSprite);
 }
 
 void TRex::Jump()
@@ -115,15 +115,17 @@ void TRex::Move()
 
 void TRex::LoadShapes()
 {
-    for (register int i = 0; i < TREX_STANDING_HEIGHT * TREX_STANDING_WIDTH; i++)
+    for (register int i = 0; i < TREX_STANDING_HEIGHT * TREX_STANDING_WIDTH/2; i++)
     {
         StandingOrRunningPixels[i * 4] = 255;
         StandingOrRunningPixels[i * 4 + 1] = 255;
         StandingOrRunningPixels[i * 4 + 2] = 255;
-        StandingOrRunningPixels[i * 4 + 3] = (trex_standing_init[ i / (TREX_STANDING_WIDTH * 8) + i % (TREX_STANDING_WIDTH * 8)] & (1 << (7 - (i % (TREX_STANDING_WIDTH * 8)) / TREX_STANDING_WIDTH))) ? 255 : 0;
+        StandingOrRunningPixels[i * 4 + 3] = ( trex_standing_init[ i / TREX_STANDING_WIDTH + i % TREX_STANDING_WIDTH ] & ( 1 << ( 7 - ( i / TREX_STANDING_WIDTH ) ) ) ) ? 255 : 0;
     }
-    StandingShape->update(StandingOrRunningPixels);
-    StandingSprite = new sf::Sprite(*StandingShape);
+    StandingShape.create(TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH);
+    
+    StandingSprite = *(new sf::Sprite(StandingShape));
+    StandingShape.update(StandingOrRunningPixels);
 }
 
 
