@@ -34,10 +34,10 @@ public:
     void Move();
 	void Move(TRex::TRexStates newState);
 
-    sf::Uint8 StandingOrRunningPixels[TREX_STANDING_HEIGHT * TREX_STANDING_WIDTH * 2];
+    sf::Uint8 StandingOrRunningPixels[TREX_STANDING_HEIGHT * TREX_STANDING_WIDTH * 4];
 
     sf::Texture StandingShape;
-    sf::Sprite  StandingSprite;
+    sf::Sprite*  StandingSprite;
 
     sf::Texture RunningShape1;
     sf::Sprite  RunningSprite1;

@@ -20,7 +20,6 @@ void InitGame()
 	horizon = new Horizon();
 
     cactus->Init();
-    pixel pixels[WIDTH*HEIGHT];
 
 }
 

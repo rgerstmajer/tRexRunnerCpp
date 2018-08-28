@@ -4,15 +4,17 @@
 bool dropping = false;
 TRex::TRex()
 {
+
+    TRex::LoadShapes();
     State = RUNNING;
     sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
+    StandingSprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
 }
 
 void TRex::Draw(sf::RenderWindow* window)
 {
-    TRex::LoadShapes();
     window->draw(*sprite);
-    window->draw(StandingSprite);
+    window->draw(*StandingSprite);
 }
 
 void TRex::Jump()
@@ -22,22 +24,33 @@ void TRex::Jump()
     if (sprite->getPosition().y > TREX_MAX_HEIGHT && !dropping)
     {
         if ((sprite->getPosition().y - JUMPING_SPEED) < TREX_MAX_HEIGHT)
+        {
             sprite->setPosition(10, TREX_MAX_HEIGHT);
+            StandingSprite->setPosition(10, TREX_MAX_HEIGHT);
+        }
         if (sprite->getPosition().y == TREX_MAX_HEIGHT)
             dropping = true;
         else
+        {
             sprite->move(0, -JUMPING_SPEED);
+            StandingSprite->move(0, -JUMPING_SPEED);
+        }
     }
     else if (dropping)
     {
         if ((sprite->getPosition().y + GRAVITY) >= TREX_STARTING_POSITION_Y)
         {
             sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
+            StandingSprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
             State = RUNNING;
             dropping = false;
         }
         else
+        {
             sprite->move(0, GRAVITY);
+            StandingSprite->move(0, GRAVITY);
+            
+        }
     }
 }
 
@@ -58,12 +71,13 @@ void TRex::Run()
     {
         sprite->setRadius(10);
         sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
+        StandingSprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
     }
 }
 
 void TRex::Move(TRex::TRexStates newState) //Jumping or ducking
 {
-    if (State == DUCKING && newState == RUNNING)
+    /*if (State == DUCKING && newState == RUNNING)
     {
         sprite->setRadius(10);
         sprite->move(0, -5);
@@ -102,7 +116,7 @@ void TRex::Move(TRex::TRexStates newState) //Jumping or ducking
             sprite->setRadius(5);
             sprite->setPosition(10, 35);
         }
-    }
+    }*/
     
 }
 
@@ -115,16 +129,21 @@ void TRex::Move()
 
 void TRex::LoadShapes()
 {
-    for (register int i = 0; i < TREX_STANDING_HEIGHT * TREX_STANDING_WIDTH/2; i++)
+
+    int row, column, position;
+    for (register int i = 0; i < TREX_STANDING_HEIGHT * TREX_STANDING_WIDTH; i++)
     {
+        row = i / (TREX_STANDING_WIDTH * 8);
+        column = i % TREX_STANDING_WIDTH;
+        position = 1 << (0 + ((i / TREX_STANDING_WIDTH) % 8));
         StandingOrRunningPixels[i * 4] = 255;
         StandingOrRunningPixels[i * 4 + 1] = 255;
         StandingOrRunningPixels[i * 4 + 2] = 255;
-        StandingOrRunningPixels[i * 4 + 3] = ( trex_standing_init[ i / TREX_STANDING_WIDTH + i % TREX_STANDING_WIDTH ] & ( 1 << ( 7 - ( i / TREX_STANDING_WIDTH ) ) ) ) ? 255 : 0;
+        StandingOrRunningPixels[i * 4 + 3] = ( trex_running1[ row + column + row * TREX_STANDING_WIDTH] & ( position ) ) ? 255 : 0;
     }
-    StandingShape.create(TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH);
+    StandingShape.create(TREX_STANDING_WIDTH, TREX_STANDING_HEIGHT);
     
-    StandingSprite = *(new sf::Sprite(StandingShape));
+    StandingSprite = new sf::Sprite(StandingShape);
     StandingShape.update(StandingOrRunningPixels);
 }
 
