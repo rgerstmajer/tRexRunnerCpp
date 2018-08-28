@@ -15,3 +15,12 @@ bool Colliding();
 void RunGame();
 void InitGame();
 void Run();
+
+struct pixel {
+    unsigned char r = 255;
+    unsigned char g = 255;
+    unsigned char b = 255;
+    unsigned char a;
+};
+
+

@@ -14,6 +14,8 @@
 #define TREX_DUCKING_POSITION_X 15
 #define TREX_DUCKING_POSITION_Y 40
 
+
+
 enum gameObjectType
 {
 	TREX,

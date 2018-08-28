@@ -9,6 +9,7 @@ bool firstFrame = false;
 
 clock_t beginTime = clock();
 
+
 sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
 
 void InitGame()
@@ -19,6 +20,8 @@ void InitGame()
 	horizon = new Horizon();
 
     cactus->Init();
+    pixel pixels[WIDTH*HEIGHT];
+
 }
 
 void Run()

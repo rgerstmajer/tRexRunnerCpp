@@ -166,6 +166,7 @@
     <ClInclude Include="Horizon.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Pterodactyl.h" />
+    <ClInclude Include="Sprites.h" />
     <ClInclude Include="TRex.h" />
   </ItemGroup>
   <ItemGroup>
