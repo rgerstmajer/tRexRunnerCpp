@@ -1,11 +1,11 @@
 #pragma once
 #include "GameObject.h"
 class Obstacle :
-	public GameObject
+    public GameObject
 {
 public:
-	Obstacle();
-	gameObjectType GetGameObjectType() { return OBSTACLE; }
-	~Obstacle();
+    Obstacle();
+    gameObjectType GetGameObjectType() { return OBSTACLE; }
+    ~Obstacle();
 };
 

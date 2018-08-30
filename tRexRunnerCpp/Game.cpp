@@ -14,22 +14,22 @@ sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
 
 void InitGame()
 {
-	tRex = new TRex();
-	cactus = new Cactus();
-	pterodactyl = new Pterodactyl();
-	horizon = new Horizon();
+    tRex = new TRex();
+    cactus = new Cactus();
+    pterodactyl = new Pterodactyl();
+    horizon = new Horizon();
 
+    LoadShapes();
     cactus->Init();
-
 }
 
 void Run()
 {
-    sf::RectangleShape line(sf::Vector2f(256, 2));
+    sf::RectangleShape line(sf::Vector2f(256, 1));
     line.setPosition(0, 50);
     while (window.isOpen())
     {
-        if (((clock() - beginTime)) < 17)
+        if (((clock() - beginTime)) < 20)
         {
             
         }
@@ -46,7 +46,7 @@ void Run()
 
             line.setFillColor(sf::Color::White);
             //TODO Check collision
-            if (Colliding())
+            if (/*Colliding()*/false)
             {
                 line.setFillColor(sf::Color::Red);
                 window.clear();
@@ -69,7 +69,11 @@ void Run()
             }
             else
             {
-                if (tRex->State == TRex::RUNNING)
+                if (tRex->State == TRex::STANDING)
+                {
+                    tRex->State = TRex::RUNNING1;
+                }
+                if (tRex->State == TRex::RUNNING1 || tRex->State == TRex::RUNNING2)
                 {
                     if (GetKeyState(VK_UP) & 0x8000)
                     {
@@ -90,10 +94,16 @@ void Run()
                         case TRex::JUMPING:
                             tRex->Jump();
                             break;
-                        case TRex::DUCKING:
+                        case TRex::DUCKING1:
                             tRex->Duck();
                             break;
-                        case TRex::RUNNING:
+                        case TRex::DUCKING2:
+                            tRex->Duck();
+                            break;
+                        case TRex::RUNNING1:
+                            tRex->Run();
+                            break;
+                        case TRex::RUNNING2:
                             tRex->Run();
                             break;
                         }
@@ -102,6 +112,7 @@ void Run()
                 window.clear();
                 window.draw(line);
                 tRex->Draw(&window);
+                window.draw(*tRex->StandingSprite);
                 if (firstFrame)
                     firstFrame = false;
                 else
@@ -117,34 +128,39 @@ void Run()
 }
 
 
-bool Colliding()
+//bool Colliding()
+//{
+//    bool isCollision = false;
+//
+//    int tRexCenterX = tRex->getPositionX() + tRex->getRadius();
+//    int tRexCenterY = tRex->getPositionY() + tRex->getRadius();
+//
+//    int cactusCenterX = cactus->getPositionX() + cactus->getRadius();
+//    int cactusCenterY = cactus->getPositionY() + cactus->getRadius();
+//
+//    int xDistance = cactusCenterX - tRexCenterX;
+//    int yDistance = cactusCenterY - tRexCenterY;
+//    float distance = sqrt(pow(xDistance, 2) + pow(yDistance, 2));
+//    int maxAllowedDistance = cactus->getRadius() + tRex->getRadius();
+//
+//    if (tRexCenterX < cactusCenterX)
+//    {
+//        if (distance > maxAllowedDistance)
+//            isCollision = false;
+//        else
+//            isCollision = true;
+//    }
+//
+//    return isCollision;
+//}
+
+void LoadShapes()
 {
-    bool isCollision = false;
 
-    int tRexCenterX = tRex->getPositionX() + tRex->getRadius();
-    int tRexCenterY = tRex->getPositionY() + tRex->getRadius();
-
-    int cactusCenterX = cactus->getPositionX() + cactus->getRadius();
-    int cactusCenterY = cactus->getPositionY() + cactus->getRadius();
-
-    int xDistance = cactusCenterX - tRexCenterX;
-    int yDistance = cactusCenterY - tRexCenterY;
-    float distance = sqrt(pow(xDistance, 2) + pow(yDistance, 2));
-    int maxAllowedDistance = cactus->getRadius() + tRex->getRadius();
-
-    if (tRexCenterX < cactusCenterX)
-    {
-        if (distance > maxAllowedDistance)
-            isCollision = false;
-        else
-            isCollision = true;
-    }
-
-    return isCollision;
 }
 
 void RunGame()
 {
-	InitGame();
-	Run();
+    InitGame();
+    Run();
 }

@@ -1,19 +1,19 @@
 #pragma once
 #include "Obstacle.h"
 class Pterodactyl :
-	public Obstacle
+    public Obstacle
 {
 public:
-	Pterodactyl();
+    Pterodactyl();
 
-	void Draw();
+    void Draw();
 
-	void Move();
+    void Move();
 
-	void Init();
+    void Init();
 
-	void Update();
+    void Update();
 
-	~Pterodactyl();
+    ~Pterodactyl();
 };
 

@@ -14,6 +14,8 @@
 bool Colliding();
 void RunGame();
 void InitGame();
+void LoadShapes();
+void LoadShape();
 void Run();
 
 struct pixel {
