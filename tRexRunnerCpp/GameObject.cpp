@@ -5,12 +5,15 @@ GameObject::GameObject()
     sprite = new sf::Sprite;
 }
 
-void GameObject::Draw(sf::RenderWindow* window) // Display the sprite
+void GameObject::Draw(sf::RenderWindow* window)
 {
     window->draw(*sprite);
 }
 
-sf::Sprite* GameObject::LoadShape(sf::Texture* texture, const int height, const int width, const unsigned char* shape)
+sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
+                                  const int height,
+                                  const int width,
+                                  const unsigned char* shape)
 {
     sf::Uint8* pixels = new sf::Uint8[height * width * 4];
     int row, column, position, color;

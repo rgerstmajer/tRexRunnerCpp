@@ -3,7 +3,13 @@
 class Cactus :
     public Obstacle
 {
-private:
+  public:
+    Cactus();
+    gameObjectType GetGameObjectType() { return CACTUS; }
+    void Draw(sf::RenderWindow* window);
+    void Init();
+    ~Cactus();
+  private:
     sf::Texture* CactusShape1;
     sf::Sprite*  CactusSprite1;
 
@@ -15,13 +21,5 @@ private:
 
     sf::Texture* CactusShape4;
     sf::Sprite*  CactusSprite4;
-public:
-
-    
-
-    Cactus();
-    void Draw(sf::RenderWindow* window);
-    void Init();
-    ~Cactus();
 };
 

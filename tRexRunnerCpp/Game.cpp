@@ -25,7 +25,7 @@ void InitGame()
     pterodactyl->Init();
 }
 
-void Run()
+void Game()
 {
     sf::RectangleShape line(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
     line.setPosition(HORIZON_POSITION_X, HORIZON_POSITION_Y);
@@ -69,49 +69,22 @@ void Run()
             }
             else
             {
-                if (tRex->State == TRex::RUNNING1 || tRex->State == TRex::RUNNING2)
+                if (GetKeyState(VK_UP) & 0x8000)
                 {
-                    if (GetKeyState(VK_UP) & 0x8000)
-                    {
-                        keyPressed = true;
-                        tRex->Jump();
-                    }
-                    else if (GetKeyState(VK_DOWN) & 0x8000)
-                    {
-                        keyPressed = true;
-                        tRex->Duck();
-                    }
-                    else
-                    {
-                        tRex->Run();
-                    }
-                    tRex->Update();
+                    keyPressed = true;
+                    tRex->Jump();
+                }
+                else if (GetKeyState(VK_DOWN) & 0x8000)
+                {
+                    keyPressed = true;
+                    tRex->Duck();
                 }
                 else
                 {
-                    if (tRex->State == TRex::JUMPING)
-                        tRex->Jump();
-                    else
-                        switch (tRex->State)
-                        {
-                        case TRex::JUMPING:
-                            tRex->Jump();
-                            break;
-                        case TRex::DUCKING1:
-                            tRex->Duck();
-                            break;
-                        case TRex::DUCKING2:
-                            tRex->Duck();
-                            break;
-                        case TRex::RUNNING1:
-                            tRex->Run();
-                            break;
-                        case TRex::RUNNING2:
-                            tRex->Run();
-                            break;
-                        }
-                    line.setFillColor(sf::Color::White);
+                    keyPressed = false;
+                    tRex->Run();
                 }
+                tRex->Update();
                 window.clear();
                 window.draw(line);
                 tRex->Draw(&window);
@@ -125,42 +98,14 @@ void Run()
                     cactus->Move(1.0);
                     cactus->Draw(&window);
                 }
-                
                 window.display();
             }
         }
     }
 }
 
-
-//bool Colliding()
-//{
-//    bool isCollision = false;
-//
-//    int tRexCenterX = tRex->getPositionX() + tRex->getRadius();
-//    int tRexCenterY = tRex->getPositionY() + tRex->getRadius();
-//
-//    int cactusCenterX = cactus->getPositionX() + cactus->getRadius();
-//    int cactusCenterY = cactus->getPositionY() + cactus->getRadius();
-//
-//    int xDistance = cactusCenterX - tRexCenterX;
-//    int yDistance = cactusCenterY - tRexCenterY;
-//    float distance = sqrt(pow(xDistance, 2) + pow(yDistance, 2));
-//    int maxAllowedDistance = cactus->getRadius() + tRex->getRadius();
-//
-//    if (tRexCenterX < cactusCenterX)
-//    {
-//        if (distance > maxAllowedDistance)
-//            isCollision = false;
-//        else
-//            isCollision = true;
-//    }
-//
-//    return isCollision;
-//}
-
 void RunGame()
 {
     InitGame();
-    Run();
+    Game();
 }

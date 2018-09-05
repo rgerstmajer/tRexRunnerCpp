@@ -13,6 +13,8 @@ public:
     sf::Texture* PterodactylShape2;
     sf::Sprite* PterodactylSprite2;
 
+    gameObjectType GetGameObjectType() { return PTERODACTYL; }
+
     void Init();
 
     ~Pterodactyl();

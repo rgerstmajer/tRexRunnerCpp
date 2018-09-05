@@ -12,8 +12,6 @@
 #include <algorithm>
 #include <vector>
 
-bool Colliding();
 void RunGame();
 void InitGame();
-void Run();
-
+void Game();

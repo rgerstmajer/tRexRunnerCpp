@@ -5,15 +5,12 @@
 
 class GameObject
 {
-protected:
-    sf::Texture* shape;
-    sf::Sprite* LoadShape(sf::Texture* texture, const int height, const int width, const unsigned char* shape);
-public:
-
+  public:
     enum gameObjectType
     {
         TREX,
-        OBSTACLE,
+        PTERODACTYL,
+        CACTUS,
         HORIZON
     };
 
@@ -29,8 +26,11 @@ public:
 
     bool Colliding(GameObject* obstacle);
 
-    float getPositionX() { return sprite->getPosition().x; }
-    float getPositionY() { return sprite->getPosition().y; }
+    float GetPositionX() { return sprite->getPosition().x; }
+    float GetPositionY() { return sprite->getPosition().y; }
     virtual void Init() = 0;
     ~GameObject();
+protected:
+    sf::Texture* shape;
+    sf::Sprite* LoadShape(sf::Texture* texture, const int height, const int width, const unsigned char* shape);
 };
