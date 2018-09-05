@@ -4,15 +4,16 @@ class Pterodactyl :
     public Obstacle
 {
 public:
+
     Pterodactyl();
 
-    void Draw();
+    sf::Texture* PterodactylShape1;
+    sf::Sprite* PterodactylSprite1;
 
-    void Move();
+    sf::Texture* PterodactylShape2;
+    sf::Sprite* PterodactylSprite2;
 
     void Init();
-
-    void Update();
 
     ~Pterodactyl();
 };

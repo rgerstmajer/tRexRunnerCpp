@@ -6,9 +6,19 @@
 class GameObject
 {
 protected:
-    sf::Sprite* sprite;
     sf::Texture* shape;
+    sf::Sprite* LoadShape(sf::Texture* texture, const int height, const int width, const unsigned char* shape);
 public:
+
+    enum gameObjectType
+    {
+        TREX,
+        OBSTACLE,
+        HORIZON
+    };
+
+    void Draw(sf::RenderWindow* window);
+    sf::Sprite* sprite;
     GameObject();
 
     struct Position {
@@ -16,11 +26,11 @@ public:
         uint8_t y;
     };
 
-    sf::Sprite* LoadShape(sf::Texture* texture, const int height, const int width, const unsigned char* shape);
-    virtual void Draw(sf::RenderWindow* window);
+
+    bool Colliding(GameObject* obstacle);
 
     float getPositionX() { return sprite->getPosition().x; }
     float getPositionY() { return sprite->getPosition().y; }
-    //float getRadius() { return sprite->getRadius(); }
+    virtual void Init() = 0;
     ~GameObject();
 };

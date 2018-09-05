@@ -6,6 +6,7 @@ class Obstacle :
 public:
     Obstacle();
     gameObjectType GetGameObjectType() { return OBSTACLE; }
+    void Move(float increment);
     ~Obstacle();
 };
 

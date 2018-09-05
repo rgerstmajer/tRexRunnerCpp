@@ -6,10 +6,12 @@ Pterodactyl *pterodactyl;
 Horizon *horizon;
 
 bool firstFrame = false;
+bool keyPressed = false;
 
 clock_t beginTime = clock();
+std::vector<Obstacle> obstacles;
 
-
+int GRAVITY, GAME_SPEED, GAME_SPEED_DELTA, JUMPING_SPEED;
 sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
 
 void InitGame()
@@ -19,39 +21,38 @@ void InitGame()
     pterodactyl = new Pterodactyl();
     horizon = new Horizon();
 
-    LoadShapes();
     cactus->Init();
+    pterodactyl->Init();
 }
 
 void Run()
 {
-    sf::RectangleShape line(sf::Vector2f(256, 1));
-    line.setPosition(0, 50);
+    sf::RectangleShape line(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
+    line.setPosition(HORIZON_POSITION_X, HORIZON_POSITION_Y);
     while (window.isOpen())
     {
-        if (((clock() - beginTime)) < 20)
+        if (((clock() - beginTime)) < RENDER_PERIOD)
         {
-            
+
         }
         else
         {
             beginTime = clock();
-            tRex->Run();
+
             sf::Event event;
             while (window.pollEvent(event))
             {
                 if (event.type == sf::Event::Closed)
                     window.close();
             }
-
-            line.setFillColor(sf::Color::White);
-            //TODO Check collision
-            if (/*Colliding()*/false)
+            //colliding
+            if (tRex->Colliding(cactus) || tRex->Colliding(pterodactyl))
             {
                 line.setFillColor(sf::Color::Red);
                 window.clear();
                 window.draw(line);
                 cactus->Draw(&window);
+                pterodactyl->Draw(&window);
                 tRex->Draw(&window);
                 window.display();
 
@@ -59,30 +60,32 @@ void Run()
                 {
                     firstFrame = true;
                     line.setFillColor(sf::Color::Red);
-                    
+
                     delete tRex;
                     delete cactus;
                     delete horizon;
                     InitGame();
-
                 }
             }
             else
             {
-                if (tRex->State == TRex::STANDING)
-                {
-                    tRex->State = TRex::RUNNING1;
-                }
                 if (tRex->State == TRex::RUNNING1 || tRex->State == TRex::RUNNING2)
                 {
                     if (GetKeyState(VK_UP) & 0x8000)
                     {
+                        keyPressed = true;
                         tRex->Jump();
                     }
                     else if (GetKeyState(VK_DOWN) & 0x8000)
                     {
+                        keyPressed = true;
                         tRex->Duck();
                     }
+                    else
+                    {
+                        tRex->Run();
+                    }
+                    tRex->Update();
                 }
                 else
                 {
@@ -112,12 +115,14 @@ void Run()
                 window.clear();
                 window.draw(line);
                 tRex->Draw(&window);
-                window.draw(*tRex->StandingSprite);
+                pterodactyl->Draw(&window);
                 if (firstFrame)
+                {
                     firstFrame = false;
+                }
                 else
                 {
-                    cactus->Move();
+                    cactus->Move(1.0);
                     cactus->Draw(&window);
                 }
                 
@@ -153,11 +158,6 @@ void Run()
 //
 //    return isCollision;
 //}
-
-void LoadShapes()
-{
-
-}
 
 void RunGame()
 {

@@ -9,20 +9,11 @@
 #include <windows.h>
 #include <ctime>
 #include <math.h>
-
+#include <algorithm>
+#include <vector>
 
 bool Colliding();
 void RunGame();
 void InitGame();
-void LoadShapes();
-void LoadShape();
 void Run();
-
-struct pixel {
-    unsigned char r = 255;
-    unsigned char g = 255;
-    unsigned char b = 255;
-    unsigned char a;
-};
-
 
