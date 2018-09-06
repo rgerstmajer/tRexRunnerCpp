@@ -1,9 +1,8 @@
 #include "Game.h"
 
-TRex *tRex;
-Cactus *cactus;
-Pterodactyl *pterodactyl;
-Horizon *horizon;
+TRex* tRex;
+std::vector<GameObject*> cacti;
+Horizon* horizon;
 
 bool firstFrame = false;
 bool keyPressed = false;
@@ -17,12 +16,7 @@ sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
 void InitGame()
 {
     tRex = new TRex();
-    cactus = new Cactus();
-    pterodactyl = new Pterodactyl();
     horizon = new Horizon();
-
-    cactus->Init();
-    pterodactyl->Init();
 }
 
 void Game()
@@ -45,14 +39,17 @@ void Game()
                 if (event.type == sf::Event::Closed)
                     window.close();
             }
+            //Adding obstacles to buffer
+            while (obstacles.size() < MAX_OBSTACLE_COUNT)
+            {
+                //obstacles.push_back(tRex);
+            }
             //colliding
-            if (tRex->Colliding(cactus) || tRex->Colliding(pterodactyl))
+            if (tRex->Colliding(obstacles[obstacles.begin()])
             {
                 line.setFillColor(sf::Color::Red);
                 window.clear();
                 window.draw(line);
-                cactus->Draw(&window);
-                pterodactyl->Draw(&window);
                 tRex->Draw(&window);
                 window.display();
 
@@ -62,7 +59,6 @@ void Game()
                     line.setFillColor(sf::Color::Red);
 
                     delete tRex;
-                    delete cactus;
                     delete horizon;
                     InitGame();
                 }
@@ -88,16 +84,6 @@ void Game()
                 window.clear();
                 window.draw(line);
                 tRex->Draw(&window);
-                pterodactyl->Draw(&window);
-                if (firstFrame)
-                {
-                    firstFrame = false;
-                }
-                else
-                {
-                    cactus->Move(1.0);
-                    cactus->Draw(&window);
-                }
                 window.display();
             }
         }

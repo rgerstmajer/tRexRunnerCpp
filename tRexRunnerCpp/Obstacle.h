@@ -8,4 +8,3 @@ public:
     void Move(float increment);
     ~Obstacle();
 };
-
