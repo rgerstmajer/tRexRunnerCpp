@@ -16,7 +16,12 @@ public:
     gameObjectType GetGameObjectType() { return PTERODACTYL; }
 
     void Init();
+    void Init(int distance);
+
+    void Update();
 
     ~Pterodactyl();
+private:
+    int wingFlapCounter;
 };
 

@@ -7,6 +7,7 @@ GameObject::GameObject()
 
 void GameObject::Draw(sf::RenderWindow* window)
 {
+    sprite->setScale(GAME_SCALE, GAME_SCALE);
     window->draw(*sprite);
 }
 
@@ -33,7 +34,6 @@ sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
     texture->create(width, height);
     texture->update(pixels);
     sf::Sprite* tempSprite = new sf::Sprite(*texture);
-    tempSprite->scale(GAME_SCALE, GAME_SCALE);
     return (new sf::Sprite(*texture));
 }
 

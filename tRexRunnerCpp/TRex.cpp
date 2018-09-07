@@ -15,7 +15,6 @@ TRex::TRex()
     DuckingSprite1 = LoadShape(DuckingShape1, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking1);
     DuckingSprite2 = LoadShape(DuckingShape2, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking2);
     State = STANDING;
-    sprite = DuckingSprite1;
     sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
 }
 
@@ -82,17 +81,33 @@ void TRex::Run()
 
 void TRex::Update()
 {
-    if (State == RUNNING1 && stepCounter < 2)
+    if (State == RUNNING1 && stepCounter < 15)
     {
         stepCounter++;
         sprite = RunningSprite1;
         sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
+        State = RUNNING2;
     }
-    else if (State == RUNNING2 && stepCounter < 2)
+    else if (State == RUNNING2 && stepCounter < 15)
     {
         stepCounter++;
         sprite = RunningSprite2;
         sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
+        State = RUNNING1;
+    }
+    else if (State == DUCKING1 && stepCounter < 15)
+    {
+        stepCounter++;
+        sprite = DuckingSprite1;
+        sprite->setPosition(TREX_STARTING_POSITION_X, TREX_DUCKING_POSITION_Y);
+        State = DUCKING2;
+    }
+    else if (State == DUCKING2 && stepCounter < 15)
+    {
+        stepCounter++;
+        sprite = DuckingSprite2;
+        sprite->setPosition(TREX_STARTING_POSITION_X, TREX_DUCKING_POSITION_Y);
+        State = DUCKING1;
     }
     else if (State == JUMPING)
     {

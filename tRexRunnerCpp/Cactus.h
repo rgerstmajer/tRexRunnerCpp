@@ -6,8 +6,8 @@ class Cactus :
   public:
     Cactus();
     gameObjectType GetGameObjectType() { return CACTUS; }
-    void Draw(sf::RenderWindow* window);
-    void Init(int distance);
+    void Init(int distance, int type);
+    void Init();
     ~Cactus();
   private:
     sf::Texture* CactusShape1;
