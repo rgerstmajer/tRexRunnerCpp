@@ -5,12 +5,12 @@ class Horizon :
 {
     sf::RectangleShape* line;
 public:
-    Horizon();
-    sf::Sprite* bump1, bump2;
+    Horizon(int type);
     gameObjectType GetGameObjectType() { return HORIZON; }
-    void Move();
-    void Draw(sf::RenderWindow* window);
+    void Move(float increment);
     void Init();
     ~Horizon();
+private:
+    sf::Texture* bump;
 };
 

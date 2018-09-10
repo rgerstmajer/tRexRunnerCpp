@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "Globals.h"
-#include "Sprites.h"
 
 class GameObject
 {
@@ -32,5 +31,5 @@ class GameObject
     ~GameObject();
 protected:
     sf::Texture* shape;
-    sf::Sprite* LoadShape(sf::Texture* texture, const int height, const int width, const unsigned char* shape);
+    sf::Sprite* LoadShape(sf::Texture* texture, const int height, const int width, const unsigned char* shape, bool isBump = false);
 };

@@ -2,19 +2,30 @@
 
 
 
-Horizon::Horizon()
+Horizon::Horizon(int type)
 {
-    line = new sf::RectangleShape(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
+    switch (type)
+    {
+    case 1:
+        bump = new sf::Texture();
+        sprite = LoadShape(bump, BUMP1_HEIGHT, BUMP1_WIDTH, bump1, true);
+        sprite->setPosition(WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
+        break;
+    case 2:
+        bump = new sf::Texture();
+        sprite = LoadShape(bump, BUMP2_HEIGHT, BUMP2_WIDTH, bump2, true);
+        sprite->setPosition(2 * WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
+        break;
+    default:
+        break;
+    }
 }
 
-void Horizon::Move() //Move details from right to left
+void Horizon::Move(float increment) //Move details from right to left
 {
-
-}
-
-void Horizon::Draw(sf::RenderWindow* window)
-{
-    window->draw(*line);
+    sprite->move(-increment, 0);
+    if (sprite->getPosition().x < 0)
+        sprite->move(WIDTH+rand()%WIDTH, 0);
 }
 
 void Horizon::Init()

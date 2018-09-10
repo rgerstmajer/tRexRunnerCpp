@@ -6,6 +6,8 @@ class TRex :
 {
 private:
     int stepCounter = 0;
+    float m_Gravity;
+    float m_JumpingSpeed;
 
     sf::Texture *StandingShape;
     sf::Sprite  *StandingSprite;
@@ -21,28 +23,29 @@ private:
 
     sf::Texture *DuckingShape2;
     sf::Sprite  *DuckingSprite2;
+
+    sf::Texture *DeadShape;
+    sf::Sprite  *DeadSprite;
 public:
     enum TRexStates
     {
         STANDING,
-
-        RUNNING,
         RUNNING1,
         RUNNING2,
 
         JUMPING,
 
-        DUCKING,
         DUCKING1,
         DUCKING2,
 
         CRASHED
     } State;
 
-    TRex();
+    TRex(float jumpingSpeed, float gravity);
     void Jump();
     void Duck();
     void Run();
+    void Crash();
     void Init();
 
     gameObjectType GetGameObjectType() { return TREX; }

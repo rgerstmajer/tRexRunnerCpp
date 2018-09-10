@@ -10,11 +10,7 @@ Obstacle::Obstacle()
 
 void Obstacle::Move(float increment)
 {
-    try
-    {
-        sprite->move(-(4 + increment), 0);
-    }
-    catch (...) {};
+    sprite->move(-increment, 0);
 }
 
 Obstacle::~Obstacle()

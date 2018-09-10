@@ -154,7 +154,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Horizon.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="tRexRunnerCpp.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Pterodactyl.cpp" />
     <ClCompile Include="TRex.cpp" />

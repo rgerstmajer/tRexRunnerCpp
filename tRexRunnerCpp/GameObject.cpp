@@ -14,7 +14,8 @@ void GameObject::Draw(sf::RenderWindow* window)
 sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
                                   const int height,
                                   const int width,
-                                  const unsigned char* shape)
+                                  const unsigned char* shape,
+                                  bool isBump)
 {
     sf::Uint8* pixels = new sf::Uint8[height * width * 4];
     int row, column, position, color;
@@ -29,7 +30,7 @@ sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
         pixels[i * 4] = color;
         pixels[i * 4 + 1] = color;
         pixels[i * 4 + 2] = color;
-        pixels[i * 4 + 3] = WHITE;
+        pixels[i * 4 + 3] = isBump ? WHITE : color;
     }
     texture->create(width, height);
     texture->update(pixels);
@@ -39,6 +40,7 @@ sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
 
 bool GameObject::Colliding(GameObject* obstacle)
 {
+    obstacle->sprite->getTexture();
     return this->sprite->getGlobalBounds().intersects(obstacle->sprite->getGlobalBounds());
 }
 
