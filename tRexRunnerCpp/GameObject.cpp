@@ -47,8 +47,10 @@ sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
 
 bool GameObject::Colliding(GameObject* obstacle)
 {
-    obstacle->sprite->getTexture();
-    return this->sprite->getGlobalBounds().intersects(obstacle->sprite->getGlobalBounds());
+    shrunkBounds = sprite->getGlobalBounds();
+    shrunkBounds.left = (1 / 6) * shrunkBounds.width;
+    shrunkBounds.width /= 1.5;
+    return shrunkBounds.intersects(obstacle->sprite->getGlobalBounds());
 }
 
 GameObject::~GameObject()

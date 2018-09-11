@@ -57,4 +57,5 @@ protected:
     * is black, otherwise transparent
     */
     sf::Sprite* LoadShape(sf::Texture* texture, const int height, const int width, const unsigned char* shape, bool isBump = false);
+    sf::FloatRect shrunkBounds;
 };
