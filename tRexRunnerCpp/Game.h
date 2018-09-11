@@ -1,3 +1,10 @@
+//! Game.h
+/*!
+* Game header file
+*
+* Created: 20.08.2018.
+* Author : Robert Gerstmajer
+*/
 #pragma once
 
 #include "TRex.h"
@@ -47,11 +54,31 @@ static float Gravity = GAME_GRAVITY;
 static float GameSpeed = GAME_INITIAL_SPEED;
 static float GameSpeedDelta = GAME_SPEED_DELTA;
 static float JumpingSpeed = JUMPING_SPEED;
-
+/*!
+* Runs game
+*/
 void RunGame();
+/*!
+* Initializes tRex and horizon
+*/
 void InitGame();
+/*!
+* Loads sfml text for scores
+*/
 void LoadTextFields();
+/*!
+* Loads config file
+*/
 void LoadConfig();
+/*!
+* Loads previous high score
+*/
 void LoadHighScore();
+/*!
+* Writes high score to file
+*/
 void WriteScore();
+/*!
+* Runs game logic
+*/
 void Game();

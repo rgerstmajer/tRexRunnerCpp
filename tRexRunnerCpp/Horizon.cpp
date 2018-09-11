@@ -1,6 +1,11 @@
+//! Horizon.cpp
+/*!
+* Implementation of the Horizon class
+*
+* Created: 20.08.2018.
+* Author : Robert Gerstmajer
+*/
 #include "Horizon.h"
-
-
 
 Horizon::Horizon(int type)
 {

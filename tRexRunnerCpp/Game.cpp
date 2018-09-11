@@ -1,7 +1,5 @@
 #include "Game.h"
 
-
-
 sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
 
 void InitGame()

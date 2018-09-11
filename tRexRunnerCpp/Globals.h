@@ -1,3 +1,10 @@
+//! Globals.h
+/*!
+* Global variables used for tRexRunnerCpp
+*
+* Created: 20.08.2018.
+* Author : Robert Gerstmajer
+*/
 #pragma once
 
 

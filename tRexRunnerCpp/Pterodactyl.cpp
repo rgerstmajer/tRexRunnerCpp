@@ -1,12 +1,16 @@
+//! Pterodactyl.cpp
+/*!
+* Implementation of the Pterodactyl class
+*
+* Created: 20.08.2018.
+* Author : Robert Gerstmajer
+*/
 #include "Pterodactyl.h"
-
-
 
 Pterodactyl::Pterodactyl()
 {
 
 }
-
 
 void Pterodactyl::Init() 
 {

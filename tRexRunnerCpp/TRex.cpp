@@ -1,3 +1,10 @@
+//! TRex.cpp
+/*!
+* Implementation of the TRex class
+*
+* Created: 20.08.2018.
+* Author : Robert Gerstmajer
+*/
 #include "TRex.h"
 #include <Windows.h>
 

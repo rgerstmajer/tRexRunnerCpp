@@ -68,9 +68,6 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sprites.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\TinyXML2\tinyxml2.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -1,0 +1,152 @@
+\hypertarget{classtinyxml2_1_1_mem_pool_t}{}\section{tinyxml2\+:\+:Mem\+PoolT$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$ Class Template Reference}
+\label{classtinyxml2_1_1_mem_pool_t}\index{tinyxml2\+::\+Mem\+Pool\+T$<$ I\+T\+E\+M\+\_\+\+S\+I\+Z\+E $>$@{tinyxml2\+::\+Mem\+Pool\+T$<$ I\+T\+E\+M\+\_\+\+S\+I\+Z\+E $>$}}
+
+
+{\ttfamily \#include $<$tinyxml2.\+h$>$}
+
+Inheritance diagram for tinyxml2\+:\+:Mem\+PoolT$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtinyxml2_1_1_mem_pool_t}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_a04cf45156e6f913f93972869ff8a1d94ab72c1e16d6626854c41feb19e60c54d1}{I\+T\+E\+M\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+O\+CK}} = (4 $\ast$ 1024) / I\+T\+E\+M\+\_\+\+S\+I\+ZE
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_ac8fa6dbb403f009cf9c8a33c6f2803b3}{Mem\+PoolT}} ()
+\item 
+\mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_a5fa4fee934a3df2b9e74282244d78390}{$\sim$\+Mem\+PoolT}} ()
+\item 
+void \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_a22d595caa0e9d23aa080f49ca6475fdd}{Clear}} ()
+\item 
+virtual int \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_a54e4d9b343459ef1731314a99877ff35}{Item\+Size}} () const
+\item 
+int \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_a445a6c80151ba6268b24ec62a7c84d74}{Current\+Allocs}} () const
+\item 
+virtual void $\ast$ \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_a810fd2b0caf56b8b688e55f2768f96c7}{Alloc}} ()
+\item 
+virtual void \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_a408ce0918e9d3d5e5e1cc4896944875f}{Free}} (void $\ast$mem)
+\item 
+void \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_a47eefbd934ef70d973ea41d41ab5f239}{Trace}} (const char $\ast$name)
+\item 
+void \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_aee3c611215ae08cce41a940bf2763027}{Set\+Tracked}} ()
+\item 
+int \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t_a3bcdc302ae15d2810e11192321a8f5f1}{Untracked}} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a04cf45156e6f913f93972869ff8a1d94}\label{classtinyxml2_1_1_mem_pool_t_a04cf45156e6f913f93972869ff8a1d94}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+T\+E\+M\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+O\+CK@{I\+T\+E\+M\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+O\+CK}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!I\+T\+E\+M\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+O\+CK@{I\+T\+E\+M\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+O\+CK}}}\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a04cf45156e6f913f93972869ff8a1d94ab72c1e16d6626854c41feb19e60c54d1}\label{classtinyxml2_1_1_mem_pool_t_a04cf45156e6f913f93972869ff8a1d94ab72c1e16d6626854c41feb19e60c54d1}} 
+I\+T\+E\+M\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+O\+CK&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_ac8fa6dbb403f009cf9c8a33c6f2803b3}\label{classtinyxml2_1_1_mem_pool_t_ac8fa6dbb403f009cf9c8a33c6f2803b3}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!Mem\+PoolT@{Mem\+PoolT}}
+\index{Mem\+PoolT@{Mem\+PoolT}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{Mem\+Pool\+T()}{MemPoolT()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+\mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::\mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{Mem\+PoolT}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a5fa4fee934a3df2b9e74282244d78390}\label{classtinyxml2_1_1_mem_pool_t_a5fa4fee934a3df2b9e74282244d78390}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!````~Mem\+PoolT@{$\sim$\+Mem\+PoolT}}
+\index{````~Mem\+PoolT@{$\sim$\+Mem\+PoolT}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{$\sim$\+Mem\+Pool\+T()}{~MemPoolT()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+\mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::$\sim$\mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{Mem\+PoolT}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a810fd2b0caf56b8b688e55f2768f96c7}\label{classtinyxml2_1_1_mem_pool_t_a810fd2b0caf56b8b688e55f2768f96c7}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!Alloc@{Alloc}}
+\index{Alloc@{Alloc}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{Alloc()}{Alloc()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+virtual void$\ast$ \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::Alloc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_a4f977b5fed752c0bbfe5295f469d6449}{tinyxml2\+::\+Mem\+Pool}}.
+
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a22d595caa0e9d23aa080f49ca6475fdd}\label{classtinyxml2_1_1_mem_pool_t_a22d595caa0e9d23aa080f49ca6475fdd}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!Clear@{Clear}}
+\index{Clear@{Clear}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+void \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a445a6c80151ba6268b24ec62a7c84d74}\label{classtinyxml2_1_1_mem_pool_t_a445a6c80151ba6268b24ec62a7c84d74}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!Current\+Allocs@{Current\+Allocs}}
+\index{Current\+Allocs@{Current\+Allocs}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{Current\+Allocs()}{CurrentAllocs()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+int \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::Current\+Allocs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a408ce0918e9d3d5e5e1cc4896944875f}\label{classtinyxml2_1_1_mem_pool_t_a408ce0918e9d3d5e5e1cc4896944875f}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!Free@{Free}}
+\index{Free@{Free}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{Free()}{Free()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+virtual void \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::Free (\begin{DoxyParamCaption}\item[{void $\ast$}]{mem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_a49e3bfac2cba2ebd6776b31e571f64f7}{tinyxml2\+::\+Mem\+Pool}}.
+
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a54e4d9b343459ef1731314a99877ff35}\label{classtinyxml2_1_1_mem_pool_t_a54e4d9b343459ef1731314a99877ff35}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!Item\+Size@{Item\+Size}}
+\index{Item\+Size@{Item\+Size}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{Item\+Size()}{ItemSize()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+virtual int \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::Item\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_a0c518d49e3a94bde566f61e13b7240bb}{tinyxml2\+::\+Mem\+Pool}}.
+
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_aee3c611215ae08cce41a940bf2763027}\label{classtinyxml2_1_1_mem_pool_t_aee3c611215ae08cce41a940bf2763027}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!Set\+Tracked@{Set\+Tracked}}
+\index{Set\+Tracked@{Set\+Tracked}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{Set\+Tracked()}{SetTracked()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+void \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::Set\+Tracked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_ac5804dd1387b2e4de5eef710076a0db1}{tinyxml2\+::\+Mem\+Pool}}.
+
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a47eefbd934ef70d973ea41d41ab5f239}\label{classtinyxml2_1_1_mem_pool_t_a47eefbd934ef70d973ea41d41ab5f239}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!Trace@{Trace}}
+\index{Trace@{Trace}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{Trace()}{Trace()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+void \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::Trace (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classtinyxml2_1_1_mem_pool_t_a3bcdc302ae15d2810e11192321a8f5f1}\label{classtinyxml2_1_1_mem_pool_t_a3bcdc302ae15d2810e11192321a8f5f1}} 
+\index{tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}!Untracked@{Untracked}}
+\index{Untracked@{Untracked}!tinyxml2\+::\+Mem\+PoolT@{tinyxml2\+::\+Mem\+PoolT}}
+\subsubsection{\texorpdfstring{Untracked()}{Untracked()}}
+{\footnotesize\ttfamily template$<$int I\+T\+E\+M\+\_\+\+S\+I\+ZE$>$ \\
+int \mbox{\hyperlink{classtinyxml2_1_1_mem_pool_t}{tinyxml2\+::\+Mem\+PoolT}}$<$ I\+T\+E\+M\+\_\+\+S\+I\+ZE $>$\+::Untracked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{tinyxml2_8h}{tinyxml2.\+h}}\end{DoxyCompactItemize}

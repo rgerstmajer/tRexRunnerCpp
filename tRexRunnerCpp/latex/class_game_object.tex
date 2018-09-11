@@ -1,0 +1,207 @@
+\hypertarget{class_game_object}{}\section{Game\+Object Class Reference}
+\label{class_game_object}\index{Game\+Object@{Game\+Object}}
+
+
+\mbox{\hyperlink{_game_object_8h}{Game\+Object.\+h}}.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Object.\+h$>$}
+
+Inheritance diagram for Game\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_game_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_a0348e3ee2e83d56eafca7a3547f432c4}{Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a7ba982dd7315ab822c18dd9892112316}{Draw}} (sf\+::\+Render\+Window $\ast$\mbox{\hyperlink{_game_8cpp_a0ee270ff2fb6cd89fc012e05a882cecf}{window}})
+\begin{DoxyCompactList}\small\item\em Drawing method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_object_a9f63ba7fa09d165f175858276f71d44b}{Colliding}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$obstacle)
+\begin{DoxyCompactList}\small\item\em Collision checking method. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_game_object_a274bf74e1658d845a0603be2972a63c4}{Get\+PositionX}} ()
+\item 
+float \mbox{\hyperlink{class_game_object_abe7e418773edb98562033fcfdf191dd9}{Get\+PositionY}} ()
+\item 
+virtual void \mbox{\hyperlink{class_game_object_ab3b70fcc4e640ba2081508b1efb35536}{Init}} ()=0
+\item 
+\mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{$\sim$\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_game_object_ad5092169e581fb0772e01026882ea0c8}{game\+Object\+Type}} \{ \mbox{\hyperlink{class_game_object_ad5092169e581fb0772e01026882ea0c8abe36792af4e9d553af5ca98543c8a575}{T\+R\+EX}}, 
+\mbox{\hyperlink{class_game_object_ad5092169e581fb0772e01026882ea0c8a23766b7dba368bcb74cc89b61a9b644a}{P\+T\+E\+R\+O\+D\+A\+C\+T\+YL}}, 
+\mbox{\hyperlink{class_game_object_ad5092169e581fb0772e01026882ea0c8ab187712fdeb8f34d8ef73351e8228a6c}{C\+A\+C\+T\+US}}, 
+\mbox{\hyperlink{class_game_object_ad5092169e581fb0772e01026882ea0c8a3bfa9bed5a5f60ee2ddcd61846d23b01}{H\+O\+R\+I\+Z\+ON}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite $\ast$ \mbox{\hyperlink{class_game_object_ab570c73233f2e8eb9fb3c043b1a68c4c}{Load\+Shape}} (sf\+::\+Texture $\ast$texture, const int height, const int width, const unsigned char $\ast$shape, bool is\+Bump=false)
+\begin{DoxyCompactList}\small\item\em Shape loading method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite $\ast$ \mbox{\hyperlink{class_game_object_ac965ec6e2eba11bb1be2ecba57508329}{sprite}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{_game_object_8h}{Game\+Object.\+h}}. 
+
+\mbox{\hyperlink{class_game_object}{Game\+Object}} base class header file
+
+Created\+: 20.\+08.\+2018. Author \+: Robert Gerstmajer 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_game_object_ad5092169e581fb0772e01026882ea0c8}\label{class_game_object_ad5092169e581fb0772e01026882ea0c8}} 
+\index{Game\+Object@{Game\+Object}!game\+Object\+Type@{game\+Object\+Type}}
+\index{game\+Object\+Type@{game\+Object\+Type}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{game\+Object\+Type}{gameObjectType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_game_object_ad5092169e581fb0772e01026882ea0c8}{Game\+Object\+::game\+Object\+Type}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+R\+EX@{T\+R\+EX}!Game\+Object@{Game\+Object}}\index{Game\+Object@{Game\+Object}!T\+R\+EX@{T\+R\+EX}}}\mbox{\Hypertarget{class_game_object_ad5092169e581fb0772e01026882ea0c8abe36792af4e9d553af5ca98543c8a575}\label{class_game_object_ad5092169e581fb0772e01026882ea0c8abe36792af4e9d553af5ca98543c8a575}} 
+T\+R\+EX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+T\+E\+R\+O\+D\+A\+C\+T\+YL@{P\+T\+E\+R\+O\+D\+A\+C\+T\+YL}!Game\+Object@{Game\+Object}}\index{Game\+Object@{Game\+Object}!P\+T\+E\+R\+O\+D\+A\+C\+T\+YL@{P\+T\+E\+R\+O\+D\+A\+C\+T\+YL}}}\mbox{\Hypertarget{class_game_object_ad5092169e581fb0772e01026882ea0c8a23766b7dba368bcb74cc89b61a9b644a}\label{class_game_object_ad5092169e581fb0772e01026882ea0c8a23766b7dba368bcb74cc89b61a9b644a}} 
+P\+T\+E\+R\+O\+D\+A\+C\+T\+YL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+A\+C\+T\+US@{C\+A\+C\+T\+US}!Game\+Object@{Game\+Object}}\index{Game\+Object@{Game\+Object}!C\+A\+C\+T\+US@{C\+A\+C\+T\+US}}}\mbox{\Hypertarget{class_game_object_ad5092169e581fb0772e01026882ea0c8ab187712fdeb8f34d8ef73351e8228a6c}\label{class_game_object_ad5092169e581fb0772e01026882ea0c8ab187712fdeb8f34d8ef73351e8228a6c}} 
+C\+A\+C\+T\+US&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+O\+R\+I\+Z\+ON@{H\+O\+R\+I\+Z\+ON}!Game\+Object@{Game\+Object}}\index{Game\+Object@{Game\+Object}!H\+O\+R\+I\+Z\+ON@{H\+O\+R\+I\+Z\+ON}}}\mbox{\Hypertarget{class_game_object_ad5092169e581fb0772e01026882ea0c8a3bfa9bed5a5f60ee2ddcd61846d23b01}\label{class_game_object_ad5092169e581fb0772e01026882ea0c8a3bfa9bed5a5f60ee2ddcd61846d23b01}} 
+H\+O\+R\+I\+Z\+ON&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_object_a0348e3ee2e83d56eafca7a3547f432c4}\label{class_game_object_a0348e3ee2e83d56eafca7a3547f432c4}} 
+\index{Game\+Object@{Game\+Object}!Game\+Object@{Game\+Object}}
+\index{Game\+Object@{Game\+Object}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{Game\+Object()}{GameObject()}}
+{\footnotesize\ttfamily Game\+Object\+::\+Game\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+\mbox{\hyperlink{_game_object_8cpp}{Game\+Object.\+cpp}}.
+
+Implementation of the \mbox{\hyperlink{class_game_object}{Game\+Object}} class
+
+Created\+: 20.\+08.\+2018. Author \+: Robert Gerstmajer \mbox{\Hypertarget{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}\label{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}} 
+\index{Game\+Object@{Game\+Object}!````~Game\+Object@{$\sim$\+Game\+Object}}
+\index{````~Game\+Object@{$\sim$\+Game\+Object}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{$\sim$\+Game\+Object()}{~GameObject()}}
+{\footnotesize\ttfamily Game\+Object\+::$\sim$\+Game\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_object_a9f63ba7fa09d165f175858276f71d44b}\label{class_game_object_a9f63ba7fa09d165f175858276f71d44b}} 
+\index{Game\+Object@{Game\+Object}!Colliding@{Colliding}}
+\index{Colliding@{Colliding}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{Colliding()}{Colliding()}}
+{\footnotesize\ttfamily bool Game\+Object\+::\+Colliding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$}]{obstacle }\end{DoxyParamCaption})}
+
+
+
+Collision checking method. 
+
+Checks if the \mbox{\hyperlink{class_game_object}{Game\+Object}} sprite is colliding with obstacle 
+\begin{DoxyParams}{Parameters}
+{\em obstacle} & to check collision with \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_object_a7ba982dd7315ab822c18dd9892112316}\label{class_game_object_a7ba982dd7315ab822c18dd9892112316}} 
+\index{Game\+Object@{Game\+Object}!Draw@{Draw}}
+\index{Draw@{Draw}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Game\+Object\+::\+Draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window $\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+Drawing method. 
+
+Draws sprite on sfml Render\+Window 
+\begin{DoxyParams}{Parameters}
+{\em window} & sfml Render\+Window to draw on \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_object_a274bf74e1658d845a0603be2972a63c4}\label{class_game_object_a274bf74e1658d845a0603be2972a63c4}} 
+\index{Game\+Object@{Game\+Object}!Get\+PositionX@{Get\+PositionX}}
+\index{Get\+PositionX@{Get\+PositionX}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{Get\+Position\+X()}{GetPositionX()}}
+{\footnotesize\ttfamily float Game\+Object\+::\+Get\+PositionX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the sprite location on X axis \mbox{\Hypertarget{class_game_object_abe7e418773edb98562033fcfdf191dd9}\label{class_game_object_abe7e418773edb98562033fcfdf191dd9}} 
+\index{Game\+Object@{Game\+Object}!Get\+PositionY@{Get\+PositionY}}
+\index{Get\+PositionY@{Get\+PositionY}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{Get\+Position\+Y()}{GetPositionY()}}
+{\footnotesize\ttfamily float Game\+Object\+::\+Get\+PositionY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the sprite location on Y axis \mbox{\Hypertarget{class_game_object_ab3b70fcc4e640ba2081508b1efb35536}\label{class_game_object_ab3b70fcc4e640ba2081508b1efb35536}} 
+\index{Game\+Object@{Game\+Object}!Init@{Init}}
+\index{Init@{Init}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily virtual void Game\+Object\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_t_rex_a9975357a104130b3b8f6c5ed65f2eb0e}{T\+Rex}}, \mbox{\hyperlink{class_horizon_a80800c898ea4cd015ae865351a6aec4c}{Horizon}}, \mbox{\hyperlink{class_cactus_af1dc82bd652141aea55d65bde708856a}{Cactus}}, and \mbox{\hyperlink{class_pterodactyl_abb1effe2b67ceabf7494d3f104fc20b5}{Pterodactyl}}.
+
+\mbox{\Hypertarget{class_game_object_ab570c73233f2e8eb9fb3c043b1a68c4c}\label{class_game_object_ab570c73233f2e8eb9fb3c043b1a68c4c}} 
+\index{Game\+Object@{Game\+Object}!Load\+Shape@{Load\+Shape}}
+\index{Load\+Shape@{Load\+Shape}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{Load\+Shape()}{LoadShape()}}
+{\footnotesize\ttfamily sf\+::\+Sprite $\ast$ Game\+Object\+::\+Load\+Shape (\begin{DoxyParamCaption}\item[{sf\+::\+Texture $\ast$}]{texture,  }\item[{const int}]{height,  }\item[{const int}]{width,  }\item[{const unsigned char $\ast$}]{shape,  }\item[{bool}]{is\+Bump = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Shape loading method. 
+
+Loads shape into sprite 
+\begin{DoxyParams}{Parameters}
+{\em texture} & sfml Texture buffer for creating the sprite \\
+\hline
+{\em height} & sprite height \\
+\hline
+{\em width} & sprite width \\
+\hline
+{\em shape} & sprite\+Shape taken from \mbox{\hyperlink{_globals_8h}{Globals.\+h}} \\
+\hline
+{\em is\+Bump} & if the shape is a horizon bump, background is black, otherwise transparent \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_object_ac965ec6e2eba11bb1be2ecba57508329}\label{class_game_object_ac965ec6e2eba11bb1be2ecba57508329}} 
+\index{Game\+Object@{Game\+Object}!sprite@{sprite}}
+\index{sprite@{sprite}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite$\ast$ Game\+Object\+::sprite\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_object_8h}{Game\+Object.\+h}}\item 
+\mbox{\hyperlink{_game_object_8cpp}{Game\+Object.\+cpp}}\end{DoxyCompactItemize}

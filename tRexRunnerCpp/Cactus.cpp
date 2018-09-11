@@ -1,6 +1,11 @@
+//! Cactus.cpp
+/*!
+* Implementation of the Cactus class
+*
+* Created: 20.08.2018.
+* Author : Robert Gerstmajer
+*/
 #include "Cactus.h"
-
-
 
 Cactus::Cactus()
 {

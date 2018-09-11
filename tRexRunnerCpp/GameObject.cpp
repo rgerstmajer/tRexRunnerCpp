@@ -1,3 +1,10 @@
+//! GameObject.cpp
+/*!
+* Implementation of the GameObject class
+*
+* Created: 20.08.2018.
+* Author : Robert Gerstmajer
+*/
 #include "GameObject.h"
 
 GameObject::GameObject()
