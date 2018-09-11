@@ -64,7 +64,7 @@ public:
     //! Default destructor
     ~TRex();
 private:
-    int stepCounter = 0; /*! Used for determening when to change sprites for stepping*/
+    int stepCounter = 0; /*! Used for determening when to change sprites for stepping animation*/
     float m_Gravity; /*! Determens speed of falling*/
     float m_JumpingSpeed; /*! Determens speed of rising*/
 

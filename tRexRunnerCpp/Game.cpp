@@ -35,7 +35,6 @@ void LoadConfig()
 {
     // Reading the game config file
     tinyxml2::XMLDocument config;
-    system("dir");
     tinyxml2::XMLError pError = config.LoadFile("tRexRunnerConfig.xml");
     if (pError == 0)
     {
