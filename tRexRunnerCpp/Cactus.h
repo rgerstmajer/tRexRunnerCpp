@@ -22,7 +22,6 @@ class Cactus :
      * \param type Type of cactus (1-4)
      */
     void Init(int distance, int type);
-    void Init();
     //! Default destructor
     ~Cactus();
   private:

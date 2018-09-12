@@ -23,20 +23,13 @@ for the JavaScript code in this file
 */
 var menudata={children:[
 {text:"Main Page",url:"index.html"},
-{text:"Namespaces",url:"namespaces.html",children:[
-{text:"Namespace List",url:"namespaces.html"},
-{text:"Namespace Members",url:"namespacemembers.html",children:[
-{text:"All",url:"namespacemembers.html"},
-{text:"Enumerations",url:"namespacemembers_enum.html"},
-{text:"Enumerator",url:"namespacemembers_eval.html"}]}]},
 {text:"Classes",url:"annotated.html",children:[
 {text:"Class List",url:"annotated.html"},
 {text:"Class Index",url:"classes.html"},
 {text:"Class Hierarchy",url:"hierarchy.html"},
 {text:"Class Members",url:"functions.html",children:[
 {text:"All",url:"functions.html",children:[
-{text:"_",url:"functions.html#index__"},
-{text:"a",url:"functions_a.html#index_a"},
+{text:"a",url:"functions.html#index_a"},
 {text:"b",url:"functions_b.html#index_b"},
 {text:"c",url:"functions_c.html#index_c"},
 {text:"d",url:"functions_d.html#index_d"},
@@ -57,7 +50,6 @@ var menudata={children:[
 {text:"t",url:"functions_t.html#index_t"},
 {text:"u",url:"functions_u.html#index_u"},
 {text:"v",url:"functions_v.html#index_v"},
-{text:"w",url:"functions_w.html#index_w"},
 {text:"x",url:"functions_x.html#index_x"},
 {text:"~",url:"functions_0x7e.html#index_0x7e"}]},
 {text:"Functions",url:"functions_func.html",children:[
@@ -82,44 +74,7 @@ var menudata={children:[
 {text:"t",url:"functions_func_t.html#index_t"},
 {text:"u",url:"functions_func_u.html#index_u"},
 {text:"v",url:"functions_func_v.html#index_v"},
-{text:"w",url:"functions_func_w.html#index_w"},
 {text:"x",url:"functions_func_x.html#index_x"},
-{text:"~",url:"functions_func_0x7e.html#index_0x7e"}]},
-{text:"Variables",url:"functions_vars.html"},
-{text:"Enumerations",url:"functions_enum.html"},
-{text:"Enumerator",url:"functions_eval.html"},
-{text:"Related Functions",url:"functions_rela.html"}]}]},
+{text:"~",url:"functions_func_0x7e.html#index_0x7e"}]}]}]},
 {text:"Files",url:"files.html",children:[
-{text:"File List",url:"files.html"},
-{text:"File Members",url:"globals.html",children:[
-{text:"All",url:"globals.html",children:[
-{text:"b",url:"globals.html#index_b"},
-{text:"c",url:"globals.html#index_c"},
-{text:"d",url:"globals.html#index_d"},
-{text:"g",url:"globals.html#index_g"},
-{text:"h",url:"globals.html#index_h"},
-{text:"i",url:"globals.html#index_i"},
-{text:"j",url:"globals.html#index_j"},
-{text:"l",url:"globals.html#index_l"},
-{text:"m",url:"globals.html#index_m"},
-{text:"o",url:"globals.html#index_o"},
-{text:"p",url:"globals.html#index_p"},
-{text:"r",url:"globals.html#index_r"},
-{text:"s",url:"globals.html#index_s"},
-{text:"t",url:"globals.html#index_t"},
-{text:"w",url:"globals.html#index_w"}]},
-{text:"Functions",url:"globals_func.html"},
-{text:"Variables",url:"globals_vars.html"},
-{text:"Macros",url:"globals_defs.html",children:[
-{text:"b",url:"globals_defs.html#index_b"},
-{text:"c",url:"globals_defs.html#index_c"},
-{text:"g",url:"globals_defs.html#index_g"},
-{text:"h",url:"globals_defs.html#index_h"},
-{text:"j",url:"globals_defs.html#index_j"},
-{text:"m",url:"globals_defs.html#index_m"},
-{text:"o",url:"globals_defs.html#index_o"},
-{text:"p",url:"globals_defs.html#index_p"},
-{text:"r",url:"globals_defs.html#index_r"},
-{text:"s",url:"globals_defs.html#index_s"},
-{text:"t",url:"globals_defs.html#index_t"},
-{text:"w",url:"globals_defs.html#index_w"}]}]}]}]}
+{text:"File List",url:"files.html"}]}]}

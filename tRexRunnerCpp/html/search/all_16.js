@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['white',['WHITE',['../_globals_8h.html#a87b537f5fa5c109d3c05c13d6b18f382',1,'Globals.h']]],
-  ['whitespace',['Whitespace',['../namespacetinyxml2.html#a7f91d00f77360f850fd5da0861e27dd5',1,'tinyxml2']]],
-  ['whitespacemode',['WhitespaceMode',['../classtinyxml2_1_1_x_m_l_document.html#a810ce508e6e0365497c2a9deb83c9ca7',1,'tinyxml2::XMLDocument']]],
-  ['width',['WIDTH',['../_globals_8h.html#a241aeeb764887ae5e3de58b98f04b16d',1,'Globals.h']]],
-  ['window',['window',['../_game_8cpp.html#a0ee270ff2fb6cd89fc012e05a882cecf',1,'Game.cpp']]],
-  ['write',['Write',['../classtinyxml2_1_1_x_m_l_printer.html#aff363b7634a27538fd691ae62adbda63',1,'tinyxml2::XMLPrinter::Write(const char *data, size_t size)'],['../classtinyxml2_1_1_x_m_l_printer.html#a4bd7f0cabca77ac95c299103fa9592f1',1,'tinyxml2::XMLPrinter::Write(const char *data)']]],
-  ['writescore',['WriteScore',['../_game_8cpp.html#a8d7b6a14889f7c4afc0826781092fa31',1,'WriteScore():&#160;Game.cpp'],['../_game_8h.html#a8d7b6a14889f7c4afc0826781092fa31',1,'WriteScore():&#160;Game.cpp']]]
+  ['_7ecactus',['~Cactus',['../class_cactus.html#aad137061a9d2432ac47f4c28b23644c3',1,'Cactus']]],
+  ['_7egameobject',['~GameObject',['../class_game_object.html#ab82dfdb656f9051c0587e6593b2dda97',1,'GameObject']]],
+  ['_7ehorizon',['~Horizon',['../class_horizon.html#a4b917eb3365308d9ab6e1ab5c8891299',1,'Horizon']]],
+  ['_7eobstacle',['~Obstacle',['../class_obstacle.html#af2f9cc9c6cff75dca0974fd5ac4f71a9',1,'Obstacle']]],
+  ['_7epterodactyl',['~Pterodactyl',['../class_pterodactyl.html#a57c101dcc34661693bb424770d590c0a',1,'Pterodactyl']]],
+  ['_7etrex',['~TRex',['../class_t_rex.html#a55dbaec9e6c442749133aaf017675c02',1,'TRex']]]
 ];

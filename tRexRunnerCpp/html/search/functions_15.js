@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['whitespacemode',['WhitespaceMode',['../classtinyxml2_1_1_x_m_l_document.html#a810ce508e6e0365497c2a9deb83c9ca7',1,'tinyxml2::XMLDocument']]],
-  ['window',['window',['../_game_8cpp.html#a0ee270ff2fb6cd89fc012e05a882cecf',1,'Game.cpp']]],
-  ['write',['Write',['../classtinyxml2_1_1_x_m_l_printer.html#aff363b7634a27538fd691ae62adbda63',1,'tinyxml2::XMLPrinter::Write(const char *data, size_t size)'],['../classtinyxml2_1_1_x_m_l_printer.html#a4bd7f0cabca77ac95c299103fa9592f1',1,'tinyxml2::XMLPrinter::Write(const char *data)']]],
-  ['writescore',['WriteScore',['../_game_8cpp.html#a8d7b6a14889f7c4afc0826781092fa31',1,'WriteScore():&#160;Game.cpp'],['../_game_8h.html#a8d7b6a14889f7c4afc0826781092fa31',1,'WriteScore():&#160;Game.cpp']]]
+  ['xmldocument',['XMLDocument',['../classtinyxml2_1_1_x_m_l_document.html#a57ddf17b6e054dda10af98991b1b8f70',1,'tinyxml2::XMLDocument']]],
+  ['xmlhandle',['XMLHandle',['../classtinyxml2_1_1_x_m_l_handle.html#a9c240a35c18f053509b4b97ddccd9793',1,'tinyxml2::XMLHandle::XMLHandle(XMLNode *node)'],['../classtinyxml2_1_1_x_m_l_handle.html#aa2edbc1c0d3e3e8259bd98de7f1cf500',1,'tinyxml2::XMLHandle::XMLHandle(XMLNode &amp;node)'],['../classtinyxml2_1_1_x_m_l_handle.html#afd8e01e6018c07347b8e6d80272466aa',1,'tinyxml2::XMLHandle::XMLHandle(const XMLHandle &amp;ref)']]],
+  ['xmlprinter',['XMLPrinter',['../classtinyxml2_1_1_x_m_l_printer.html#aa6d3841c069085f5b8a27bc7103c04f7',1,'tinyxml2::XMLPrinter']]]
 ];

@@ -18,14 +18,12 @@ public:
     * \param type Type of bump (1 or 2)
     */
     Horizon(int type);
-    gameObjectType GetGameObjectType() { return HORIZON; }
     //! Move method
     /*!
     * Moves sprite to the left according to increment
     * \param increment How much to move the sprite
     */
     void Move(float increment);
-    void Init();
     //! Default destructor
     ~Horizon();
 private:

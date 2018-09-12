@@ -52,9 +52,6 @@ public:
     * Changes tRex sprite to display crash
     */
     void Crash();
-    void Init();
-
-    gameObjectType GetGameObjectType() { return TREX; }
     //! Update method
     /*!
     * If the tRex is running or ducking, change sprites

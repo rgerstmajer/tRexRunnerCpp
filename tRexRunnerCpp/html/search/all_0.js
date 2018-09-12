@@ -1,14 +1,5 @@
 var searchData=
 [
-  ['_5fdocument',['_document',['../classtinyxml2_1_1_x_m_l_node.html#a8d2d2be0bb6797625551eb0e91f0ff62',1,'tinyxml2::XMLNode']]],
-  ['_5felementjustopened',['_elementJustOpened',['../classtinyxml2_1_1_x_m_l_printer.html#ac07169d58b465214a2b1fa306e617c26',1,'tinyxml2::XMLPrinter']]],
-  ['_5ffirstchild',['_firstChild',['../classtinyxml2_1_1_x_m_l_node.html#aa20c91e4213dc930c5bdf420322ca342',1,'tinyxml2::XMLNode']]],
-  ['_5flastchild',['_lastChild',['../classtinyxml2_1_1_x_m_l_node.html#a099b6560ae44ab9edb8453aaf1a3747b',1,'tinyxml2::XMLNode']]],
-  ['_5fnext',['_next',['../classtinyxml2_1_1_x_m_l_node.html#a27e985496b37dd00eb5b9cf59b9e3fb1',1,'tinyxml2::XMLNode']]],
-  ['_5fparent',['_parent',['../classtinyxml2_1_1_x_m_l_node.html#a176dd1c4965c21c366de192164aa2c13',1,'tinyxml2::XMLNode']]],
-  ['_5fparselinenum',['_parseLineNum',['../classtinyxml2_1_1_x_m_l_node.html#ab336ed023e15be202ff3b410be01b804',1,'tinyxml2::XMLNode']]],
-  ['_5fprev',['_prev',['../classtinyxml2_1_1_x_m_l_node.html#a9739eb0fb9a1188266052055e7a6bf6b',1,'tinyxml2::XMLNode']]],
-  ['_5fstack',['_stack',['../classtinyxml2_1_1_x_m_l_printer.html#a99d59e67e084714541bee3ae43884bef',1,'tinyxml2::XMLPrinter']]],
-  ['_5fuserdata',['_userData',['../classtinyxml2_1_1_x_m_l_node.html#ac2d5cc463a6c95ec5907d57a119c56da',1,'tinyxml2::XMLNode']]],
-  ['_5fvalue',['_value',['../classtinyxml2_1_1_x_m_l_node.html#a3ea9884098b8379de2bb5ab3fc85c0fc',1,'tinyxml2::XMLNode']]]
+  ['accept',['Accept',['../classtinyxml2_1_1_x_m_l_node.html#a81e66df0a44c67a7af17f3b77a152785',1,'tinyxml2::XMLNode::Accept()'],['../classtinyxml2_1_1_x_m_l_text.html#a537c60d7e18fb59c45ac2737a29ac47a',1,'tinyxml2::XMLText::Accept()'],['../classtinyxml2_1_1_x_m_l_comment.html#a27b37d16cea01b5329dfbbb4f9508e39',1,'tinyxml2::XMLComment::Accept()'],['../classtinyxml2_1_1_x_m_l_declaration.html#acf47629d9fc08ed6f1c164a97bcf794b',1,'tinyxml2::XMLDeclaration::Accept()'],['../classtinyxml2_1_1_x_m_l_unknown.html#a8a06b8c82117ca969a432e17a46830fc',1,'tinyxml2::XMLUnknown::Accept()'],['../classtinyxml2_1_1_x_m_l_element.html#a9b2119831e8b85827d5d3e5076788e4a',1,'tinyxml2::XMLElement::Accept()'],['../classtinyxml2_1_1_x_m_l_document.html#ab7be651917a35ab1ff0e4e6d4e565cdf',1,'tinyxml2::XMLDocument::Accept()']]],
+  ['attribute',['Attribute',['../classtinyxml2_1_1_x_m_l_element.html#a48cf4a315cfbac7d74cd0d5ff2c5df51',1,'tinyxml2::XMLElement']]]
 ];

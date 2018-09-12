@@ -12,10 +12,6 @@ Pterodactyl::Pterodactyl()
 
 }
 
-void Pterodactyl::Init() 
-{
-}
-
 void Pterodactyl::Init(int distance)
 {
     wingFlapCounter = 0;

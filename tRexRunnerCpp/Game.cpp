@@ -78,6 +78,7 @@ void LoadHighScore()
 
 void WriteScore()
 {
+    // Write high score to file
     std::ofstream FHighScore("HighScore.bin", std::ofstream::out);
     FHighScore << HighScore;
     FHighScore.close();

@@ -10,6 +10,5 @@ var searchData=
   ['doubletext',['DoubleText',['../classtinyxml2_1_1_x_m_l_element.html#a81b1ff0cf2f2cd09be8badc08b39a2b7',1,'tinyxml2::XMLElement']]],
   ['doublevalue',['DoubleValue',['../classtinyxml2_1_1_x_m_l_attribute.html#a4aa73513f54ff0087d3e804f0f54e30f',1,'tinyxml2::XMLAttribute']]],
   ['draw',['Draw',['../class_game_object.html#a7ba982dd7315ab822c18dd9892112316',1,'GameObject']]],
-  ['duck',['Duck',['../class_t_rex.html#a1e672bcdbbeab5bc66c1812e3be30fd3',1,'TRex']]],
-  ['dynarray',['DynArray',['../classtinyxml2_1_1_dyn_array.html#aaad72f384e761c70a4519183eb8fea17',1,'tinyxml2::DynArray']]]
+  ['duck',['Duck',['../class_t_rex.html#a1e672bcdbbeab5bc66c1812e3be30fd3',1,'TRex']]]
 ];

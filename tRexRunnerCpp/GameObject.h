@@ -33,17 +33,9 @@ class GameObject
     /*! Returns the sprite location on Y axis
     */
     float GetPositionY() { return sprite->getPosition().y; }
-    virtual void Init() = 0;
     //! Default destructor
     ~GameObject();
 protected:
-    enum gameObjectType
-    {
-        TREX,
-        PTERODACTYL,
-        CACTUS,
-        HORIZON
-    };
 
     sf::Sprite* sprite; /* The current object's sprite */
     //! Shape loading method

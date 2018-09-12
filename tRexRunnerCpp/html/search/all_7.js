@@ -1,25 +1,5 @@
 var searchData=
 [
-  ['game',['Game',['../_game_8cpp.html#afcf264a390aa611ae1d71964abeef9cf',1,'Game():&#160;Game.cpp'],['../_game_8h.html#afcf264a390aa611ae1d71964abeef9cf',1,'Game():&#160;Game.cpp']]],
-  ['game_2ecpp',['Game.cpp',['../_game_8cpp.html',1,'']]],
-  ['game_2eh',['Game.h',['../_game_8h.html',1,'']]],
-  ['game_5fgravity',['GAME_GRAVITY',['../_globals_8h.html#a3a5e96f3946c269031cef3ba72f0831f',1,'Globals.h']]],
-  ['game_5finitial_5fspeed',['GAME_INITIAL_SPEED',['../_globals_8h.html#a2df5cdac7caf08842bd51bfe68056308',1,'Globals.h']]],
-  ['game_5fscale',['GAME_SCALE',['../_globals_8h.html#a411d7da8ce57336a40f7f6d54c827a1b',1,'Globals.h']]],
-  ['game_5fscore_5fincrement',['GAME_SCORE_INCREMENT',['../_globals_8h.html#a9b1dd65e84e36fa0ee31d7c251437898',1,'Globals.h']]],
-  ['game_5fspeed_5fdelta',['GAME_SPEED_DELTA',['../_globals_8h.html#a31b399d5ebdc94a16a57fc527b8d53dd',1,'Globals.h']]],
-  ['gameobject',['GameObject',['../class_game_object.html',1,'GameObject'],['../class_game_object.html#a0348e3ee2e83d56eafca7a3547f432c4',1,'GameObject::GameObject()']]],
-  ['gameobject_2ecpp',['GameObject.cpp',['../_game_object_8cpp.html',1,'']]],
-  ['gameobject_2eh',['GameObject.h',['../_game_object_8h.html',1,'']]],
-  ['gameobjecttype',['gameObjectType',['../class_game_object.html#ad5092169e581fb0772e01026882ea0c8',1,'GameObject']]],
-  ['getcharacterref',['GetCharacterRef',['../classtinyxml2_1_1_x_m_l_util.html#a5a96e5144a8d693dc4bcd783d9964648',1,'tinyxml2::XMLUtil']]],
-  ['getdocument',['GetDocument',['../classtinyxml2_1_1_x_m_l_node.html#a2de84cfa4ec3fe249bad745069d145f1',1,'tinyxml2::XMLNode::GetDocument() const'],['../classtinyxml2_1_1_x_m_l_node.html#af343d1ef0b45c0020e62d784d7e67a68',1,'tinyxml2::XMLNode::GetDocument()']]],
-  ['getgameobjecttype',['GetGameObjectType',['../class_horizon.html#abe319d6ba70ce79028ba9175a4bcd4e6',1,'Horizon::GetGameObjectType()'],['../class_t_rex.html#ae376c4623c619940213ea75f57d721d5',1,'TRex::GetGameObjectType()']]],
-  ['getlinenum',['GetLineNum',['../classtinyxml2_1_1_x_m_l_node.html#a9b5fc636646fda761d342c72e91cb286',1,'tinyxml2::XMLNode::GetLineNum()'],['../classtinyxml2_1_1_x_m_l_attribute.html#a02d5ea924586e35f9c13857d1671b765',1,'tinyxml2::XMLAttribute::GetLineNum()']]],
-  ['getpositionx',['GetPositionX',['../class_game_object.html#a274bf74e1658d845a0603be2972a63c4',1,'GameObject']]],
-  ['getpositiony',['GetPositionY',['../class_game_object.html#abe7e418773edb98562033fcfdf191dd9',1,'GameObject']]],
-  ['getstr',['GetStr',['../classtinyxml2_1_1_str_pair.html#ad87e3d11330f5e689ba1e7e54c023b57',1,'tinyxml2::StrPair']]],
-  ['gettext',['GetText',['../classtinyxml2_1_1_x_m_l_element.html#a0fa5bea0a4daf3ddd503dcabb823eba6',1,'tinyxml2::XMLElement']]],
-  ['getuserdata',['GetUserData',['../classtinyxml2_1_1_x_m_l_node.html#a7f0687574afa03bc479dc44f29db0afe',1,'tinyxml2::XMLNode']]],
-  ['globals_2eh',['Globals.h',['../_globals_8h.html',1,'']]]
+  ['hasbom',['HasBOM',['../classtinyxml2_1_1_x_m_l_document.html#a33fc5d159db873a179fa26338adb05bd',1,'tinyxml2::XMLDocument']]],
+  ['horizon',['Horizon',['../class_horizon.html',1,'Horizon'],['../class_horizon.html#adbdceabfe68477247ecb2c469e4d8187',1,'Horizon::Horizon()']]]
 ];

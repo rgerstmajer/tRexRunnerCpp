@@ -13,9 +13,6 @@ class Pterodactyl :
 public:
     //! Default constructor
     Pterodactyl();
-
-
-    void Init();
     //! Initialization method
     /*!
     * Initializes random pterodactyl sprite

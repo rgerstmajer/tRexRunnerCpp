@@ -33,10 +33,6 @@ void Horizon::Move(float increment) //Move details from right to left
         sprite->move(WIDTH+rand()%WIDTH, 0);
 }
 
-void Horizon::Init()
-{
-
-}
 
 Horizon::~Horizon()
 {
