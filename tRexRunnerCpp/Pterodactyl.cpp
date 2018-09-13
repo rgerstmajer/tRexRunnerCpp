@@ -7,9 +7,17 @@
 */
 #include "Pterodactyl.h"
 
-Pterodactyl::Pterodactyl()
+Pterodactyl::Pterodactyl(float distance)
 {
+    wingFlapCounter = 0;
+    PterodactylShape1 = new sf::Texture();
+    PterodactylShape2 = new sf::Texture();
 
+    PterodactylSprite1 = LoadShape(PterodactylShape1, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl1);
+    PterodactylSprite2 = LoadShape(PterodactylShape2, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl2);
+
+    sprite = PterodactylSprite1;
+    sprite->setPosition(distance, rand() % (HEIGHT - PTERODACTYL_HEIGHT * 2 - TREX_DUCKING_HEIGHT * 2 - 2));
 }
 
 void Pterodactyl::Init(int distance)

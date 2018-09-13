@@ -12,7 +12,7 @@ class Cactus :
 {
   public:
     //! Default constructot
-    Cactus();
+    Cactus(float distance, int type);
     //! Initialization method
     /*!
      * Initializes random cactus sprite

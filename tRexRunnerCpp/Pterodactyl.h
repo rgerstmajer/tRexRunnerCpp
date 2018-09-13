@@ -12,7 +12,7 @@ class Pterodactyl :
 {
 public:
     //! Default constructor
-    Pterodactyl();
+    Pterodactyl(float distance);
     //! Initialization method
     /*!
     * Initializes random pterodactyl sprite

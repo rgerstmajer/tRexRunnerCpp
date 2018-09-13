@@ -35,6 +35,7 @@ void TRex::Jump()
     State = (State == STANDING) || (State == RUNNING1) || (State == RUNNING2) ? JUMPING : State;
     if (State == DUCKING1 || State == DUCKING2)
     {
+        // return
         Duck();
     }
     else if (sprite->getPosition().y > TREX_MAX_HEIGHT && !dropping)
@@ -69,6 +70,7 @@ void TRex::Duck()
     State = (State==JUMPING) ? State : DUCKING1;
     if (State == JUMPING)
     {
+        // return
         Jump();
     }
     else if (State == DUCKING1)

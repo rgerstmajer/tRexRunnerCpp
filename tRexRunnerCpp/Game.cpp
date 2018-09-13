@@ -4,11 +4,16 @@ sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
 
 void InitGame()
 {
+    horizonLineGap.setPosition(TREX_STARTING_POSITION_X + TREX_STANDING_WIDTH / 3, HORIZON_POSITION_Y - 1);
+    horizonLine.setPosition(HORIZON_POSITION_X, HORIZON_POSITION_Y);
+    score = 0;
+    highScore = 0;
+    firstFrame = false;
+    numberOfVisibleObstacles = 0;
     LoadConfig();
     LoadHighScore();
     LoadTextFields();
-    Score = 0;
-    tRex = new TRex(JumpingSpeed, Gravity);
+    tRex = new TRex(jumpingSpeed, gravity);
     horizonBump1 = new Horizon(1);
     horizonBump2 = new Horizon(2);
 }
@@ -36,60 +41,216 @@ void LoadConfig()
     // Reading the game config file
     tinyxml2::XMLDocument config;
     tinyxml2::XMLError pError = config.LoadFile("tRexRunnerConfig.xml");
-    if (pError == 0)
+    if (pError != 0)
+    {
+        printf("Config file not found, using defaults:\nGravity: %f\nGameSpeed: %f\nGameSpeedDelta: %f\nJumpingSpeed: %f", gravity, gameSpeed, gameSpeedDelta, jumpingSpeed);
+    }
+    else
     {
         const char* sGravity = config.FirstChildElement("GAME_GRAVITY")->GetText();
-        Gravity = atof(sGravity);
+        gravity = atof(sGravity);
         const char* sGameSpeed = config.FirstChildElement("GAME_INITIAL_SPEED")->GetText();
-        GameSpeed = atof(sGameSpeed);
+        gameSpeed = atof(sGameSpeed);
         const char* sGameSpeedDelta = config.FirstChildElement("GAME_SPEED_DELTA")->GetText();
-        GameSpeedDelta = atof(sGameSpeedDelta);
+        gameSpeedDelta = atof(sGameSpeedDelta);
         const char* sJumpingSpeed = config.FirstChildElement("JUMPING_SPEED")->GetText();
-        JumpingSpeed = atof(sJumpingSpeed);
+        jumpingSpeed = atof(sJumpingSpeed);
     }
-    else printf("Config file not found, using defaults.");
-
 }
 
 void LoadHighScore()
 {
-    // Loading High Score from previous attempts
-    std::ifstream FHighScore;
+    // Loading High score from previous attempts
+    std::ifstream fHighScoreIn;
     char c;
-    HighScore = 0;
-    
-    if (FHighScore.good())
+
+    fHighScoreIn.open("highScore.bin", std::ifstream::in);
+    if (!fHighScoreIn.good())
     {
-        FHighScore.open("HighScore.bin", std::ifstream::in);
-    while (FHighScore.get(c))
-    {
-        HighScore *= 10;
-        HighScore += (c - 48);
-    }
-    FHighScore.close();
+        //TODO log failed to open highScore.bin, creating new file
+        std::ofstream fHighScoreOut("highScore.bin", std::ofstream::out);
+        if (!fHighScoreOut.good())
+        {
+            // TODO log failed to open file
+        }
+        else
+        {
+            fHighScoreOut << 0;
+            fHighScoreOut.close();
+        }
     }
     else
     {
-        std::ofstream FHighScore("HighScore.bin", std::ofstream::out);
-        FHighScore << 0;
-        FHighScore.close();
+        while (fHighScoreIn.get(c))
+        {
+            highScore *= 10;
+            highScore += (c - 48);
+        }
+        fHighScoreIn.close();
     }
 }
 
 void WriteScore()
 {
     // Write high score to file
-    std::ofstream FHighScore("HighScore.bin", std::ofstream::out);
-    FHighScore << HighScore;
-    FHighScore.close();
+    std::ofstream fHighScore("highScore.bin", std::ofstream::out);
+    if (!fHighScore.good())
+    {
+        // TODO log failed to open or create highScore.bin
+    }
+    else
+    {
+        fHighScore << highScore;
+        fHighScore.close();
+    }
+}
+
+void UpdateHorizonLineGap()
+{
+    if (tRex->GetPositionY() == TREX_STARTING_POSITION_Y)
+    {
+        horizonLineGap.setFillColor(sf::Color::Black);
+    }
+    else
+    {
+        horizonLineGap.setFillColor(sf::Color::Transparent);
+    }
+}
+
+void AddObstacle(std::vector<Obstacle*> obstaclesList)
+{
+    obstacleDistance = OBSTACLE_RESPAWN_BASE_DISTANCE + rand() % obstacleRespawnMaxDistance;
+    if (obstacleDistance >= showPterodactyl)
+    {
+        obstacles.push_back(new Pterodactyl(obstacleDistance + lastDistance));
+        lastDistance += obstacleDistance;
+    }
+    else
+    {
+        obstacles.push_back(new Cactus(obstacleDistance + lastDistance, rand() % 4 + 1));
+        lastDistance += obstacleDistance;
+    }
+    numberOfVisibleObstacles++;
+}
+
+void UpdateAllObstacles()
+{
+    // Adding obstacles if needed
+    while (numberOfVisibleObstacles < MAX_OBSTACLE_COUNT)
+    {
+        AddObstacle(obstacles);
+    }
+    for (auto it = obstacles.begin(); it != obstacles.end(); it++)
+        (*it)->Move(gameSpeed);
+    // clearing obstacles that passed the screen
+    // TODO void ClearPassedObstacles(std::vector<GameObject*> obstacles)
+    if (!obstacles.empty() && obstacles[0]->GetPositionX() < 0)
+    {
+        delete obstacles[0];
+        obstacles.erase(obstacles.begin());
+        numberOfVisibleObstacles--;
+    }
+    if (!obstacles.empty())
+    {
+        lastDistance = obstacles[obstacles.size() - 1]->GetPositionX();
+    }
+    else
+    {
+        lastDistance = WIDTH;
+    }
+    
+}
+
+bool CheckCollision(TRex* tRex, Obstacle* obstacle)
+{
+    if (tRex->Colliding(obstacle))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+void GameOver()
+{
+    WriteScore();
+    window.clear();
+    tRex->Crash();
+    tRex->Draw(&window);
+    window.draw(highScoreText);
+    window.draw(scoreText);
+    window.draw(gameOverText);
+    window.display();
+}
+
+void DeleteObstacles()
+{
+    while (!obstacles.empty())
+    {
+        delete obstacles[0];
+        obstacles.erase(obstacles.begin());
+    }
+    numberOfVisibleObstacles = 0;
+}
+
+void HandlePeriodicIncrements(clock_t currentTime)
+{
+    if (currentTime - scoreTimer >= GAME_SCORE_INCREMENT)
+    {
+        scoreTimer = clock();
+        score++;
+        if (score % 100 == 0)
+        {
+            gameSpeed += gameSpeedDelta;
+            obstacleRespawnBaseDistance += OBSTACLE_RESPAWN_DISTANCE_INC;
+            obstacleRespawnMaxDistance += OBSTACLE_RESPAWN_DISTANCE_INC;
+            showPterodactyl += OBSTACLE_RESPAWN_DISTANCE_INC;
+        }
+        if (score > highScore)
+        {
+            highScore = score;
+        }
+    }
+}
+
+void UpdateTextFields(int score, int highScore)
+{
+    highScoreText.setString("HI " + std::to_string(highScore));
+    scoreText.setString(std::to_string(score));
+}
+
+void DrawEverything()
+{
+    window.clear();
+    window.draw(highScoreText);
+    window.draw(scoreText);
+    window.draw(horizonLine);
+    window.draw(horizonLineGap);
+    horizonBump1->Draw(&window);
+    horizonBump2->Draw(&window);
+    if (!obstacles.empty())
+    {
+        for (auto it = obstacles.begin(); it != obstacles.end(); it++)
+        {
+            (*it)->Draw(&window);
+        }
+    }
+    tRex->Draw(&window);
+    // Displaying whats drawn
+    window.display();
+}
+
+void MoveBumps()
+{
+    horizonBump1->Move(gameSpeed);
+    horizonBump2->Move(gameSpeed);
 }
 
 void Game()
 {
-    sf::RectangleShape HorizonLine(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
-    sf::RectangleShape HorizonLineGap(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * 2));
-    HorizonLineGap.setPosition(TREX_STARTING_POSITION_X + TREX_STANDING_WIDTH / 3, HORIZON_POSITION_Y - 1);
-    HorizonLine.setPosition(HORIZON_POSITION_X, HORIZON_POSITION_Y);
     while (window.isOpen())
     {
         // Execute only when render period is met
@@ -103,69 +264,19 @@ void Game()
                 if (event.type == sf::Event::Closed)
                     window.close();
             }
-            // Handling TRex padding
-            if (tRex->GetPositionY() == TREX_STARTING_POSITION_Y)
-            {
-                HorizonLineGap.setFillColor(sf::Color::Black);
-            }
-            else
-            {
-                HorizonLineGap.setFillColor(sf::Color::Transparent);
-            }
+            UpdateHorizonLineGap();
+            MoveBumps();
+            
             // Removing obstacles that passed the screen
-            if (!obstacles.empty() && obstacles[0]->GetPositionX() < 0)
-            {
-                obstacles.erase(obstacles.begin());
-                numberOfVisibleObstacles--;
-            }
-            if (!pterodactyls.empty() && pterodactyls[0]->GetPositionX() < 0)
-            {
-                pterodactyls.erase(pterodactyls.begin());
-                numberOfVisibleObstacles--;
-            }
-            //If there were already obstacles, they will move according
-            //the game speed. If there are new ones, they will be 
-            //handled in the obstacle creation loop
-            if (numberOfVisibleObstacles == 0)
-            {
-                lastDistance = 0;
-            }
-            if (lastDistance != 0)
-            {
-                lastDistance -= GameSpeed;
-            }
-            // Adding obstacles to the buffer
-            while (numberOfVisibleObstacles < MAX_OBSTACLE_COUNT)
-            {
-                obstacleDistance = OBSTACLE_RESPAWN_BASE_DISTANCE + rand() % obstacleRespawnMaxDistance;
-                if (obstacleDistance >= showPterodactyl)
-                {
-                    pterodactyls.push_back(new Pterodactyl());
-                    pterodactyls[pterodactyls.size() - 1]->Init(obstacleDistance + lastDistance);
-                    lastDistance = pterodactyls[pterodactyls.size() - 1]->GetPositionX();
-                }
-                else
-                {
-                    obstacles.push_back(new Cactus());
-                    obstacles[obstacles.size() - 1]->Init(obstacleDistance + lastDistance, rand() % 4 + 1);
-                    lastDistance = obstacles[obstacles.size() - 1]->GetPositionX();
-                }
-                numberOfVisibleObstacles++;
-            }
+            // move/remove/updateSprites
+            // handle lastDistance (distance of furthest obstacle)
+            UpdateAllObstacles();
+            
             // Checking if TRex collided with an obstacle
-            // and handling the Game over screen
-            if ((!obstacles.empty() && tRex->Colliding(obstacles[0])) || (!pterodactyls.empty() && tRex->Colliding(pterodactyls[0])))
+            if (CheckCollision(tRex, obstacles[0]) || firstFrame)
             {
-                HorizonLine.setFillColor(sf::Color::Red);
-                window.clear();
-                window.draw(HorizonLine);
-                WriteScore();
-                tRex->Crash();
-                tRex->Draw(&window);
-                window.draw(highScoreText);
-                window.draw(scoreText);
-                window.draw(gameOverText);
-                window.display();
+                GameOver();
+                DeleteObstacles();
                 if (!(GetKeyState(VK_UP) & 0x8000) && !(GetKeyState(VK_DOWN) & 0x8000))
                 {
                     keyPressed = false;
@@ -173,21 +284,10 @@ void Game()
                 if ((GetKeyState(VK_UP) & 0x8000) && !keyPressed) // To not restart game while holding down the UP arrow key
                 {
                     firstFrame = true;
-                    HorizonLine.setFillColor(sf::Color::White);
-                    delete horizonBump1;
-                    delete horizonBump2;
-                    if (!obstacles.empty())
-                    {
-                        obstacles.clear();
-                    }
-                    if (!pterodactyls.empty())
-                    {
-                        pterodactyls.clear();
-                    }
-                    numberOfVisibleObstacles = 0;
                     InitGame();
                 }
             }
+
             // If not colliding with anything, continue
             else
             {
@@ -207,63 +307,17 @@ void Game()
                     keyPressed = false;
                     tRex->Run();
                 }
-                // Turning Score into string for display
-                // Score counter handling
-                if (clock() - scoreTimer >= GAME_SCORE_INCREMENT)
-                {
-                    scoreTimer = clock();
-                    Score++;
-                    if (Score % 100 == 0)
-                    {
-                        GameSpeed += GameSpeedDelta;
-                        obstacleRespawnBaseDistance += OBSTACLE_RESPAWN_DISTANCE_INC;
-                        obstacleRespawnMaxDistance += OBSTACLE_RESPAWN_DISTANCE_INC;
-                        showPterodactyl += OBSTACLE_RESPAWN_DISTANCE_INC;
-                    }
-                    if (Score > HighScore)
-                    {
-                        HighScore = Score;
-                    }
-                }
-                // Clearing window buffer
-                window.clear();
-                // Drawing the HighScore and Score text fields
-                highScoreText.setString("HI " + std::to_string(HighScore));
-                scoreText.setString(std::to_string(Score));
-                window.draw(highScoreText);
-                window.draw(scoreText);
-                // Updating TRex steps
-                tRex->Update();
-                // Drawing Horizon and bumps
-                window.draw(HorizonLine);
-                horizonBump1->Draw(&window);
-                horizonBump2->Draw(&window);
-                window.draw(HorizonLineGap);
-                // Drawing TRex
-                tRex->Draw(&window);
-                // Moving all the obstacles and bumps 
-                // to the left according to current game speed
-                // and updating Pterodactyl wing flapping
-                horizonBump1->Move(GameSpeed);
-                horizonBump2->Move(GameSpeed);
-                for (int i = 0; i < obstacles.size(); i++)
-                {
-                    obstacles[i]->Move(GameSpeed);
-                    obstacles[i]->Draw(&window);
-                }
-                for (int i = 0; i < pterodactyls.size(); i++)
-                {
-                    pterodactyls[i]->Update();
-                    pterodactyls[i]->Move(GameSpeed);
-                    pterodactyls[i]->Draw(&window);
-                }
-                // Displaying whats drawn
-                window.display();
+
+                HandlePeriodicIncrements(clock());
             }
+
+            UpdateTextFields(score, highScore);
+            DrawEverything();
+
         }
-        
     }
 }
+
 
 void RunGame()
 {
