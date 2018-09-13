@@ -22,6 +22,12 @@ class Cactus :
      * \param type Type of cactus (1-4)
      */
     void Init(int distance, int type);
+    //! Update method
+    /*!
+    * Moves sprite to the left according to increment
+    * \param increment How much to move the sprite
+    */
+    void Update(float increment);
     //! Default destructor
     ~Cactus();
   private:

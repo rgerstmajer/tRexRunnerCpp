@@ -48,6 +48,7 @@ static float lastDistance = WIDTH;
 static bool pterodactylPresent = false;
 static bool firstFrame = false;
 static bool keyPressed = false;
+static bool gameOver = false;
 
 static clock_t beginTime = clock();
 static clock_t scoreTimer = clock();
@@ -66,6 +67,10 @@ void RunGame();
 */
 void InitGame();
 /*!
+* Runs game logic
+*/
+void Game();
+/*!
 * Loads sfml text for scores
 */
 void LoadTextFields();
@@ -81,10 +86,6 @@ void LoadHighScore();
 * Writes high score to file
 */
 void WriteScore();
-/*!
-* Runs game logic
-*/
-void Game();
 /*!
 * Updates horizon line gap to
 * make tRex appear in front
@@ -106,7 +107,7 @@ void AddObstacle(std::vector<Obstacle*> obstacles);
 * \param tRex 
 * \param obstacle
 */
-bool CheckCollision(TRex* tRex, Obstacle* obstacle);
+bool CheckCollision(TRex* trex = tRex, Obstacle* obstacle = obstacles[0]);
 /*!
 * Displays Game Over screen
 */
@@ -115,3 +116,23 @@ void GameOver();
 * Remove all obstacles
 */
 void DeleteObstacles();
+/*!
+* Clear obstacles that left the screen
+*/
+void ClearObstaclesThatPassed();
+/*!
+* Handles events that occur periodically
+*/
+void HandlePeriodicIncrements();
+/*!
+* Updates text fields
+*/
+void UpdateTextFields(int score, int highScore);
+/*!
+* Draws all elements present
+*/
+void DrawEverything();
+/*!
+* Moves horizon bumps 
+*/
+void MoveBumps();

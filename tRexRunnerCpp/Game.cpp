@@ -1,6 +1,13 @@
 #include "Game.h"
 
-sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
+
+static sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
+void RunGame()
+{
+    InitGame();
+    Game();
+    WriteScore();
+}
 
 void InitGame()
 {
@@ -8,14 +15,84 @@ void InitGame()
     horizonLine.setPosition(HORIZON_POSITION_X, HORIZON_POSITION_Y);
     score = 0;
     highScore = 0;
-    firstFrame = false;
+    gameOver = false;
     numberOfVisibleObstacles = 0;
     LoadConfig();
     LoadHighScore();
     LoadTextFields();
+    delete tRex, horizonBump1, horizonBump2;
     tRex = new TRex(jumpingSpeed, gravity);
     horizonBump1 = new Horizon(1);
     horizonBump2 = new Horizon(2);
+}
+
+void Game()
+{
+    while (window.isOpen())
+    {
+        // Execute only when render period is met
+        if (((clock() - beginTime)) > RENDER_PERIOD)
+        {
+            beginTime = clock();
+            srand(beginTime);
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+            }
+            UpdateHorizonLineGap();
+            
+            // Checking if TRex collided with an obstacle
+            if (!obstacles.empty() && (CheckCollision()) || gameOver)
+            {
+                if (!gameOver)
+                {
+                    GameOver();
+                    DeleteObstacles();
+                }
+                if (!(GetKeyState(VK_UP) & 0x8000) && !(GetKeyState(VK_DOWN) & 0x8000))
+                {
+                    keyPressed = false;
+                }
+                if ((GetKeyState(VK_UP) & 0x8000) && !keyPressed) // To not restart game while holding down the UP arrow key
+                {
+                    InitGame();
+                }
+            }
+
+            // If not colliding with anything, continue
+            else
+            {
+                MoveBumps();
+            
+                // Removing obstacles that passed the screen
+                // move/remove/updateSprites
+                // handle lastDistance (distance of furthest obstacle)
+                UpdateAllObstacles();
+                // Handling up and down arrow key presses
+                if (GetKeyState(VK_UP) & 0x8000)
+                {
+                    keyPressed = true;
+                    tRex->Jump();
+                }
+                else if (GetKeyState(VK_DOWN) & 0x8000)
+                {
+                    keyPressed = true;
+                    tRex->Duck();
+                }
+                else
+                {
+                    keyPressed = false;
+                    tRex->Run();
+                }
+
+                HandlePeriodicIncrements();
+                UpdateTextFields(score, highScore);
+                DrawEverything();
+            }
+        }
+    }
 }
 
 void LoadTextFields()
@@ -117,6 +194,28 @@ void UpdateHorizonLineGap()
     }
 }
 
+void UpdateAllObstacles()
+{
+    // Adding obstacles if needed
+    while (numberOfVisibleObstacles < MAX_OBSTACLE_COUNT)
+    {
+        AddObstacle(obstacles);
+    }
+    for (auto it = obstacles.begin(); it != obstacles.end(); it++)
+        (*it)->Update(gameSpeed);
+    // clearing obstacles that passed the screen
+    ClearObstaclesThatPassed();
+    if (!obstacles.empty())
+    {
+        lastDistance = obstacles[obstacles.size() - 1]->GetPositionX();
+    }
+    else
+    {
+        lastDistance = WIDTH;
+    }
+    
+}
+
 void AddObstacle(std::vector<Obstacle*> obstaclesList)
 {
     obstacleDistance = OBSTACLE_RESPAWN_BASE_DISTANCE + rand() % obstacleRespawnMaxDistance;
@@ -131,34 +230,6 @@ void AddObstacle(std::vector<Obstacle*> obstaclesList)
         lastDistance += obstacleDistance;
     }
     numberOfVisibleObstacles++;
-}
-
-void UpdateAllObstacles()
-{
-    // Adding obstacles if needed
-    while (numberOfVisibleObstacles < MAX_OBSTACLE_COUNT)
-    {
-        AddObstacle(obstacles);
-    }
-    for (auto it = obstacles.begin(); it != obstacles.end(); it++)
-        (*it)->Move(gameSpeed);
-    // clearing obstacles that passed the screen
-    // TODO void ClearPassedObstacles(std::vector<GameObject*> obstacles)
-    if (!obstacles.empty() && obstacles[0]->GetPositionX() < 0)
-    {
-        delete obstacles[0];
-        obstacles.erase(obstacles.begin());
-        numberOfVisibleObstacles--;
-    }
-    if (!obstacles.empty())
-    {
-        lastDistance = obstacles[obstacles.size() - 1]->GetPositionX();
-    }
-    else
-    {
-        lastDistance = WIDTH;
-    }
-    
 }
 
 bool CheckCollision(TRex* tRex, Obstacle* obstacle)
@@ -178,12 +249,23 @@ void GameOver()
 {
     WriteScore();
     window.clear();
+    gameOver = true;
     tRex->Crash();
     tRex->Draw(&window);
     window.draw(highScoreText);
     window.draw(scoreText);
     window.draw(gameOverText);
     window.display();
+}
+
+void ClearObstaclesThatPassed()
+{
+    if (!obstacles.empty() && obstacles[0]->GetPositionX() < 0)
+    {
+        delete obstacles[0];
+        obstacles.erase(obstacles.begin());
+        numberOfVisibleObstacles--;
+    }
 }
 
 void DeleteObstacles()
@@ -196,9 +278,9 @@ void DeleteObstacles()
     numberOfVisibleObstacles = 0;
 }
 
-void HandlePeriodicIncrements(clock_t currentTime)
+void HandlePeriodicIncrements()
 {
-    if (currentTime - scoreTimer >= GAME_SCORE_INCREMENT)
+    if (clock() - scoreTimer >= GAME_SCORE_INCREMENT)
     {
         scoreTimer = clock();
         score++;
@@ -224,7 +306,7 @@ void UpdateTextFields(int score, int highScore)
 
 void DrawEverything()
 {
-    window.clear();
+    window.clear(sf::Color::Blue);
     window.draw(highScoreText);
     window.draw(scoreText);
     window.draw(horizonLine);
@@ -249,79 +331,3 @@ void MoveBumps()
     horizonBump2->Move(gameSpeed);
 }
 
-void Game()
-{
-    while (window.isOpen())
-    {
-        // Execute only when render period is met
-        if (((clock() - beginTime)) > RENDER_PERIOD)
-        {
-            beginTime = clock();
-            srand(beginTime);
-            sf::Event event;
-            while (window.pollEvent(event))
-            {
-                if (event.type == sf::Event::Closed)
-                    window.close();
-            }
-            UpdateHorizonLineGap();
-            MoveBumps();
-            
-            // Removing obstacles that passed the screen
-            // move/remove/updateSprites
-            // handle lastDistance (distance of furthest obstacle)
-            UpdateAllObstacles();
-            
-            // Checking if TRex collided with an obstacle
-            if (CheckCollision(tRex, obstacles[0]) || firstFrame)
-            {
-                GameOver();
-                DeleteObstacles();
-                if (!(GetKeyState(VK_UP) & 0x8000) && !(GetKeyState(VK_DOWN) & 0x8000))
-                {
-                    keyPressed = false;
-                }
-                if ((GetKeyState(VK_UP) & 0x8000) && !keyPressed) // To not restart game while holding down the UP arrow key
-                {
-                    firstFrame = true;
-                    InitGame();
-                }
-            }
-
-            // If not colliding with anything, continue
-            else
-            {
-                // Handling up and down arrow key presses
-                if (GetKeyState(VK_UP) & 0x8000)
-                {
-                    keyPressed = true;
-                    tRex->Jump();
-                }
-                else if (GetKeyState(VK_DOWN) & 0x8000)
-                {
-                    keyPressed = true;
-                    tRex->Duck();
-                }
-                else
-                {
-                    keyPressed = false;
-                    tRex->Run();
-                }
-
-                HandlePeriodicIncrements(clock());
-            }
-
-            UpdateTextFields(score, highScore);
-            DrawEverything();
-
-        }
-    }
-}
-
-
-void RunGame()
-{
-    InitGame();
-    Game();
-    WriteScore();
-}

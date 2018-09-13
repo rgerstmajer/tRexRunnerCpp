@@ -101,6 +101,11 @@ void Cactus::Init(int distance, int type)
     }
 }
 
+void Cactus::Update(float increment)
+{
+    sprite->move(-increment, 0);
+}
+
 Cactus::~Cactus()
 {
 }

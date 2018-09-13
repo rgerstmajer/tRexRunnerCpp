@@ -13,12 +13,12 @@ class Obstacle :
 public:
     //! Default constructor
     Obstacle();
-    //! Move method
+    //! Update method
     /*!
     * Moves sprite to the left according to increment
     * \param increment How much to move the sprite
     */
-    void Move(float increment);
+    virtual void Update(float increment) = 0;
 
     //! Default destructor
     ~Obstacle();

@@ -13,7 +13,7 @@ Obstacle::Obstacle()
 }
 
 
-void Obstacle::Move(float increment)
+void Obstacle::Update(float increment)
 {
     sprite->move(-increment, 0);
 }

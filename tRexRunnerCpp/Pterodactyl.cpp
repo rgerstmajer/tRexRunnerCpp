@@ -33,10 +33,11 @@ void Pterodactyl::Init(int distance)
     sprite->setPosition(distance, rand() % (HEIGHT-PTERODACTYL_HEIGHT*2-TREX_DUCKING_HEIGHT*2 - 2));
 }
 
-void Pterodactyl::Update()
+void Pterodactyl::Update(float increment)
 {
     previousPositionX = sprite->getPosition().x;
     previousPositionY = sprite->getPosition().y;
+    sprite->move(-increment, 0);
     if (sprite == PterodactylSprite1 && wingFlapCounter >= 20)
     {
         wingFlapCounter = 0;

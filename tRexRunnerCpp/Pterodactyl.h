@@ -25,7 +25,7 @@ public:
     /*
     * Changes sprite to simulate wing flapping
     */
-    void Update();
+    void Update(float increment);
     //! Default destructor
     ~Pterodactyl();
 private:
