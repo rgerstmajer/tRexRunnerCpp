@@ -1,7 +1,8 @@
 #include "Game.h"
 
 
-static sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
+sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
+
 void RunGame()
 {
     InitGame();
@@ -20,7 +21,9 @@ void InitGame()
     LoadConfig();
     LoadHighScore();
     LoadTextFields();
-    delete tRex, horizonBump1, horizonBump2;
+    delete tRex;
+    delete horizonBump1;
+    delete horizonBump2;
     tRex = new TRex(jumpingSpeed, gravity);
     horizonBump1 = new Horizon(1);
     horizonBump2 = new Horizon(2);
@@ -44,7 +47,7 @@ void Game()
             UpdateHorizonLineGap();
             
             // Checking if TRex collided with an obstacle
-            if (!obstacles.empty() && (CheckCollision()) || gameOver)
+            if (/*!obstacles.empty() && (CheckCollision()) || gameOver*/false)
             {
                 if (!gameOver)
                 {
@@ -65,12 +68,8 @@ void Game()
             else
             {
                 MoveBumps();
-            
-                // Removing obstacles that passed the screen
-                // move/remove/updateSprites
-                // handle lastDistance (distance of furthest obstacle)
                 UpdateAllObstacles();
-                // Handling up and down arrow key presses
+
                 if (GetKeyState(VK_UP) & 0x8000)
                 {
                     keyPressed = true;
@@ -247,6 +246,9 @@ bool CheckCollision(TRex* tRex, Obstacle* obstacle)
 
 void GameOver()
 {
+    delete tRex;
+    delete horizonBump1;
+    delete horizonBump2;
     WriteScore();
     window.clear();
     gameOver = true;
@@ -306,7 +308,7 @@ void UpdateTextFields(int score, int highScore)
 
 void DrawEverything()
 {
-    window.clear(sf::Color::Blue);
+    window.clear();
     window.draw(highScoreText);
     window.draw(scoreText);
     window.draw(horizonLine);
@@ -321,7 +323,6 @@ void DrawEverything()
         }
     }
     tRex->Draw(&window);
-    // Displaying whats drawn
     window.display();
 }
 

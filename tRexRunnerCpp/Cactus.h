@@ -31,9 +31,6 @@ class Cactus :
     //! Default destructor
     ~Cactus();
   private:
-    sf::Texture* CactusShape1; /*! Texture for loading the cactus1 sprite shape*/
-    sf::Texture* CactusShape2; /*! Texture for loading the cactus2 sprite shape*/
-    sf::Texture* CactusShape3; /*! Texture for loading the cactus3 sprite shape*/
-    sf::Texture* CactusShape4; /*! Texture for loading the cactus4 sprite shape*/
+    sf::Texture* CactusShape; /*! Texture for loading the cactus sprite shape*/
 };
 

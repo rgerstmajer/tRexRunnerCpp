@@ -13,24 +13,11 @@ Pterodactyl::Pterodactyl(float distance)
     PterodactylShape1 = new sf::Texture();
     PterodactylShape2 = new sf::Texture();
 
-    PterodactylSprite1 = LoadShape(PterodactylShape1, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl1);
-    PterodactylSprite2 = LoadShape(PterodactylShape2, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl2);
+    PterodactylSprite1 = LoadShape(*PterodactylShape1, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl1);
+    PterodactylSprite2 = LoadShape(*PterodactylShape2, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl2);
 
     sprite = PterodactylSprite1;
     sprite->setPosition(distance, rand() % (HEIGHT - PTERODACTYL_HEIGHT * 2 - TREX_DUCKING_HEIGHT * 2 - 2));
-}
-
-void Pterodactyl::Init(int distance)
-{
-    wingFlapCounter = 0;
-    PterodactylShape1 = new sf::Texture();
-    PterodactylShape2 = new sf::Texture();
-
-    PterodactylSprite1 = LoadShape(PterodactylShape1, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl1);
-    PterodactylSprite2 = LoadShape(PterodactylShape2, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl2);
-
-    sprite = PterodactylSprite1;
-    sprite->setPosition(distance, rand() % (HEIGHT-PTERODACTYL_HEIGHT*2-TREX_DUCKING_HEIGHT*2 - 2));
 }
 
 void Pterodactyl::Update(float increment)
@@ -38,13 +25,13 @@ void Pterodactyl::Update(float increment)
     previousPositionX = sprite->getPosition().x;
     previousPositionY = sprite->getPosition().y;
     sprite->move(-increment, 0);
-    if (sprite == PterodactylSprite1 && wingFlapCounter >= 20)
+    if (sprite == PterodactylSprite1 && wingFlapCounter >= LIMB_CHANGE_COUNTER)
     {
         wingFlapCounter = 0;
         sprite = PterodactylSprite2;
         sprite->setPosition(previousPositionX, previousPositionY);
     }
-    else if (sprite == PterodactylSprite2 && wingFlapCounter >= 20)
+    else if (sprite == PterodactylSprite2 && wingFlapCounter >= LIMB_CHANGE_COUNTER)
     {
         wingFlapCounter = 0;
         sprite = PterodactylSprite1;
@@ -55,4 +42,8 @@ void Pterodactyl::Update(float increment)
 
 Pterodactyl::~Pterodactyl()
 {
+    delete PterodactylShape1;
+    delete PterodactylShape2;
+    delete PterodactylSprite1;
+    delete PterodactylSprite2;
 }
