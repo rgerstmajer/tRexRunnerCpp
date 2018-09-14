@@ -21,9 +21,6 @@ void InitGame()
     LoadConfig();
     LoadHighScore();
     LoadTextFields();
-    delete tRex;
-    delete horizonBump1;
-    delete horizonBump2;
     tRex = new TRex(jumpingSpeed, gravity);
     horizonBump1 = new Horizon(1);
     horizonBump2 = new Horizon(2);
@@ -44,10 +41,9 @@ void Game()
                 if (event.type == sf::Event::Closed)
                     window.close();
             }
-            UpdateHorizonLineGap();
             
             // Checking if TRex collided with an obstacle
-            if (/*!obstacles.empty() && (CheckCollision()) || gameOver*/false)
+            if (!obstacles.empty() && (CheckCollision()) || gameOver)
             {
                 if (!gameOver)
                 {
@@ -67,6 +63,7 @@ void Game()
             // If not colliding with anything, continue
             else
             {
+                UpdateHorizonLineGap();
                 MoveBumps();
                 UpdateAllObstacles();
 
@@ -246,9 +243,6 @@ bool CheckCollision(TRex* tRex, Obstacle* obstacle)
 
 void GameOver()
 {
-    delete tRex;
-    delete horizonBump1;
-    delete horizonBump2;
     WriteScore();
     window.clear();
     gameOver = true;
@@ -258,6 +252,9 @@ void GameOver()
     window.draw(scoreText);
     window.draw(gameOverText);
     window.display();
+    delete tRex;
+    delete horizonBump1;
+    delete horizonBump2;
 }
 
 void ClearObstaclesThatPassed()
@@ -331,4 +328,3 @@ void MoveBumps()
     horizonBump1->Move(gameSpeed);
     horizonBump2->Move(gameSpeed);
 }
-

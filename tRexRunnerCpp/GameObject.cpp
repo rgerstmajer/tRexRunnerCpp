@@ -17,7 +17,7 @@ void GameObject::Draw(sf::RenderWindow* window)
     window->draw(*sprite);
 }
 
-sf::Sprite* GameObject::LoadShape(sf::Texture texture,
+sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
                                   const int height,
                                   const int width,
                                   const unsigned char* shape,
@@ -38,10 +38,10 @@ sf::Sprite* GameObject::LoadShape(sf::Texture texture,
         pixels[i * 4 + 2] = color;
         pixels[i * 4 + 3] = isBump ? WHITE : color;
     }
-    texture.create(width, height);
-    texture.update(pixels);
+    texture->create(width, height);
+    texture->update(pixels);
     delete [] pixels;
-    return (&sf::Sprite(texture));
+    return (new sf::Sprite(*texture));
 }
 
 bool GameObject::Colliding(GameObject* obstacle)

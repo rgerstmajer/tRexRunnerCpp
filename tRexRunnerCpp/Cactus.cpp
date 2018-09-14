@@ -14,7 +14,7 @@ Cactus::Cactus(float distance, int type)
     case 1:
         CactusShape = new sf::Texture();
         sprite = LoadShape(
-            *CactusShape,
+            CactusShape,
             CACTUS1_HEIGHT, CACTUS1_WIDTH,
             cactus1);
         sprite->setPosition(distance, HEIGHT - CACTUS1_HEIGHT * GAME_SCALE - 2);
@@ -22,7 +22,7 @@ Cactus::Cactus(float distance, int type)
     case 2:
         CactusShape = new sf::Texture();
         sprite = LoadShape(
-            *CactusShape,
+            CactusShape,
             CACTUS2_HEIGHT, CACTUS2_WIDTH,
             cactus2);
         sprite->setPosition(distance, HEIGHT - CACTUS2_HEIGHT * GAME_SCALE - 2);
@@ -30,7 +30,7 @@ Cactus::Cactus(float distance, int type)
     case 3:
         CactusShape = new sf::Texture();
         sprite = LoadShape(
-            *CactusShape,
+            CactusShape,
             CACTUS3_HEIGHT, CACTUS3_WIDTH,
             cactus3);
         sprite->setPosition(distance, HEIGHT - CACTUS3_HEIGHT * GAME_SCALE - 2);
@@ -38,7 +38,7 @@ Cactus::Cactus(float distance, int type)
     case 4:
         CactusShape = new sf::Texture();
         sprite = LoadShape(
-            *CactusShape,
+            CactusShape,
             CACTUS4_HEIGHT, CACTUS4_WIDTH,
             cactus4);
         sprite->setPosition(distance, HEIGHT - CACTUS4_HEIGHT * GAME_SCALE - 2);
@@ -46,7 +46,7 @@ Cactus::Cactus(float distance, int type)
     default:
         CactusShape = new sf::Texture();
         sprite = LoadShape(
-            *CactusShape,
+            CactusShape,
             CACTUS1_HEIGHT, CACTUS1_WIDTH,
             cactus1);
         sprite->setPosition(distance, HEIGHT - CACTUS1_HEIGHT * GAME_SCALE - 2);

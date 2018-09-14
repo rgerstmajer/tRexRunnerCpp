@@ -13,8 +13,8 @@ Pterodactyl::Pterodactyl(float distance)
     PterodactylShape1 = new sf::Texture();
     PterodactylShape2 = new sf::Texture();
 
-    PterodactylSprite1 = LoadShape(*PterodactylShape1, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl1);
-    PterodactylSprite2 = LoadShape(*PterodactylShape2, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl2);
+    PterodactylSprite1 = LoadShape(PterodactylShape1, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl1);
+    PterodactylSprite2 = LoadShape(PterodactylShape2, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl2);
 
     sprite = PterodactylSprite1;
     sprite->setPosition(distance, rand() % (HEIGHT - PTERODACTYL_HEIGHT * 2 - TREX_DUCKING_HEIGHT * 2 - 2));

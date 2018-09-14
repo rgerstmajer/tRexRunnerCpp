@@ -19,12 +19,12 @@ TRex::TRex(float jumpingSpeed, float gravity)
     DuckingShape1 = new sf::Texture();
     DuckingShape2 = new sf::Texture();
     DeadShape = new sf::Texture();
-    StandingSprite = LoadShape(*StandingShape, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_standing_init);
-    RunningSprite1 = LoadShape(*RunningShape1, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_running1);
-    RunningSprite2 = LoadShape(*RunningShape2, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_running2);
-    DuckingSprite1 = LoadShape(*DuckingShape1, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking1);
-    DuckingSprite2 = LoadShape(*DuckingShape2, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking2);
-    DeadSprite     = LoadShape(*DeadShape, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_dead);
+    StandingSprite = LoadShape(StandingShape, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_standing_init);
+    RunningSprite1 = LoadShape(RunningShape1, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_running1);
+    RunningSprite2 = LoadShape(RunningShape2, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_running2);
+    DuckingSprite1 = LoadShape(DuckingShape1, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking1);
+    DuckingSprite2 = LoadShape(DuckingShape2, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking2);
+    DeadSprite     = LoadShape(DeadShape, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_dead);
     State = STANDING;
     sprite = StandingSprite;
     sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
