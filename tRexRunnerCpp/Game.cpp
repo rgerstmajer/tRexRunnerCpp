@@ -230,15 +230,7 @@ void AddObstacle(std::vector<Obstacle*> obstaclesList)
 
 bool CheckCollision(TRex* tRex, Obstacle* obstacle)
 {
-    if (tRex->Colliding(obstacle))
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-    
+    return tRex->Colliding(obstacle);
 }
 
 void GameOver()
