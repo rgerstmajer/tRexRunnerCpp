@@ -24,7 +24,7 @@ public:
         DUCKING2,
 
         CRASHED
-    } State;
+    } state;
     //! TRex constuctor
     /*!
     * \param jumpingSpeed loaded from config, how many pixels will the tRex rise each frame
@@ -64,6 +64,7 @@ private:
     int stepCounter = 0; /*! Used for determening when to change sprites for stepping animation*/
     float m_Gravity; /*! Determens speed of falling*/
     float m_JumpingSpeed; /*! Determens speed of rising*/
+    bool dropping = false; /*! Used for detemening if tRex reached its maximum height*/
 
     sf::Texture *StandingShape;  /*! Texture for loading the tRex standing sprite shape*/
     sf::Sprite  *StandingSprite; /*! Sprite for tRex standing shape*/

@@ -8,7 +8,7 @@
 #include "TRex.h"
 #include <Windows.h>
 
-bool dropping = false;
+
 TRex::TRex(float jumpingSpeed, float gravity)
 {
     m_JumpingSpeed = jumpingSpeed;
@@ -25,15 +25,15 @@ TRex::TRex(float jumpingSpeed, float gravity)
     DuckingSprite1 = LoadShape(DuckingShape1, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking1);
     DuckingSprite2 = LoadShape(DuckingShape2, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking2);
     DeadSprite     = LoadShape(DeadShape, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_dead);
-    State = STANDING;
+    state = STANDING;
     sprite = StandingSprite;
     sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
 }
 
 void TRex::Jump()
 {
-    State = (State == STANDING) || (State == RUNNING1) || (State == RUNNING2) ? JUMPING : State;
-    if (State == DUCKING1 || State == DUCKING2)
+    state = (state == STANDING) || (state == RUNNING1) || (state == RUNNING2) ? JUMPING : state;
+    if (state == DUCKING1 || state == DUCKING2)
     {
         return;
     }
@@ -54,7 +54,7 @@ void TRex::Jump()
         if ((sprite->getPosition().y + m_Gravity) >= TREX_STARTING_POSITION_Y)
         {
             sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
-            State = RUNNING1;
+            state = RUNNING1;
             dropping = false;
         }
         else
@@ -66,17 +66,17 @@ void TRex::Jump()
 
 void TRex::Duck()
 {
-    switch (State)
+    switch (state)
     {
         case JUMPING:
             Run();
             break;
         case RUNNING1:
-            State = DUCKING1;
+            state = DUCKING1;
             Update();
             break;
         case RUNNING2:
-            State = DUCKING2;
+            state = DUCKING2;
             Update();
             break;
         case DUCKING1:
@@ -90,7 +90,7 @@ void TRex::Duck()
 
 void TRex::Run()
 {
-    switch (State)
+    switch (state)
     {
     case JUMPING:
         Jump();
@@ -105,11 +105,11 @@ void TRex::Run()
         Update();
         break;
     case DUCKING1:
-        State = RUNNING1;
+        state = RUNNING1;
         Update();
         break;
     case DUCKING2:
-        State = RUNNING1;
+        state = RUNNING1;
         Update();
         break;
     default:
@@ -119,7 +119,7 @@ void TRex::Run()
 
 void TRex::Crash()
 {
-    State = CRASHED;
+    state = CRASHED;
     sprite = DeadSprite;
     sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
 }
@@ -127,33 +127,33 @@ void TRex::Crash()
 void TRex::Update()
 {
     bool shouldStep = (stepCounter >= LIMB_CHANGE_COUNTER);
-    switch (State)
+    switch (state)
     {
     case JUMPING:
         Jump();
         break;
     case RUNNING1:
         sprite = shouldStep ? RunningSprite2 : RunningSprite1;
-        State = shouldStep ? RUNNING2 : State;
+        state = shouldStep ? RUNNING2 : state;
         sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
         break;
     case RUNNING2:
         sprite = shouldStep ? RunningSprite1 : RunningSprite2;
-        State = shouldStep ? RUNNING1 : State;
+        state = shouldStep ? RUNNING1 : state;
         sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
         break;
     case DUCKING1:
         sprite = shouldStep ? DuckingSprite2 : DuckingSprite1;
-        State = shouldStep ? DUCKING2 : State;
+        state = shouldStep ? DUCKING2 : state;
         sprite->setPosition(TREX_DUCKING_POSITION_X, TREX_DUCKING_POSITION_Y);
         break;
     case DUCKING2:
         sprite = shouldStep ? DuckingSprite1 : DuckingSprite2;
-        State = shouldStep ? DUCKING1 : State;
+        state = shouldStep ? DUCKING1 : state;
         sprite->setPosition(TREX_DUCKING_POSITION_X, TREX_DUCKING_POSITION_Y);
         break;
     default:
-        State = RUNNING1;
+        state = RUNNING1;
     }
     stepCounter = shouldStep ? 0 : stepCounter + 1;
 }
