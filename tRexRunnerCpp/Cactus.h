@@ -29,7 +29,7 @@ class Cactus :
     */
     void Update(float increment);
     //! Default destructor
-    ~Cactus();
+    virtual ~Cactus();
   private:
     sf::Texture* CactusShape; /*! Texture for loading the cactus sprite shape*/
 };

@@ -34,7 +34,7 @@ class GameObject
     */
     float GetPositionY() { return sprite->getPosition().y; }
     //! Default destructor
-    ~GameObject();
+    virtual ~GameObject();
 protected:
     sf::Sprite* sprite; /* The current object's sprite */
     //! Shape loading method
