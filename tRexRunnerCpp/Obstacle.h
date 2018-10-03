@@ -8,18 +8,18 @@
 #pragma once
 #include "GameObject.h"
 class Obstacle :
-    public GameObject
+  public GameObject
 {
 public:
-    //! Default constructor
-    Obstacle();
-    //! Update method
-    /*!
-    * Moves sprite to the left according to increment
-    * \param increment How much to move the sprite
-    */
-    virtual void Update(float increment) = 0;
+  //! Default constructor
+  Obstacle();
+  //! Update method
+  /*!
+  * Moves sprite to the left according to increment
+  * \param increment How much to move the sprite
+  */
+  virtual void Update(float increment) = 0;
 
-    //! Default destructor
-    ~Obstacle();
+  //! Default destructor
+  ~Obstacle();
 };

@@ -8,25 +8,25 @@
 #pragma once
 #include "GameObject.h"
 class Horizon :
-    public GameObject
+  public GameObject
 {
 public:
-    //! Constructor
-    /*!
-    * Horizon bump constructr
-    * \param type Type of bump (1 or 2)
-    */
-    Horizon(int type);
-    //! Move method
-    /*!
-    * Moves sprite to the left according to increment
-    * \param increment How much to move the sprite
-    */
-    void Move(float increment);
-    //! Default destructor
-    ~Horizon();
+  //! Constructor
+  /*!
+  * Horizon bump constructr
+  * \param type Type of bump (1 or 2)
+  */
+  Horizon(int type);
+  //! Move method
+  /*!
+  * Moves sprite to the left according to increment
+  * \param increment How much to move the sprite
+  */
+  void Move(float increment);
+  //! Default destructor
+  ~Horizon();
 private:
-    sf::Texture* bump;
-    sf::Texture* bumps2;/*! Texture for loading the bump1 and bump2 sprite shapes*/
+  sf::Texture* bump;
+  sf::Texture* bumps2;/*! Texture for loading the bump1 and bump2 sprite shapes*/
 };
 

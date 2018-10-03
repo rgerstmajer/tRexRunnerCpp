@@ -14,7 +14,6 @@
 #include "Globals.h"
 #include "tinyxml2.h"
 
-#include <vld.h>
 #include <windows.h>
 #include <sstream>
 #include <iomanip>
