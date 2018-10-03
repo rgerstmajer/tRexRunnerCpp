@@ -102,13 +102,32 @@ TEST_CASE("TRex should change position when ducking to TREX_DUCKING_POSITION_X a
 
 //PTERODACTYL
 
-TEST_CASE("")
+TEST_CASE("Pterodactyl should have the same distance as position X when created")
 {
+  Pterodactyl testPterodactyl(10);
+  REQUIRE(testPterodactyl.GetPositionX() == 10);
+}
 
+TEST_CASE("Pterodactyl update method should move it by \"currentGameSpeed\" frames")
+{
+  Pterodactyl testPterodactyl(10);
+  testPterodactyl.Update(GAME_INITIAL_SPEED);
+  REQUIRE(testPterodactyl.GetPositionX() == 10 - GAME_INITIAL_SPEED);
 }
 
 //CACTI
 
+TEST_CASE("Cactus should have the same distance as position X when created")
+{
+  Cactus testCactus(5, rand() % 4);
+  REQUIRE(testCactus.GetPositionX() == 5);
+}
 
+TEST_CASE("Cactus update method should move it by \"currentGameSpeed\" frames")
+{
+  Cactus testCactus(10, rand());
+  testCactus.Update(GAME_INITIAL_SPEED);
+  REQUIRE(testCactus.GetPositionX() == 10 - GAME_INITIAL_SPEED);
+}
 
 //GAME

@@ -37,5 +37,7 @@ void Horizon::Move(float increment) //Move details from right to left
 Horizon::~Horizon()
 {
   delete sprite;
+  sprite = NULL;
   delete bump;
+  bump = NULL;
 }

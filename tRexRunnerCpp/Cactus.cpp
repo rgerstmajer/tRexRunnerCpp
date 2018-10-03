@@ -9,7 +9,6 @@
 
 Cactus::Cactus(float distance, int type)
 {
-  distance += WIDTH / 4;
   switch (type) {
   case 1:
     CactusShape = new sf::Texture();
@@ -62,5 +61,7 @@ void Cactus::Update(float increment)
 Cactus::~Cactus()
 {
   delete CactusShape;
+  CactusShape = NULL;
   delete sprite;
+  sprite = NULL;
 }

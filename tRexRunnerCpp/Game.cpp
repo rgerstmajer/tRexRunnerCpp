@@ -7,6 +7,7 @@ void RunGame()
 {
   InitGame();
   Game();
+  GameOver();
   WriteScore();
 }
 
@@ -42,7 +43,7 @@ void Game()
           window.close();
       }
       // Checking if TRex collided with an obstacle
-      if (CheckCollision() || gameOver)
+      if (!obstacles.empty() && CheckCollision() || gameOver)
       {
         if (!gameOver)
         {
@@ -221,7 +222,7 @@ void AddObstacle(std::vector<Obstacle*> obstaclesList)
   }
   else
   {
-    obstacles.push_back(new Cactus(obstacleDistance + lastDistance, rand() % 4 + 1));
+    obstacles.push_back(new Cactus(obstacleDistance + lastDistance + WIDTH / 4, rand() % 4 + 1));
     lastDistance += obstacleDistance;
   }
   numberOfVisibleObstacles++;
@@ -251,8 +252,11 @@ void GameOver()
   window.draw(gameOverText);
   window.display();
   delete tRex;
+  tRex = NULL;
   delete horizonBump1;
+  horizonBump1 = NULL;
   delete horizonBump2;
+  horizonBump2 = NULL;
 }
 
 void ClearObstaclesThatPassed()
@@ -260,6 +264,7 @@ void ClearObstaclesThatPassed()
   if (!obstacles.empty() && obstacles[0]->GetPositionX() < 0)
   {
     delete obstacles[0];
+    obstacles[0] = NULL;
     obstacles.erase(obstacles.begin());
     numberOfVisibleObstacles--;
   }

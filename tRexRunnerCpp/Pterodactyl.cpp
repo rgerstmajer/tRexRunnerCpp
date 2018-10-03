@@ -46,4 +46,8 @@ Pterodactyl::~Pterodactyl()
   delete PterodactylShape2;
   delete PterodactylSprite1;
   delete PterodactylSprite2;
+  PterodactylShape1  = NULL;
+  PterodactylShape2  = NULL;
+  PterodactylSprite1 = NULL;
+  PterodactylSprite2 = NULL;
 }

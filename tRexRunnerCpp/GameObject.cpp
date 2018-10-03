@@ -41,6 +41,7 @@ sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
   texture->create(width, height);
   texture->update(pixels);
   delete [] pixels;
+  pixels = NULL;
   return (new sf::Sprite(*texture));
 }
 

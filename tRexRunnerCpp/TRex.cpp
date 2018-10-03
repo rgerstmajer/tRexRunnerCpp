@@ -137,22 +137,22 @@ void TRex::Update()
     Jump();
     break;
   case RUNNING1:
-    sprite = shouldStep ? RunningSprite2 : sprite;
+    sprite = shouldStep ? RunningSprite2 : RunningSprite1;
     state = shouldStep ? RUNNING2 : state;
     sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
     break;
   case RUNNING2:
-    sprite = shouldStep ? RunningSprite1 : sprite;
+    sprite = shouldStep ? RunningSprite1 : RunningSprite2;
     state = shouldStep ? RUNNING1 : state;
     sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
     break;
   case DUCKING1:
-    sprite = shouldStep ? DuckingSprite2 : sprite;
+    sprite = shouldStep ? DuckingSprite2 : DuckingSprite1;
     state = shouldStep ? DUCKING2 : state;
     sprite->setPosition(TREX_DUCKING_POSITION_X, TREX_DUCKING_POSITION_Y);
     break;
   case DUCKING2:
-    sprite = shouldStep ? DuckingSprite1 : sprite;
+    sprite = shouldStep ? DuckingSprite1 : DuckingSprite2;
     state = shouldStep ? DUCKING1 : state;
     sprite->setPosition(TREX_DUCKING_POSITION_X, TREX_DUCKING_POSITION_Y);
     break;
@@ -176,4 +176,16 @@ TRex::~TRex()
   delete DuckingSprite1;
   delete DuckingSprite2;
   delete DeadSprite;
+  StandingShape  = NULL;
+  RunningShape1  = NULL;
+  RunningShape2  = NULL;
+  DuckingShape1  = NULL;
+  DuckingShape2  = NULL;
+  DeadShape      = NULL;
+  StandingSprite = NULL;
+  RunningSprite1 = NULL;
+  RunningSprite2 = NULL;
+  DuckingSprite1 = NULL;
+  DuckingSprite2 = NULL;
+  DeadSprite     = NULL;
 }
