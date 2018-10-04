@@ -4,7 +4,9 @@
 #include "stdafx.h"
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include <Game.h>
+#include "Game.h"
+
+sf::RenderWindow testWindow(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
 
 //TREX
 
@@ -131,3 +133,11 @@ TEST_CASE("Cactus update method should move it by \"currentGameSpeed\" frames")
 }
 
 //GAME
+Game testGame(&testWindow);
+
+
+TEST_CASE("TEST DUH")
+{
+  testGame.InitGame();
+  REQUIRE(1 == 0);
+}

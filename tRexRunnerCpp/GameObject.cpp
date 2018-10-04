@@ -18,10 +18,10 @@ void GameObject::Draw(sf::RenderWindow* window)
 }
 
 sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
-                  const int height,
-                  const int width,
-                  const unsigned char* shape,
-                  bool isBump)
+  const int height,
+  const int width,
+  const unsigned char* shape,
+  bool isBump)
 {
   sf::Uint8* pixels = new sf::Uint8[height * width * 4];
   int row, column, position, color;

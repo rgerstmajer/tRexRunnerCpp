@@ -3,5 +3,7 @@
 
 void main()
 {
-  RunGame();
+  sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), GAME_NAME);
+  Game game(&window);
+  game.RunGame();
 }

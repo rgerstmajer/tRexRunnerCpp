@@ -1,6 +1,6 @@
 //! Game.h
 /*!
-* Game header file
+* Game class header file
 *
 * Created: 20.08.2018.
 * Author : Robert Gerstmajer
@@ -22,116 +22,131 @@
 #include <algorithm>
 #include <vector>
 #include <fstream>
+class Game
+{
+  TRex* tRex;
+  Horizon* horizonBump1;
+  Horizon* horizonBump2;
+  std::vector <Obstacle*> obstacles;
+  std::vector <Pterodactyl*> pterodactyls;
+  sf::Font font;
+  sf::Text scoreText;
+  sf::Text highScoreText;
+  sf::Text gameOverText;
+  sf::RectangleShape horizonLine;
+  sf::RectangleShape horizonLineGap;
 
-static TRex* tRex;
-static Horizon* horizonBump1;
-static Horizon* horizonBump2;
-static std::vector <Obstacle*> obstacles;
-static std::vector <Pterodactyl*> pterodactyls;
-static sf::Font font;
-static sf::Text scoreText;
-static sf::Text highScoreText;
-static sf::Text gameOverText;
-static sf::RectangleShape horizonLine((sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH)));
-static sf::RectangleShape horizonLineGap(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * 2));
+  int numberOfVisibleObstacles = 0;
+  int obstacleRespawnMaxDistance = WIDTH - OBSTACLE_RESPAWN_BASE_DISTANCE;
+  int showPterodactyl = SHOW_PTERODACTYL;
 
-static int numberOfVisibleObstacles = 0;
-static int obstacleRespawnMaxDistance = WIDTH - OBSTACLE_RESPAWN_BASE_DISTANCE;
-static int showPterodactyl = SHOW_PTERODACTYL;
+  int highScore = 0;
+  int score = 0;
+  int obstacleDistance = 0;
+  int obstacleRespawnBaseDistance = OBSTACLE_RESPAWN_BASE_DISTANCE;
+  float lastDistance = WIDTH;
+  bool pterodactylPresent = false;
+  bool firstFrame = false;
+  bool keyPressed = false;
+  bool gameOver = false;
 
-static int highScore = 0;
-static int score = 0;
-static int obstacleDistance = 0;
-static int obstacleRespawnBaseDistance = OBSTACLE_RESPAWN_BASE_DISTANCE;
-static float lastDistance = WIDTH;
-static bool pterodactylPresent = false;
-static bool firstFrame = false;
-static bool keyPressed = false;
-static bool gameOver = false;
+  clock_t beginTime = clock();
+  clock_t scoreTimer = clock();
+  sf::RenderWindow* window;
 
-static clock_t beginTime = clock();
-static clock_t scoreTimer = clock();
+  //Configurable variables
+  float gravity =        GAME_GRAVITY;
+  float gameSpeed =      GAME_INITIAL_SPEED;
+  float gameSpeedDelta = GAME_SPEED_DELTA;
+  float jumpingSpeed =   JUMPING_SPEED;
 
-//Configurable variables
-static float gravity = GAME_GRAVITY;
-static float gameSpeed = GAME_INITIAL_SPEED;
-static float gameSpeedDelta = GAME_SPEED_DELTA;
-static float jumpingSpeed = JUMPING_SPEED;
-/*!
-* Runs game
-*/
-void RunGame();
-/*!
-* Initializes tRex and horizon
-*/
-void InitGame();
-/*!
-* Runs game logic
-*/
-void Game();
-/*!
-* Loads sfml text for scores
-*/
-void LoadTextFields();
-/*!
-* Loads config file
-*/
-void LoadConfig();
-/*!
-* Loads previous high score
-*/
-void LoadHighScore();
-/*!
-* Writes high score to file
-*/
-void WriteScore();
-/*!
-* Updates horizon line gap to
-* make tRex appear in front
-*/
-void UpdateHorizonLineGap();
-/*!
-* Updates all obstacles ( moving,
-* removing and changing sprites )
-*/
-void UpdateAllObstacles();
-/*!
-* Adding an obstacle to
-* a vector
-* \param obstacles vector of obstacles
-*/
-void AddObstacle(std::vector<Obstacle*> obstacles);
-/*!
-* Check if tRex is colliding with Obstacle
-* \param tRex 
-* \param obstacle
-*/
-bool CheckCollision(TRex* trex = tRex, Obstacle* obstacle = obstacles[0]);
-/*!
-* Displays Game Over screen
-*/
-void GameOver();
-/*!
-* Remove all obstacles
-*/
-void DeleteObstacles();
-/*!
-* Clear obstacles that left the screen
-*/
-void ClearObstaclesThatPassed();
-/*!
-* Handles events that occur periodically
-*/
-void HandlePeriodicIncrements();
-/*!
-* Updates text fields
-*/
-void UpdateTextFields(int score, int highScore);
-/*!
-* Draws all elements present
-*/
-void DrawEverything();
-/*!
-* Moves horizon bumps 
-*/
-void MoveBumps();
+public:
+  /*!
+  * Constructor
+  */
+  Game(sf::RenderWindow* renderWindow)
+  {
+    window = renderWindow;
+    horizonLine    = sf::RectangleShape(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
+    horizonLineGap = sf::RectangleShape(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * GAME_SCALE));
+
+  }
+  /*!
+  * Runs game
+  */
+  void RunGame();
+  /*!
+  * Initializes tRex and horizon
+  */
+  void InitGame();
+  /*!
+  * Runs game logic
+  */
+  void GameLogic();
+  /*!
+  * Loads sfml text for scores
+  */
+  void LoadTextFields();
+  /*!
+  * Loads config file
+  */
+  void LoadConfig();
+  /*!
+  * Loads previous high score
+  */
+  void LoadHighScore();
+  /*!
+  * Writes high score to file
+  */
+  void WriteScore();
+  /*!
+  * Updates horizon line gap to
+  * make tRex appear in front
+  */
+  void UpdateHorizonLineGap();
+  /*!
+  * Updates all obstacles ( moving,
+  * removing and changing sprites )
+  */
+  void UpdateAllObstacles();
+  /*!
+  * Adding an obstacle to
+  * a vector
+  * \param obstacles vector of obstacles
+  */
+  void AddObstacle(std::vector<Obstacle*> obstacles);
+  /*!
+  * Check if tRex is colliding with Obstacle
+  * \param tRex
+  * \param obstacle
+  */
+  bool CheckCollision(TRex* trex, Obstacle* obstacle);
+  /*!
+  * Displays Game Over screen
+  */
+  void GameOver();
+  /*!
+  * Remove all obstacles
+  */
+  void DeleteObstacles();
+  /*!
+  * Clear obstacles that left the screen
+  */
+  void ClearObstaclesThatPassed();
+  /*!
+  * Handles events that occur periodically
+  */
+  void HandlePeriodicIncrements();
+  /*!
+  * Updates text fields
+  */
+  void UpdateTextFields(int score, int highScore);
+  /*!
+  * Draws all elements present
+  */
+  void DrawEverything();
+  /*!
+  * Moves horizon bumps
+  */
+  void MoveBumps();
+};

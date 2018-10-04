@@ -7,6 +7,7 @@
 */
 #pragma once
 
+#define GAME_NAME L"tRexRunner"
 
 #define BITS_IN_BYTE 8
 
