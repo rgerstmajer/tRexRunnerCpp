@@ -132,9 +132,26 @@ TEST_CASE("Cactus update method should move it by \"currentGameSpeed\" frames")
   REQUIRE(testCactus.GetPositionX() == 10 - GAME_INITIAL_SPEED);
 }
 
-//GAME
-Game testGame(&testWindow);
+//HORIZON BUMPS
 
+Horizon testHorizon1(1);
+Horizon testHorizon2(2);
+
+TEST_CASE("Creating 2 horizon bumps makes the one with 1 in the constructor 2 times closer than the one with 2 in the constructor")
+{
+  REQUIRE(testHorizon1.GetPositionX() == testHorizon2.GetPositionX() / 2);
+}
+
+TEST_CASE("Move method should move horizon bumps by gameSpeed")
+{
+  float previousPosition = testHorizon1.GetPositionX();
+  testHorizon1.Move(GAME_INITIAL_SPEED);
+  REQUIRE(previousPosition == testHorizon1.GetPositionX() + GAME_INITIAL_SPEED);
+}
+
+//GAME
+
+Game testGame(&testWindow);
 
 TEST_CASE("TEST DUH")
 {

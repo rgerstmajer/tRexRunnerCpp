@@ -22,6 +22,9 @@ Horizon::Horizon(int type)
     sprite->setPosition(2 * WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
     break;
   default:
+    bump = new sf::Texture();
+    sprite = LoadShape(bump, BUMP1_HEIGHT, BUMP1_WIDTH, bump1, true);
+    sprite->setPosition(WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
     break;
   }
 }

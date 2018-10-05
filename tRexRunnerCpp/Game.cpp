@@ -1,7 +1,11 @@
 #include "Game.h"
 
-
-
+Game::Game(sf::RenderWindow* renderWindow)
+{
+  window = renderWindow;
+  horizonLine = sf::RectangleShape(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
+  horizonLineGap = sf::RectangleShape(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * GAME_SCALE));
+}
 
 void Game::RunGame()
 {
@@ -53,39 +57,15 @@ void Game::GameLogic()
           GameOver();
           DeleteObstacles();
         }
-        if (!(GetKeyState(VK_UP) & 0x8000) && !(GetKeyState(VK_DOWN) & 0x8000))
-        {
-          keyPressed = false;
-        }
-        if ((GetKeyState(VK_UP) & 0x8000) && !keyPressed) // To not restart game while holding down the UP arrow key
-        {
-          InitGame();
-        }
+        HandleButtonPress(IsButtonPressed(UP), IsButtonPressed(DOWN), gameOver);
       }
-
       // If not colliding with anything, continue
       else
       {
         UpdateHorizonLineGap();
         MoveBumps();
         UpdateAllObstacles();
-
-        if (GetKeyState(VK_UP) & 0x8000)
-        {
-          keyPressed = true;
-          tRex->Jump();
-        }
-        else if (GetKeyState(VK_DOWN) & 0x8000)
-        {
-          keyPressed = true;
-          tRex->Duck();
-        }
-        else
-        {
-          keyPressed = false;
-          tRex->Run();
-        }
-
+        HandleButtonPress(IsButtonPressed(UP), IsButtonPressed(DOWN), gameOver);
         HandlePeriodicIncrements();
         UpdateTextFields(score, highScore);
         DrawEverything();
@@ -94,7 +74,7 @@ void Game::GameLogic()
   }
 }
 
-void  Game::LoadTextFields()
+void Game::LoadTextFields()
 {
   if (!font.loadFromFile("Minecraft.ttf"))
   {
@@ -119,7 +99,7 @@ void  Game::LoadTextFields()
   }
 }
 
-void  Game::LoadConfig()
+void Game::LoadConfig()
 {
   // Reading the game config file
   tinyxml2::XMLDocument config;
@@ -142,7 +122,7 @@ void  Game::LoadConfig()
   }
 }
 
-void  Game::LoadHighScore()
+void Game::LoadHighScore()
 {
   // Loading High score from previous attempts
   std::ifstream fHighScoreIn;
@@ -173,7 +153,7 @@ void  Game::LoadHighScore()
   }
 }
 
-void  Game::WriteScore()
+void Game::WriteScore()
 {
   // Write high score to file
   std::ofstream fHighScore("highScore.bin", std::ofstream::out);
@@ -188,7 +168,7 @@ void  Game::WriteScore()
   }
 }
 
-void  Game::UpdateHorizonLineGap()
+void Game::UpdateHorizonLineGap()
 {
   if (tRex->GetPositionY() == TREX_STARTING_POSITION_Y)
   {
@@ -222,7 +202,7 @@ void Game::UpdateAllObstacles()
   
 }
 
-void  Game::AddObstacle(std::vector<Obstacle*> obstaclesList)
+void Game::AddObstacle(std::vector<Obstacle*> obstaclesList)
 {
   obstacleDistance = OBSTACLE_RESPAWN_BASE_DISTANCE + rand() % obstacleRespawnMaxDistance;
   if (obstacleDistance >= showPterodactyl)
@@ -340,4 +320,51 @@ void Game::MoveBumps()
 {
   horizonBump1->Move(gameSpeed);
   horizonBump2->Move(gameSpeed);
+}
+
+void Game::HandleButtonPress(bool upArrow, bool downArrow, bool isGameOver)
+{
+  switch (isGameOver)
+  {
+  case true:
+    if (!IsButtonPressed(UP) && !IsButtonPressed(DOWN))
+    {
+      keyPressed = false;
+    }
+    if (IsButtonPressed(UP) && !keyPressed) // To not restart game while holding down the UP arrow key
+    {
+      InitGame();
+    }
+    break;
+  case false:
+    if (GetKeyState(VK_UP) & 0x8000)
+    {
+      keyPressed = true;
+      tRex->Jump();
+    }
+    else if (GetKeyState(VK_DOWN) & 0x8000)
+    {
+      keyPressed = true;
+      tRex->Duck();
+    }
+    else
+    {
+      keyPressed = false;
+      tRex->Run();
+    }
+    break;
+  }
+}
+
+bool Game::IsButtonPressed(int arrow)
+{
+  switch (arrow)
+  {
+  case 0:
+    return (GetKeyState(VK_UP) & 0x8000);
+  case 1:
+    return (GetKeyState(VK_DOWN) & 0x8000);
+  default:
+    return false;
+  }
 }
