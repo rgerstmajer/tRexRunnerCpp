@@ -14,6 +14,7 @@
 #include "Globals.h"
 #include "tinyxml2.h"
 
+#include <vld.h>
 #include <windows.h>
 #include <sstream>
 #include <iomanip>
@@ -24,53 +25,6 @@
 #include <fstream>
 class Game
 {
-  //!Game Objects
-  TRex* tRex;
-  Horizon* horizonBump1;
-  Horizon* horizonBump2;
-  std::vector <Obstacle*> obstacles;
-  std::vector <Pterodactyl*> pterodactyls;
-
-  //!Text resources
-  sf::Font font;
-  sf::Text scoreText;
-  sf::Text highScoreText;
-  sf::Text gameOverText;
-
-  //!Horizon and gap for tRex padding
-  sf::RectangleShape horizonLine;
-  sf::RectangleShape horizonLineGap;
-
-  //!Counters for obstacle spawn logic
-  int numberOfVisibleObstacles = 0;
-  int obstacleRespawnMaxDistance = WIDTH - OBSTACLE_RESPAWN_BASE_DISTANCE;
-  int showPterodactyl = SHOW_PTERODACTYL;
-  int obstacleDistance = 0;
-  int obstacleRespawnBaseDistance = OBSTACLE_RESPAWN_BASE_DISTANCE;
-  float lastDistance = WIDTH;
-
-  //!Score and hogh score
-  int highScore = 0;
-  int score = 0;
-
-  //!Global game logic variables
-  bool firstFrame = false;
-  bool keyPressed = false;
-  bool gameOver = false;
-
-  //!Timers for framerate, and score increments
-  clock_t beginTime = clock();
-  clock_t scoreTimer = clock();
-
-  //!Configurable variables
-  float gravity =        GAME_GRAVITY;
-  float gameSpeed =      GAME_INITIAL_SPEED;
-  float gameSpeedDelta = GAME_SPEED_DELTA;
-  float jumpingSpeed =   JUMPING_SPEED;
-
-  //!Display window
-  sf::RenderWindow* window;
-
 public:
   /*!
   * Constructor
@@ -153,13 +107,66 @@ public:
   /*!
   * Moves horizon bumps
   */
-  void MoveBumps();
+  void MoveBumps(Horizon* bump1, Horizon* bump2);
   /*!
   * Handle button presses
   * \param upArrow bool value of wether the UpArrowKey is pressed
   * \param downArrow bool value of wether the DownArrowKey is pressed
   */
   void HandleButtonPress(bool upArrow, bool downArrow, bool isGameOver);
-
+  /*!
+  * Checks wether a key is pressed
+  * \param int arrow (0 for UP, 1 for DOWN)
+  */
   bool IsButtonPressed(int arrow);
+  int  GetScore() { return score; };
+  int  GetHighScore() { return highScore; };
+  void SetScore(int newScore) { score = newScore; };
+  protected:
+  //!Game Objects
+  TRex* tRex;
+  Horizon* horizonBump1;
+  Horizon* horizonBump2;
+  std::vector <Obstacle*> obstacles;
+  std::vector <Pterodactyl*> pterodactyls;
+
+  //!Text resources
+  sf::Font font;
+  sf::Text scoreText;
+  sf::Text highScoreText;
+  sf::Text gameOverText;
+
+  //!Horizon and gap for tRex padding
+  sf::RectangleShape horizonLine;
+  sf::RectangleShape horizonLineGap;
+
+  //!Counters for obstacle spawn logic
+  int numberOfVisibleObstacles = 0;
+  int obstacleRespawnMaxDistance = WIDTH - OBSTACLE_RESPAWN_BASE_DISTANCE;
+  int showPterodactyl = SHOW_PTERODACTYL;
+  int obstacleDistance = 0;
+  int obstacleRespawnBaseDistance = OBSTACLE_RESPAWN_BASE_DISTANCE;
+  float lastDistance = WIDTH;
+
+  //!Score and high score
+  int highScore = 0;
+  int score     = 0;
+
+  //!Global game logic variables
+  bool firstFrame = false;
+  bool keyPressed = false;
+  bool gameOver =  false;
+
+  //!Timers for framerate, and score increments
+  clock_t beginTime = clock();
+  clock_t scoreTimer = clock();
+
+  //!Configurable variables
+  float gravity =        GAME_GRAVITY;
+  float gameSpeed =      GAME_INITIAL_SPEED;
+  float gameSpeedDelta = GAME_SPEED_DELTA;
+  float jumpingSpeed =   JUMPING_SPEED;
+
+  //!Display window
+  sf::RenderWindow* window;
 };

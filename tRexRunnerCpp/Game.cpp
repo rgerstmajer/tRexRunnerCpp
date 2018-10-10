@@ -62,10 +62,10 @@ void Game::GameLogic()
       // If not colliding with anything, continue
       else
       {
-        UpdateHorizonLineGap();
-        MoveBumps();
-        UpdateAllObstacles();
         HandleButtonPress(IsButtonPressed(UP), IsButtonPressed(DOWN), gameOver);
+        UpdateHorizonLineGap();
+        MoveBumps(horizonBump1, horizonBump2);
+        UpdateAllObstacles();
         HandlePeriodicIncrements();
         UpdateTextFields(score, highScore);
         DrawEverything();
@@ -316,10 +316,10 @@ void Game::DrawEverything()
   window->display();
 }
 
-void Game::MoveBumps()
+void Game::MoveBumps(Horizon* bump1, Horizon* bump2)
 {
-  horizonBump1->Move(gameSpeed);
-  horizonBump2->Move(gameSpeed);
+  bump1->Move(gameSpeed);
+  bump2->Move(gameSpeed);
 }
 
 void Game::HandleButtonPress(bool upArrow, bool downArrow, bool isGameOver)
@@ -327,22 +327,22 @@ void Game::HandleButtonPress(bool upArrow, bool downArrow, bool isGameOver)
   switch (isGameOver)
   {
   case true:
-    if (!IsButtonPressed(UP) && !IsButtonPressed(DOWN))
+    if (!upArrow && !downArrow)
     {
       keyPressed = false;
     }
-    if (IsButtonPressed(UP) && !keyPressed) // To not restart game while holding down the UP arrow key
+    if (upArrow && !keyPressed) // To not restart game while holding down the UP arrow key
     {
       InitGame();
     }
     break;
   case false:
-    if (GetKeyState(VK_UP) & 0x8000)
+    if (upArrow)
     {
       keyPressed = true;
       tRex->Jump();
     }
-    else if (GetKeyState(VK_DOWN) & 0x8000)
+    else if (downArrow)
     {
       keyPressed = true;
       tRex->Duck();

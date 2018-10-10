@@ -7,6 +7,7 @@
 #include "Game.h"
 
 sf::RenderWindow testWindow(sf::VideoMode(WIDTH, HEIGHT), "tRexRunner");
+class TestGame : public Game { using Game::Game; };
 
 //TREX
 
@@ -142,7 +143,7 @@ TEST_CASE("Creating 2 horizon bumps makes the one with 1 in the constructor 2 ti
   REQUIRE(testHorizon1.GetPositionX() == testHorizon2.GetPositionX() / 2);
 }
 
-TEST_CASE("Move method should move horizon bumps by gameSpeed")
+TEST_CASE("Move method should move horizon bumps by \"currentGameSpeed\" frames")
 {
   float previousPosition = testHorizon1.GetPositionX();
   testHorizon1.Move(GAME_INITIAL_SPEED);
@@ -150,11 +151,42 @@ TEST_CASE("Move method should move horizon bumps by gameSpeed")
 }
 
 //GAME
-
-Game testGame(&testWindow);
-
-TEST_CASE("TEST DUH")
+TEST_CASE("InitGame() should set score to 0")
 {
+  TestGame testGame(&testWindow);
   testGame.InitGame();
-  REQUIRE(1 == 0);
+  REQUIRE(testGame.GetScore() == 0);
+  testGame.GameOver();
 }
+
+TEST_CASE("HighScore should be same as score when score exceeds HighScore")
+{
+  TestGame testGame(&testWindow);
+  Sleep(100);
+  testGame.SetScore(testGame.GetHighScore() + 1);
+  testGame.HandlePeriodicIncrements();
+  REQUIRE(testGame.GetHighScore() == testGame.GetScore());
+}
+
+TEST_CASE("Score should not change if time passed is less than GAME_SCORE_INCREMENT")
+{
+  TestGame testGame(&testWindow);
+  Sleep(GAME_SCORE_INCREMENT - 2);
+  testGame.HandlePeriodicIncrements();
+  REQUIRE(testGame.GetScore() == 0);
+}
+
+TEST_CASE("Score should increase by 1 every time time passed is GAME_SCORE_INCREMENT or more")
+{
+  TestGame testGame(&testWindow);
+  int testScore = 0;
+  while (testScore < 10)
+  {
+    testScore = testGame.GetScore() + 1;
+    Sleep(GAME_SCORE_INCREMENT);
+    testGame.HandlePeriodicIncrements();
+    CHECK(testGame.GetScore() == testScore);
+  }
+}
+
+
