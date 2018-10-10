@@ -189,4 +189,3 @@ TEST_CASE("Score should increase by 1 every time time passed is GAME_SCORE_INCRE
   }
 }
 
-

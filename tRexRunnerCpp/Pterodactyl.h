@@ -21,11 +21,12 @@ public:
   //! Default destructor
   ~Pterodactyl();
 private:
-  sf::Texture* PterodactylShape1; /*! Texture for loading the pterodactyl1 sprite shape*/
-  sf::Sprite* PterodactylSprite1; /*! Sprite for pterodactyl2 shape*/
+  sf::Texture* pterodactylShape1; /*! Texture for loading the pterodactyl1 sprite shape*/
+  sf::Sprite* pterodactylSprite1; /*! Sprite for pterodactyl2 shape*/
 
-  sf::Texture* PterodactylShape2; /*! Texture for loading the pterodactyl1 sprite shape*/
-  sf::Sprite* PterodactylSprite2; /*! Sprite for pterodactyl2 shape*/
+  sf::Texture* pterodactylShape2; /*! Texture for loading the pterodactyl1 sprite shape*/
+  sf::Sprite* pterodactylSprite2; /*! Sprite for pterodactyl2 shape*/
+
   int wingFlapCounter; /*! Counter for swaping shapes to 'flap wings'*/
   float randomHight; /*! Random height for pterodactyl to make it avoidable by tRex*/
   float previousPositionX; /*! Previous position X when swapping sprites*/

@@ -13,20 +13,20 @@ TRex::TRex(float jumpingSpeed, float gravity)
 {
   m_JumpingSpeed = abs(jumpingSpeed);
   m_Gravity = abs(gravity);
-  StandingShape = new sf::Texture();
-  RunningShape1 = new sf::Texture();
-  RunningShape2 = new sf::Texture();
-  DuckingShape1 = new sf::Texture();
-  DuckingShape2 = new sf::Texture();
-  DeadShape = new sf::Texture();
-  StandingSprite = LoadShape(StandingShape, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_standing_init);
-  RunningSprite1 = LoadShape(RunningShape1, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_running1);
-  RunningSprite2 = LoadShape(RunningShape2, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_running2);
-  DuckingSprite1 = LoadShape(DuckingShape1, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking1);
-  DuckingSprite2 = LoadShape(DuckingShape2, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking2);
-  DeadSprite   = LoadShape(DeadShape, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_dead);
+  standingShape = new sf::Texture();
+  runningShape1 = new sf::Texture();
+  runningShape2 = new sf::Texture();
+  duckingShape1 = new sf::Texture();
+  duckingShape2 = new sf::Texture();
+  deadShape = new sf::Texture();
+  standingSprite = LoadShape(standingShape, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_standing_init);
+  runningSprite1 = LoadShape(runningShape1, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_running1);
+  runningSprite2 = LoadShape(runningShape2, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_running2);
+  duckingSprite1 = LoadShape(duckingShape1, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking1);
+  duckingSprite2 = LoadShape(duckingShape2, TREX_DUCKING_HEIGHT, TREX_DUCKING_WIDTH, trex_ducking2);
+  deadSprite   = LoadShape(deadShape, TREX_STANDING_HEIGHT, TREX_STANDING_WIDTH, trex_dead);
   state = STANDING;
-  sprite = StandingSprite;
+  sprite = standingSprite;
   sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
 }
 
@@ -124,7 +124,7 @@ void TRex::Run()
 void TRex::Crash()
 {
   state = CRASHED;
-  sprite = DeadSprite;
+  sprite = deadSprite;
   sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
 }
 
@@ -137,22 +137,22 @@ void TRex::Update()
     Jump();
     break;
   case RUNNING1:
-    sprite = shouldStep ? RunningSprite2 : RunningSprite1;
+    sprite = shouldStep ? runningSprite2 : runningSprite1;
     state = shouldStep ? RUNNING2 : state;
     sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
     break;
   case RUNNING2:
-    sprite = shouldStep ? RunningSprite1 : RunningSprite2;
+    sprite = shouldStep ? runningSprite1 : runningSprite2;
     state = shouldStep ? RUNNING1 : state;
     sprite->setPosition(TREX_STARTING_POSITION_X, TREX_STARTING_POSITION_Y);
     break;
   case DUCKING1:
-    sprite = shouldStep ? DuckingSprite2 : DuckingSprite1;
+    sprite = shouldStep ? duckingSprite2 : duckingSprite1;
     state = shouldStep ? DUCKING2 : state;
     sprite->setPosition(TREX_DUCKING_POSITION_X, TREX_DUCKING_POSITION_Y);
     break;
   case DUCKING2:
-    sprite = shouldStep ? DuckingSprite1 : DuckingSprite2;
+    sprite = shouldStep ? duckingSprite1 : duckingSprite2;
     state = shouldStep ? DUCKING1 : state;
     sprite->setPosition(TREX_DUCKING_POSITION_X, TREX_DUCKING_POSITION_Y);
     break;
@@ -164,28 +164,28 @@ void TRex::Update()
 
 TRex::~TRex()
 {
-  delete StandingShape;
-  delete RunningShape1;
-  delete RunningShape2;
-  delete DuckingShape1;
-  delete DuckingShape2;
-  delete DeadShape;
-  delete StandingSprite;
-  delete RunningSprite1;
-  delete RunningSprite2;
-  delete DuckingSprite1;
-  delete DuckingSprite2;
-  delete DeadSprite;
-  StandingShape  = NULL;
-  RunningShape1  = NULL;
-  RunningShape2  = NULL;
-  DuckingShape1  = NULL;
-  DuckingShape2  = NULL;
-  DeadShape      = NULL;
-  StandingSprite = NULL;
-  RunningSprite1 = NULL;
-  RunningSprite2 = NULL;
-  DuckingSprite1 = NULL;
-  DuckingSprite2 = NULL;
-  DeadSprite     = NULL;
+  delete standingShape;
+  delete runningShape1;
+  delete runningShape2;
+  delete duckingShape1;
+  delete duckingShape2;
+  delete deadShape;
+  delete standingSprite;
+  delete runningSprite1;
+  delete runningSprite2;
+  delete duckingSprite1;
+  delete duckingSprite2;
+  delete deadSprite;
+  standingShape  = NULL;
+  runningShape1  = NULL;
+  runningShape2  = NULL;
+  duckingShape1  = NULL;
+  duckingShape2  = NULL;
+  deadShape      = NULL;
+  standingSprite = NULL;
+  runningSprite1 = NULL;
+  runningSprite2 = NULL;
+  duckingSprite1 = NULL;
+  duckingSprite2 = NULL;
+  deadSprite     = NULL;
 }

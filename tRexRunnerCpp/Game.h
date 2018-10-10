@@ -119,10 +119,12 @@ public:
   * \param int arrow (0 for UP, 1 for DOWN)
   */
   bool IsButtonPressed(int arrow);
+
   int  GetScore() { return score; };
   int  GetHighScore() { return highScore; };
   void SetScore(int newScore) { score = newScore; };
-  protected:
+
+protected:
   //!Game Objects
   TRex* tRex;
   Horizon* horizonBump1;

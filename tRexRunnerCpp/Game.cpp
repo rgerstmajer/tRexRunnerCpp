@@ -106,7 +106,6 @@ void Game::LoadConfig()
   tinyxml2::XMLError pError = config.LoadFile("tRexRunnerConfig.xml");
   if (pError != 0)
   {
-    jumpingSpeed += 1;
     printf("Config file not found, using defaults:\nGravity: %.2f\nGameSpeed: %.2f\nGameSpeedDelta: %.2f\nJumpingSpeed: %.2f\n", gravity, gameSpeed, gameSpeedDelta, jumpingSpeed);
   }
   else

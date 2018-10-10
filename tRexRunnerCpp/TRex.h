@@ -62,25 +62,25 @@ public:
   ~TRex();
 private:
   int stepCounter = 1; /*! Used for determening when to change sprites for stepping animation*/
-  float m_Gravity; /*! Determens speed of falling*/
-  float m_JumpingSpeed; /*! Determens speed of rising*/
+  float m_Gravity; /*! Determines speed of falling*/
+  float m_JumpingSpeed; /*! Determines speed of rising*/
   bool dropping = false; /*! Used for detemening if tRex reached its maximum height*/
 
-  sf::Texture *StandingShape;  /*! Texture for loading the tRex standing sprite shape*/
-  sf::Sprite  *StandingSprite; /*! Sprite for tRex standing shape*/
+  sf::Texture *standingShape;  /*! Texture for loading the tRex standing sprite shape*/
+  sf::Sprite  *standingSprite; /*! Sprite for tRex standing shape*/
 
-  sf::Texture *RunningShape1;  /*! Texture for loading the tRex running1 sprite shape*/
-  sf::Sprite  *RunningSprite1; /*! Sprite for tRex running1 shape*/
+  sf::Texture *runningShape1;  /*! Texture for loading the tRex running1 sprite shape*/
+  sf::Sprite  *runningSprite1; /*! Sprite for tRex running1 shape*/
 
-  sf::Texture *RunningShape2;  /*! Texture for loading the tRex running2 sprite shape*/
-  sf::Sprite  *RunningSprite2; /*! Sprite for tRex running2 shape*/
+  sf::Texture *runningShape2;  /*! Texture for loading the tRex running2 sprite shape*/
+  sf::Sprite  *runningSprite2; /*! Sprite for tRex running2 shape*/
 
-  sf::Texture *DuckingShape1;  /*! Texture for loading the tRex ducking1 sprite shape*/
-  sf::Sprite  *DuckingSprite1; /*! Sprite for tRex ducking1 shape*/
+  sf::Texture *duckingShape1;  /*! Texture for loading the tRex ducking1 sprite shape*/
+  sf::Sprite  *duckingSprite1; /*! Sprite for tRex ducking1 shape*/
 
-  sf::Texture *DuckingShape2;  /*! Texture for loading the tRex ducking2 sprite shape*/
-  sf::Sprite  *DuckingSprite2; /*! Sprite for tRex ducking2 shape*/
+  sf::Texture *duckingShape2;  /*! Texture for loading the tRex ducking2 sprite shape*/
+  sf::Sprite  *duckingSprite2; /*! Sprite for tRex ducking2 shape*/
 
-  sf::Texture *DeadShape;    /*! Texture for loading the tRex crashed sprite shape*/
-  sf::Sprite  *DeadSprite;   /*! Sprite for tRex crashed shape*/
+  sf::Texture *deadShape;    /*! Texture for loading the tRex crashed sprite shape*/
+  sf::Sprite  *deadSprite;   /*! Sprite for tRex crashed shape*/
 };
