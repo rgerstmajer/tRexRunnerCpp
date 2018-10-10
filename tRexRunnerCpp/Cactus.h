@@ -13,15 +13,6 @@ class Cactus :
   public:
   //! Default constructot
   Cactus(float distance, int type);
-  //! Initialization method
-  /*!
-   * Initializes random cactus sprite
-   * on random distance.
-   * 
-   * \param distance Distance of the cactus being initialized
-   * \param type Type of cactus (1-4)
-   */
-  void Init(int distance, int type);
   //! Update method
   /*!
   * Moves sprite to the left according to increment
