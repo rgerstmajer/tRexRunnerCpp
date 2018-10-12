@@ -7,7 +7,7 @@
 */
 #pragma once
 
-#define delete(x) { if (x != NULL) {delete x; x == NULL;}}
+#define DELETE_PTR(x) { if (x != NULL) {delete x; x == NULL;}}
 
 #define GAME_NAME "tRexRunner"
 

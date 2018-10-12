@@ -240,16 +240,16 @@ void Game::GameOver()
   window->draw(scoreText);
   window->draw(gameOverText);
   window->display();
-  delete(tRex);
-  delete(horizonBump1);
-  delete(horizonBump2);
+  DELETE_PTR(tRex);
+  DELETE_PTR(horizonBump1);
+  DELETE_PTR(horizonBump2);
 }
 
 void Game::ClearObstaclesThatPassed()
 {
   if (!obstacles.empty() && obstacles[0]->GetPositionX() < 0)
   {
-    delete obstacles[0];
+    DELETE_PTR(obstacles[0]);
     obstacles.erase(obstacles.begin());
     numberOfVisibleObstacles--;
   }
@@ -259,7 +259,7 @@ void Game::DeleteObstacles()
 {
   while (!obstacles.empty())
   {
-    delete obstacles[0];
+    DELETE_PTR(obstacles[0]);
     obstacles.erase(obstacles.begin());
   }
   numberOfVisibleObstacles = 0;

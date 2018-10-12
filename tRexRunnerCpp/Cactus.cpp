@@ -61,6 +61,6 @@ void Cactus::Update(float increment)
 
 Cactus::~Cactus()
 {
-  delete(cactusShape);
-  delete(sprite);
+  DELETE_PTR(cactusShape);
+  DELETE_PTR(sprite);
 }

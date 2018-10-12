@@ -21,5 +21,5 @@ public:
   virtual void Update(float increment) = 0;
 
   //! Default destructor
-  ~Obstacle();
+  virtual ~Obstacle();
 };

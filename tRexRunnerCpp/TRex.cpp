@@ -164,16 +164,16 @@ void TRex::Update()
 
 TRex::~TRex()
 {
-  delete(standingShape);
-  delete(runningShape1);
-  delete(runningShape2);
-  delete(duckingShape1);
-  delete(duckingShape2);
-  delete(deadShape);
-  delete(standingSprite);
-  delete(runningSprite1);
-  delete(runningSprite2);
-  delete(duckingSprite1);
-  delete(duckingSprite2);
-  delete(deadSprite);
+  DELETE_PTR(standingShape);
+  DELETE_PTR(runningShape1);
+  DELETE_PTR(runningShape2);
+  DELETE_PTR(duckingShape1);
+  DELETE_PTR(duckingShape2);
+  DELETE_PTR(deadShape);
+  DELETE_PTR(standingSprite);
+  DELETE_PTR(runningSprite1);
+  DELETE_PTR(runningSprite2);
+  DELETE_PTR(duckingSprite1);
+  DELETE_PTR(duckingSprite2);
+  DELETE_PTR(deadSprite);
 }

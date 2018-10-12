@@ -39,6 +39,6 @@ void Horizon::Move(float increment) //Move bumps from right to left
 
 Horizon::~Horizon()
 {
-  delete(sprite);
-  delete(bump);
+  DELETE_PTR(sprite);
+  DELETE_PTR(bump);
 }

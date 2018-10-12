@@ -49,8 +49,8 @@ void Pterodactyl::Update(float increment)
 
 Pterodactyl::~Pterodactyl()
 {
-  delete(pterodactylShape1);
-  delete(pterodactylShape2);
-  delete(pterodactylSprite1);
-  delete(pterodactylSprite2);
+  DELETE_PTR(pterodactylShape1);
+  DELETE_PTR(pterodactylShape2);
+  DELETE_PTR(pterodactylSprite1);
+  DELETE_PTR(pterodactylSprite2);
 }
