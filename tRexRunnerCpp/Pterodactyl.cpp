@@ -12,10 +12,17 @@ Pterodactyl::Pterodactyl(float distance)
   wingFlapCounter = 0;
   pterodactylShape1 = new sf::Texture();
   pterodactylShape2 = new sf::Texture();
+  if (pterodactylShape1 == NULL || pterodactylShape2 == NULL)
+  {
+    throw "Could not create texture for Pterodactyl sprite";
+  }
 
   pterodactylSprite1 = LoadShape(pterodactylShape1, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl1);
   pterodactylSprite2 = LoadShape(pterodactylShape2, PTERODACTYL_HEIGHT, PTERODACTYL_WIDTH, pterodactyl2);
-
+  if (pterodactylSprite1 == NULL || pterodactylSprite2 == NULL)
+  {
+    throw "Could not create Pterodactyl sprite";
+  }
   sprite = pterodactylSprite1;
   sprite->setPosition(distance, rand() % (HEIGHT - PTERODACTYL_HEIGHT * 2 - TREX_DUCKING_HEIGHT * 2 - 2));
 }
@@ -42,12 +49,8 @@ void Pterodactyl::Update(float increment)
 
 Pterodactyl::~Pterodactyl()
 {
-  delete pterodactylShape1;
-  delete pterodactylShape2;
-  delete pterodactylSprite1;
-  delete pterodactylSprite2;
-  pterodactylShape1  = NULL;
-  pterodactylShape2  = NULL;
-  pterodactylSprite1 = NULL;
-  pterodactylSprite2 = NULL;
+  delete(pterodactylShape1);
+  delete(pterodactylShape2);
+  delete(pterodactylSprite1);
+  delete(pterodactylSprite2);
 }

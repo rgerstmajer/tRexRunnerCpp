@@ -7,7 +7,9 @@
 */
 #pragma once
 
-#define GAME_NAME L"tRexRunner"
+#define delete(x) { if (x != NULL) {delete x; x == NULL;}}
+
+#define GAME_NAME "tRexRunner"
 
 #define BITS_IN_BYTE 8
 

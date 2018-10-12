@@ -37,6 +37,7 @@ class GameObject
   virtual ~GameObject();
 protected:
   sf::Sprite* sprite; /* The current object's sprite */
+  sf::FloatRect shrunkBounds;
   //! Shape loading method
   /*!
   * Loads shape into sprite
@@ -48,5 +49,4 @@ protected:
   * is black, otherwise transparent
   */
   sf::Sprite* LoadShape(sf::Texture* texture, const int height, const int width, const unsigned char* shape, bool isBump = false);
-  sf::FloatRect shrunkBounds;
 };

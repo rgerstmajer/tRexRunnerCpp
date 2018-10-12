@@ -11,8 +11,8 @@
 
 TRex::TRex(float jumpingSpeed, float gravity)
 {
-  m_JumpingSpeed = abs(jumpingSpeed);
-  m_Gravity = abs(gravity);
+  m_JumpingSpeed = (jumpingSpeed > 0) ? jumpingSpeed : -jumpingSpeed;
+  m_Gravity = (gravity > 0) ? gravity : -gravity;
   standingShape = new sf::Texture();
   runningShape1 = new sf::Texture();
   runningShape2 = new sf::Texture();
@@ -164,28 +164,16 @@ void TRex::Update()
 
 TRex::~TRex()
 {
-  delete standingShape;
-  delete runningShape1;
-  delete runningShape2;
-  delete duckingShape1;
-  delete duckingShape2;
-  delete deadShape;
-  delete standingSprite;
-  delete runningSprite1;
-  delete runningSprite2;
-  delete duckingSprite1;
-  delete duckingSprite2;
-  delete deadSprite;
-  standingShape  = NULL;
-  runningShape1  = NULL;
-  runningShape2  = NULL;
-  duckingShape1  = NULL;
-  duckingShape2  = NULL;
-  deadShape      = NULL;
-  standingSprite = NULL;
-  runningSprite1 = NULL;
-  runningSprite2 = NULL;
-  duckingSprite1 = NULL;
-  duckingSprite2 = NULL;
-  deadSprite     = NULL;
+  delete(standingShape);
+  delete(runningShape1);
+  delete(runningShape2);
+  delete(duckingShape1);
+  delete(duckingShape2);
+  delete(deadShape);
+  delete(standingSprite);
+  delete(runningSprite1);
+  delete(runningSprite2);
+  delete(duckingSprite1);
+  delete(duckingSprite2);
+  delete(deadSprite);
 }

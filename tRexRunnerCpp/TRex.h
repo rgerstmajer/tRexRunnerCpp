@@ -61,9 +61,10 @@ public:
   //! Default destructor
   ~TRex();
 private:
-  int stepCounter = 1; /*! Used for determening when to change sprites for stepping animation*/
   float m_Gravity; /*! Determines speed of falling*/
   float m_JumpingSpeed; /*! Determines speed of rising*/
+
+  int stepCounter = 1; /*! Used for determening when to change sprites for stepping animation*/
   bool dropping = false; /*! Used for detemening if tRex reached its maximum height*/
 
   sf::Texture *standingShape;  /*! Texture for loading the tRex standing sprite shape*/

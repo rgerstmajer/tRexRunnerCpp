@@ -27,7 +27,7 @@ private:
   sf::Texture* pterodactylShape2; /*! Texture for loading the pterodactyl1 sprite shape*/
   sf::Sprite* pterodactylSprite2; /*! Sprite for pterodactyl2 shape*/
 
-  int wingFlapCounter; /*! Counter for swaping shapes to 'flap wings'*/
+  int wingFlapCounter; /*! Counter for swapping shapes to 'flap wings'*/
   float randomHight; /*! Random height for pterodactyl to make it avoidable by tRex*/
   float previousPositionX; /*! Previous position X when swapping sprites*/
   float previousPositionY; /*! Previous position Y when swapping sprites*/

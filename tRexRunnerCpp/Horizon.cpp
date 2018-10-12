@@ -29,7 +29,7 @@ Horizon::Horizon(int type)
   }
 }
 
-void Horizon::Move(float increment) //Move details from right to left
+void Horizon::Move(float increment) //Move bumps from right to left
 {
   sprite->move(-increment, 0);
   if (sprite->getPosition().x < 0)
@@ -39,8 +39,6 @@ void Horizon::Move(float increment) //Move details from right to left
 
 Horizon::~Horizon()
 {
-  delete sprite;
-  sprite = NULL;
-  delete bump;
-  bump = NULL;
+  delete(sprite);
+  delete(bump);
 }
