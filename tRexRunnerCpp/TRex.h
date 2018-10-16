@@ -24,7 +24,7 @@ public:
     DUCKING2,
 
     CRASHED
-  } state;
+  } m_state;
   //! TRex constuctor
   /*!
   * \param jumpingSpeed loaded from config, how many pixels will the tRex rise each frame
@@ -61,27 +61,27 @@ public:
   //! Default destructor
   ~TRex();
 private:
-  float m_Gravity; /*! Determines speed of falling*/
+  float m_Gravity;      /*! Determines speed of falling*/
   float m_JumpingSpeed; /*! Determines speed of rising*/
 
-  int stepCounter = 1; /*! Used for determening when to change sprites for stepping animation*/
-  bool dropping = false; /*! Used for detemening if tRex reached its maximum height*/
+  int  m_stepCounter = 1;     /*! Used for determening when to change sprites for stepping animation*/
+  bool m_dropping    = false; /*! Used for detemening if tRex reached its maximum height*/
 
-  sf::Texture *standingShape;  /*! Texture for loading the tRex standing sprite shape*/
-  sf::Sprite  *standingSprite; /*! Sprite for tRex standing shape*/
+  sf::Texture *m_standingShape  = NULL;  /*! Texture for loading the tRex standing sprite shape*/
+  sf::Sprite  *m_standingSprite = NULL;  /*! Sprite for tRex standing shape*/
+               
+  sf::Texture *m_runningShape1  = NULL;  /*! Texture for loading the tRex running1 sprite shape*/
+  sf::Sprite  *m_runningSprite1 = NULL;  /*! Sprite for tRex running1 shape*/
+               
+  sf::Texture *m_runningShape2  = NULL;  /*! Texture for loading the tRex running2 sprite shape*/
+  sf::Sprite  *m_runningSprite2 = NULL;  /*! Sprite for tRex running2 shape*/
 
-  sf::Texture *runningShape1;  /*! Texture for loading the tRex running1 sprite shape*/
-  sf::Sprite  *runningSprite1; /*! Sprite for tRex running1 shape*/
+  sf::Texture *m_duckingShape1  = NULL;  /*! Texture for loading the tRex ducking1 sprite shape*/
+  sf::Sprite  *m_duckingSprite1 = NULL;  /*! Sprite for tRex ducking1 shape*/
 
-  sf::Texture *runningShape2;  /*! Texture for loading the tRex running2 sprite shape*/
-  sf::Sprite  *runningSprite2; /*! Sprite for tRex running2 shape*/
+  sf::Texture *m_duckingShape2  = NULL;  /*! Texture for loading the tRex ducking2 sprite shape*/
+  sf::Sprite  *m_duckingSprite2 = NULL;  /*! Sprite for tRex ducking2 shape*/
 
-  sf::Texture *duckingShape1;  /*! Texture for loading the tRex ducking1 sprite shape*/
-  sf::Sprite  *duckingSprite1; /*! Sprite for tRex ducking1 shape*/
-
-  sf::Texture *duckingShape2;  /*! Texture for loading the tRex ducking2 sprite shape*/
-  sf::Sprite  *duckingSprite2; /*! Sprite for tRex ducking2 shape*/
-
-  sf::Texture *deadShape;    /*! Texture for loading the tRex crashed sprite shape*/
-  sf::Sprite  *deadSprite;   /*! Sprite for tRex crashed shape*/
+  sf::Texture *m_deadShape      = NULL;  /*! Texture for loading the tRex crashed sprite shape*/
+  sf::Sprite  *m_deadSprite     = NULL;  /*! Sprite for tRex crashed shape*/
 };

@@ -29,15 +29,15 @@ class GameObject
   bool Colliding(GameObject* obstacle);
   /*! Returns the sprite location on X axis
   */
-  float GetPositionX() { return sprite->getPosition().x; }
+  float GetPositionX() { return m_sprite->getPosition().x; }
   /*! Returns the sprite location on Y axis
   */
-  float GetPositionY() { return sprite->getPosition().y; }
+  float GetPositionY() { return m_sprite->getPosition().y; }
   //! Default destructor
   virtual ~GameObject();
 protected:
-  sf::Sprite* sprite; /* The current object's sprite */
-  sf::FloatRect shrunkBounds;
+  sf::Sprite*   m_sprite = NULL; /* The current object's sprite */
+  sf::FloatRect m_shrunkBounds;
   //! Shape loading method
   /*!
   * Loads shape into sprite

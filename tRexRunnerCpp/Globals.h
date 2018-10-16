@@ -7,51 +7,52 @@
 */
 #pragma once
 
-#define DELETE_PTR(x) { if (x != NULL) {delete x; x == NULL;}}
-
-#define GAME_NAME "tRexRunner"
+#define GAME_NAME             "tRexRunner"
+#define FONT_FILE_NAME        "Minecraft.ttf"
+#define HIGH_SCORE_FILE_NAME  "highScore.bin"
+#define CONFIG_FILE_NAME      "tRexRunnerConfig.xml"
 
 #define BITS_IN_BYTE 8
 
 #define GAME_SCALE 2
-#define WHITE 255
-#define BLACK 0
+#define WHITE      255
+#define BLACK      0
 
-#define WIDTH 256
+#define WIDTH  256
 #define HEIGHT 64
 
 #define RENDER_PERIOD 20 // 50 fps
 
-#define GAME_GRAVITY     3.2f
-#define GAME_INITIAL_SPEED 3.8f
-#define GAME_SPEED_DELTA   0.4f
-#define JUMPING_SPEED    3.5f
+#define GAME_GRAVITY         3.2f
+#define GAME_INITIAL_SPEED   3.8f
+#define GAME_SPEED_DELTA     0.4f
+#define JUMPING_SPEED        3.5f
 #define GAME_SCORE_INCREMENT 50
 
-#define TREX_RUNNING_SPEED 2
-#define TREX_MAX_HEIGHT 5
+#define TREX_RUNNING_SPEED  2
+#define TREX_MAX_HEIGHT     5
 #define LIMB_CHANGE_COUNTER 15
 
 #define HORIZON_POSITION_X 0
 #define HORIZON_POSITION_Y 62
-#define HORIZON_LENGTH WIDTH
-#define HORIZON_WIDTH 1
+#define HORIZON_LENGTH     WIDTH
+#define HORIZON_WIDTH      1
 
-#define MAX_OBSTACLE_COUNT 3
-#define SHOW_PTERODACTYL 240
+#define MAX_OBSTACLE_COUNT              3
+#define SHOW_PTERODACTYL                240
 #define OBSTACLE_RESPAWN_BASE_DISTANCE  100
-#define OBSTACLE_RESPAWN_DISTANCE_INC 10
+#define OBSTACLE_RESPAWN_DISTANCE_INC   10
 
-#define UP 0
+#define UP   0
 #define DOWN 1
 
 //SPRITES
 
-#define HORIZON_LINE_WIDTH      WIDTH
-#define HORIZON_LINE_HEIGHT     2 * GAME_SCALE
-#define HORIZON_LINE_BUMP1_X    40 * GAME_SCALE
+#define HORIZON_LINE_WIDTH        WIDTH
+#define HORIZON_LINE_HEIGHT       2 * GAME_SCALE
+#define HORIZON_LINE_BUMP1_X      40 * GAME_SCALE
 #define HORIZON_LINE_BUMP1_WIDTH  4 * GAME_SCALE
-#define HORIZON_LINE_BUMP2_X    105 * GAME_SCALE
+#define HORIZON_LINE_BUMP2_X      105 * GAME_SCALE
 #define HORIZON_LINE_BUMP2_WIDTH  6 * GAME_SCALE
 
 #define TREX_PADDING_RIGHT      10 * GAME_SCALE
@@ -88,12 +89,12 @@ static const unsigned char trex_dead[] =
   0x01, 0x03, 0x07, 0x3f, 0x2f, 0x07, 0x3f, 0x23, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-#define TREX_DUCKING_WIDTH  22
-#define TREX_DUCKING_HEIGHT 9
-#define TREX_STARTING_POSITION_X 10
-#define TREX_STARTING_POSITION_Y HEIGHT - TREX_STANDING_HEIGHT * GAME_SCALE - 1
-#define TREX_DUCKING_POSITION_X TREX_STARTING_POSITION_X
-#define TREX_DUCKING_POSITION_Y HEIGHT - TREX_DUCKING_HEIGHT * GAME_SCALE - 1
+#define TREX_DUCKING_WIDTH        22
+#define TREX_DUCKING_HEIGHT       9
+#define TREX_STARTING_POSITION_X  10
+#define TREX_STARTING_POSITION_Y  HEIGHT - TREX_STANDING_HEIGHT * GAME_SCALE - 1
+#define TREX_DUCKING_POSITION_X   TREX_STARTING_POSITION_X
+#define TREX_DUCKING_POSITION_Y   HEIGHT - TREX_DUCKING_HEIGHT * GAME_SCALE - 1
 static const unsigned char trex_ducking1[] =
 {
   0x03, 0x06, 0x0e, 0x1c, 0xfc, 0x7c, 0x3e, 0x1e, 0x7e, 0x5e, 0x1e, 0x7e, 0x5c, 0x0c, 0x1e, 0x1d, 0x1f, 0x1f, 0x17, 0x17, 0x07, 0x06,
@@ -165,3 +166,5 @@ static const unsigned char bump2[] =
 {
   0x01,0x01,0x01,0x01,0x01,0x01
 };
+
+#define DELETE_PTR(x) { if (x != NULL) {delete x; x = NULL;}}

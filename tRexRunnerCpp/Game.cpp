@@ -1,22 +1,22 @@
 #include "Game.h"
 
-Game::Game(sf::RenderWindow* renderWindow)
-{
-  window = renderWindow;
-  horizonLine = sf::RectangleShape(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
-  horizonLineGap = sf::RectangleShape(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * GAME_SCALE));
-}
+//Game::Game(sf::RenderWindow* renderWindow)
+//{
+//  window = renderWindow;
+//  horizonLine = sf::RectangleShape(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
+//  horizonLineGap = sf::RectangleShape(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * GAME_SCALE));
+//}
 
 void Game::RunGame()
 {
-  LoadTextFields();
+  LoadTextFields(FONT_FILE_NAME);
   InitGame();
   GameLogic();
   if (!gameOver)
   {
-    GameOver();
+    GameOver(this);
   }
-  WriteScore();
+  WriteScore(HIGH_SCORE_FILE_NAME);
 }
 
 void Game::InitGame()
@@ -27,8 +27,8 @@ void Game::InitGame()
   highScore = 0;
   gameOver = false;
   numberOfVisibleObstacles = 0;
-  LoadConfig();
-  LoadHighScore();
+  LoadConfig(CONFIG_FILE_NAME);
+  LoadHighScore(HIGH_SCORE_FILE_NAME);
   tRex = new TRex(jumpingSpeed, gravity);
   horizonBump1 = new Horizon(1);
   horizonBump2 = new Horizon(2);
@@ -50,12 +50,12 @@ void Game::GameLogic()
           window->close();
       }
       // Checking if TRex collided with an obstacle
-      if (!obstacles.empty() && CheckCollision(tRex, obstacles[0]) || gameOver)
+      if (!obstacles.empty() && CheckCollision(tRex, &obstacles) || gameOver)
       {
         if (!gameOver)
         {
-          GameOver();
-          DeleteObstacles();
+          GameOver(this);
+          DeleteObstacles(&obstacles);
         }
         HandleButtonPress(IsButtonPressed(UP), IsButtonPressed(DOWN), gameOver);
       }
@@ -65,8 +65,8 @@ void Game::GameLogic()
         HandleButtonPress(IsButtonPressed(UP), IsButtonPressed(DOWN), gameOver);
         UpdateHorizonLineGap();
         MoveBumps(horizonBump1, horizonBump2);
-        UpdateAllObstacles();
-        HandlePeriodicIncrements();
+        UpdateAllObstacles(&obstacles);
+        HandlePeriodicIncrements(clock());
         UpdateTextFields(score, highScore);
         DrawEverything();
       }
@@ -74,9 +74,9 @@ void Game::GameLogic()
   }
 }
 
-void Game::LoadTextFields()
+void Game::LoadTextFields(const char* fileName)
 {
-  if (!font.loadFromFile("Minecraft.ttf"))
+  if (!font.loadFromFile(fileName))
   {
     printf("Cannot load font file");
     window->close();
@@ -99,11 +99,11 @@ void Game::LoadTextFields()
   }
 }
 
-void Game::LoadConfig()
+void Game::LoadConfig(const char* fileName)
 {
   // Reading the game config file
   tinyxml2::XMLDocument config;
-  tinyxml2::XMLError pError = config.LoadFile("tRexRunnerConfig.xml");
+  tinyxml2::XMLError pError = config.LoadFile(fileName);
   if (pError != 0)
   {
     printf("Config file not found, using defaults:\nGravity: %.2f\nGameSpeed: %.2f\nGameSpeedDelta: %.2f\nJumpingSpeed: %.2f\n", gravity, gameSpeed, gameSpeedDelta, jumpingSpeed);
@@ -121,17 +121,17 @@ void Game::LoadConfig()
   }
 }
 
-void Game::LoadHighScore()
+void Game::LoadHighScore(const char* fileName)
 {
   // Loading High score from previous attempts
   std::ifstream fHighScoreIn;
   char c;
 
-  fHighScoreIn.open("highScore.bin", std::ifstream::in);
+  fHighScoreIn.open(fileName, std::ifstream::in);
   if (!fHighScoreIn.good())
   {
     //TODO log failed to open highScore.bin, creating new file
-    std::ofstream fHighScoreOut("highScore.bin", std::ofstream::out);
+    std::ofstream fHighScoreOut(fileName, std::ofstream::out);
     if (!fHighScoreOut.good())
     {
     }
@@ -152,10 +152,10 @@ void Game::LoadHighScore()
   }
 }
 
-void Game::WriteScore()
+void Game::WriteScore(const char* fileName)
 {
   // Write high score to file
-  std::ofstream fHighScore("highScore.bin", std::ofstream::out);
+  std::ofstream fHighScore(fileName, std::ofstream::out);
   if (!fHighScore.good())
   {
     // TODO log failed to open or create highScore.bin
@@ -179,49 +179,48 @@ void Game::UpdateHorizonLineGap()
   }
 }
 
-void Game::UpdateAllObstacles()
+void Game::UpdateAllObstacles(std::vector<Obstacle*>* obstacleList)
 {
   // Adding obstacles if needed
   while (numberOfVisibleObstacles < MAX_OBSTACLE_COUNT)
   {
-    AddObstacle(obstacles);
+    AddObstacle(&obstacles);
   }
-  for (auto it = obstacles.begin(); it != obstacles.end(); it++)
+  for (auto it = obstacleList->begin(); it != obstacleList->end(); it++)
     (*it)->Update(gameSpeed);
   // clearing obstacles that passed the screen
-  ClearObstaclesThatPassed();
-  if (!obstacles.empty())
+  ClearObstaclesThatPassed(obstacleList);
+  if (!obstacleList->empty())
   {
-    lastDistance = obstacles[obstacles.size() - 1]->GetPositionX();
+    lastDistance = (*obstacleList)[obstacleList->size() - 1]->GetPositionX();
   }
   else
   {
     lastDistance = WIDTH;
   }
-  
 }
 
-void Game::AddObstacle(std::vector<Obstacle*> obstaclesList)
+void Game::AddObstacle(std::vector<Obstacle*>* obstacleList)
 {
   obstacleDistance = OBSTACLE_RESPAWN_BASE_DISTANCE + rand() % obstacleRespawnMaxDistance;
   if (obstacleDistance >= showPterodactyl)
   {
-    obstacles.push_back(new Pterodactyl(obstacleDistance + lastDistance));
+    obstacleList->push_back(new Pterodactyl(obstacleDistance + lastDistance));
     lastDistance += obstacleDistance;
   }
   else
   {
-    obstacles.push_back(new Cactus(obstacleDistance + lastDistance + WIDTH / 4, rand() % 4 + 1));
+    obstacleList->push_back(new Cactus(obstacleDistance + lastDistance + WIDTH / 4, rand() % 4 + 1));
     lastDistance += obstacleDistance;
   }
   numberOfVisibleObstacles++;
 }
 
-bool Game::CheckCollision(TRex* tRex, Obstacle* obstacle)
+bool Game::CheckCollision(TRex* tRex, std::vector<Obstacle*>* obstacleList)
 {
-  if (!obstacles.empty())
+  if (!obstacleList->empty())
   {
-    return tRex->Colliding(obstacle);
+    return tRex->Colliding((*obstacleList)[0]);
   }
   else
   {
@@ -229,47 +228,47 @@ bool Game::CheckCollision(TRex* tRex, Obstacle* obstacle)
   }
 }
 
-void Game::GameOver()
+void Game::GameOver(Game* currentGame)
 {
-  gameOver = true;
-  WriteScore();
-  window->clear();
-  tRex->Crash();
-  tRex->Draw(window);
-  window->draw(highScoreText);
-  window->draw(scoreText);
-  window->draw(gameOverText);
-  window->display();
-  DELETE_PTR(tRex);
-  DELETE_PTR(horizonBump1);
-  DELETE_PTR(horizonBump2);
+  currentGame->gameOver = true;
+  currentGame->WriteScore(HIGH_SCORE_FILE_NAME);
+  currentGame->window->clear();
+  currentGame->tRex->Crash();
+  currentGame->tRex->Draw(window);
+  currentGame->window->draw(highScoreText);
+  currentGame->window->draw(scoreText);
+  currentGame->window->draw(gameOverText);
+  currentGame->window->display();
+  DELETE_PTR(currentGame->tRex);
+  DELETE_PTR(currentGame->horizonBump1);
+  DELETE_PTR(currentGame->horizonBump2);
 }
 
-void Game::ClearObstaclesThatPassed()
+void Game::ClearObstaclesThatPassed(std::vector<Obstacle*>* obstacleList)
 {
-  if (!obstacles.empty() && obstacles[0]->GetPositionX() < 0)
+  if (!obstacleList->empty() && obstacles[0]->GetPositionX() < 0)
   {
-    DELETE_PTR(obstacles[0]);
-    obstacles.erase(obstacles.begin());
+    DELETE_PTR((*obstacleList)[0]);
+    obstacleList->erase(obstacleList->begin());
     numberOfVisibleObstacles--;
   }
 }
 
-void Game::DeleteObstacles()
+void Game::DeleteObstacles(std::vector<Obstacle*>* obstacleList)
 {
-  while (!obstacles.empty())
+  while (!obstacleList->empty())
   {
-    DELETE_PTR(obstacles[0]);
-    obstacles.erase(obstacles.begin());
+    DELETE_PTR((*obstacleList)[0]);
+    obstacleList->erase(obstacleList->begin());
   }
   numberOfVisibleObstacles = 0;
 }
 
-void Game::HandlePeriodicIncrements()
+void Game::HandlePeriodicIncrements(clock_t currentTime)
 {
-  if (clock() - scoreTimer >= GAME_SCORE_INCREMENT)
+  if (currentTime - scoreTimer >= GAME_SCORE_INCREMENT)
   {
-    scoreTimer = clock();
+    scoreTimer = currentTime;
     score++;
     if (score % 100 == 0)
     {

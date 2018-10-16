@@ -12,33 +12,33 @@ Horizon::Horizon(int type)
   switch (type)
   {
   case 1:
-    bump = new sf::Texture();
-    sprite = LoadShape(bump, BUMP1_HEIGHT, BUMP1_WIDTH, bump1, true);
-    sprite->setPosition(WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
+    m_bump = new sf::Texture();
+    m_sprite = LoadShape(m_bump, BUMP1_HEIGHT, BUMP1_WIDTH, bump1, true);
+    m_sprite->setPosition(WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
     break;
   case 2:
-    bump = new sf::Texture();
-    sprite = LoadShape(bump, BUMP2_HEIGHT, BUMP2_WIDTH, bump2, true);
-    sprite->setPosition(2 * WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
+    m_bump = new sf::Texture();
+    m_sprite = LoadShape(m_bump, BUMP2_HEIGHT, BUMP2_WIDTH, bump2, true);
+    m_sprite->setPosition(2 * WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
     break;
   default:
-    bump = new sf::Texture();
-    sprite = LoadShape(bump, BUMP1_HEIGHT, BUMP1_WIDTH, bump1, true);
-    sprite->setPosition(WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
+    m_bump = new sf::Texture();
+    m_sprite = LoadShape(m_bump, BUMP1_HEIGHT, BUMP1_WIDTH, bump1, true);
+    m_sprite->setPosition(WIDTH / 3, HEIGHT - HORIZON_LINE_HEIGHT);
     break;
   }
 }
 
 void Horizon::Move(float increment) //Move bumps from right to left
 {
-  sprite->move(-increment, 0);
-  if (sprite->getPosition().x < 0)
-    sprite->move(WIDTH + rand() % WIDTH, 0);
+  m_sprite->move(-increment, 0);
+  if (m_sprite->getPosition().x < 0)
+    m_sprite->move(WIDTH + rand() % WIDTH, 0);
 }
 
 
 Horizon::~Horizon()
 {
-  DELETE_PTR(sprite);
-  DELETE_PTR(bump);
+  DELETE_PTR(m_sprite);
+  DELETE_PTR(m_bump);
 }

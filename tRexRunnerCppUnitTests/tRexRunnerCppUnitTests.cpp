@@ -1,8 +1,8 @@
 // tRexRunnerCppUnitTests.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
 #define CATCH_CONFIG_MAIN
+#include "stdafx.h"
 #include "catch.hpp"
 #include "Game.h"
 
@@ -22,7 +22,7 @@ TEST_CASE("When jumping, TRex sprite should move up by \"jumping speed\" pixels"
 {
   TRex testTRex(5.0, 5.0);
   testTRex.Jump();
-  CHECK(testTRex.state == TRex::JUMPING);
+  CHECK(testTRex.m_state == TRex::JUMPING);
   REQUIRE(testTRex.GetPositionY() == TREX_STARTING_POSITION_Y - 5);
 }
 
@@ -41,48 +41,48 @@ TEST_CASE("TRex Update method should switch state from STANDING to RUNNING1")
 {
   TRex testTRex(5.0, 5.0);
   testTRex.Update();
-  REQUIRE(testTRex.state == TRex::RUNNING1);
+  REQUIRE(testTRex.m_state == TRex::RUNNING1);
 }
 
-TEST_CASE("TRex Update method should not switch states if jumping")
+TEST_CASE("TRex Update method should not switch state if jumping")
 {
   TRex testTRex(5.0, 5.0);
   testTRex.Jump();
-  TRex::TRexStates initialState = testTRex.state;
+  TRex::TRexStates initialState = testTRex.m_state;
   testTRex.Update();
-  REQUIRE(testTRex.state == initialState);
+  REQUIRE(testTRex.m_state == initialState);
 }
 
-TEST_CASE("TRex Run method should not switch states if jumping")
+TEST_CASE("TRex Run method should not switch state if jumping")
 {
   TRex testTRex(5.0, 5.0);
   testTRex.Jump();
-  TRex::TRexStates initialState = testTRex.state;
+  TRex::TRexStates initialState = testTRex.m_state;
   testTRex.Run();
-  REQUIRE(testTRex.state == initialState);
+  REQUIRE(testTRex.m_state == initialState);
 }
 
 TEST_CASE("TRex Run method should switch state to RUNNING1 if TRex is not jumping ")
 {
   TRex testTRex(5.0, 5.0);
-  TRex::TRexStates initialState = testTRex.state;
+  TRex::TRexStates initialState = testTRex.m_state;
   testTRex.Run();
-  CHECK(testTRex.state == TRex::RUNNING1);
+  CHECK(testTRex.m_state == TRex::RUNNING1);
   testTRex.Duck();
   testTRex.Run();
-  CHECK(testTRex.state == TRex::RUNNING1);
+  CHECK(testTRex.m_state == TRex::RUNNING1);
   testTRex.Jump();
   testTRex.Run();
-  CHECK_FALSE(testTRex.state == TRex::RUNNING1);
+  CHECK_FALSE(testTRex.m_state == TRex::RUNNING1);
 }
 
-TEST_CASE("TRex Run method should not switch states if running")
+TEST_CASE("TRex Run method should not switch state if running")
 {
   TRex testTRex(5.0, 5.0);
   testTRex.Update();
-  TRex::TRexStates initialState = testTRex.state;
+  TRex::TRexStates initialState = testTRex.m_state;
   testTRex.Run();
-  REQUIRE(testTRex.state == initialState);
+  REQUIRE(testTRex.m_state == initialState);
 }
 
 TEST_CASE("TRex should change from RUNNING1 to RUNNING2 after LIMB_CHANGE_COUNTER frames")
@@ -92,7 +92,7 @@ TEST_CASE("TRex should change from RUNNING1 to RUNNING2 after LIMB_CHANGE_COUNTE
   {
     testTRex.Update();
   }
-  REQUIRE(testTRex.state == TRex::RUNNING2);
+  REQUIRE(testTRex.m_state == TRex::RUNNING2);
 }
 
 TEST_CASE("TRex should change position when ducking to TREX_DUCKING_POSITION_X and TREX_DUCKING_POSITION_Y")
@@ -156,7 +156,7 @@ TEST_CASE("InitGame() should set score to 0")
   TestGame testGame(&testWindow);
   testGame.InitGame();
   REQUIRE(testGame.GetScore() == 0);
-  testGame.GameOver();
+  testGame.GameOver(&testGame);
 }
 
 TEST_CASE("HighScore should be same as score when score exceeds HighScore")
@@ -164,15 +164,15 @@ TEST_CASE("HighScore should be same as score when score exceeds HighScore")
   TestGame testGame(&testWindow);
   Sleep(100);
   testGame.SetScore(testGame.GetHighScore() + 1);
-  testGame.HandlePeriodicIncrements();
+  testGame.HandlePeriodicIncrements(clock());
   REQUIRE(testGame.GetHighScore() == testGame.GetScore());
 }
 
 TEST_CASE("Score should not change if time passed is less than GAME_SCORE_INCREMENT")
 {
   TestGame testGame(&testWindow);
-  Sleep(GAME_SCORE_INCREMENT - 2);
-  testGame.HandlePeriodicIncrements();
+  Sleep(GAME_SCORE_INCREMENT - 5);
+  testGame.HandlePeriodicIncrements(clock());
   REQUIRE(testGame.GetScore() == 0);
 }
 
@@ -184,8 +184,7 @@ TEST_CASE("Score should increase by 1 every time time passed is GAME_SCORE_INCRE
   {
     testScore = testGame.GetScore() + 1;
     Sleep(GAME_SCORE_INCREMENT);
-    testGame.HandlePeriodicIncrements();
+    testGame.HandlePeriodicIncrements(clock());
     CHECK(testGame.GetScore() == testScore);
   }
 }
-

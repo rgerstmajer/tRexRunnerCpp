@@ -26,6 +26,6 @@ public:
   //! Default destructor
   ~Horizon();
 private:
-  sf::Texture* bump;/*! Texture for loading the bump1 and bump2 sprite shapes*/
+  sf::Texture* m_bump = NULL;/*! Texture for loading the bump1 and bump2 sprite shapes*/
 };
 

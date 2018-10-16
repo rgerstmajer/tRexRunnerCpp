@@ -13,8 +13,8 @@ GameObject::GameObject()
 
 void GameObject::Draw(sf::RenderWindow* window)
 {
-  sprite->setScale(GAME_SCALE, GAME_SCALE);
-  window->draw(*sprite);
+  m_sprite->setScale(GAME_SCALE, GAME_SCALE);
+  window->draw(*m_sprite);
 }
 
 sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
@@ -47,13 +47,12 @@ sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
 
 bool GameObject::Colliding(GameObject* obstacle)
 {
-  shrunkBounds = sprite->getGlobalBounds();
-  shrunkBounds.left = (1 / 6) * shrunkBounds.width;
-  shrunkBounds.width /= 1.5;
-  return shrunkBounds.intersects(obstacle->sprite->getGlobalBounds());
+  m_shrunkBounds = m_sprite->getGlobalBounds();
+  m_shrunkBounds.left = (1 / 6) * m_shrunkBounds.width;
+  m_shrunkBounds.width /= 1.5;
+  return m_shrunkBounds.intersects(obstacle->m_sprite->getGlobalBounds());
 }
 
 GameObject::~GameObject()
 {
-
 }

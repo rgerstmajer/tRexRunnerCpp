@@ -29,7 +29,11 @@ public:
   /*!
   * Constructor
   */
-  Game(sf::RenderWindow* renderWindow);
+  Game(sf::RenderWindow* renderWindow) :
+  window(renderWindow),
+  horizonLine(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH)),
+  horizonLineGap(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * GAME_SCALE)),
+  font(sf::Font()){};
   /*!
   * Runs game
   */
@@ -45,19 +49,19 @@ public:
   /*!
   * Loads sfml text for scores
   */
-  void LoadTextFields();
+  void LoadTextFields(const char* fileName);
   /*!
   * Loads config file
   */
-  void LoadConfig();
+  void LoadConfig(const char* fileName);
   /*!
   * Loads previous high score
   */
-  void LoadHighScore();
+  void LoadHighScore(const char* fileName);
   /*!
   * Writes high score to file
   */
-  void WriteScore();
+  void WriteScore(const char* fileName);
   /*!
   * Updates horizon line gap to
   * make tRex appear in front
@@ -67,35 +71,35 @@ public:
   * Updates all obstacles ( moving,
   * removing and changing sprites )
   */
-  void UpdateAllObstacles();
+  void UpdateAllObstacles(std::vector<Obstacle*>* obstacleList);
   /*!
   * Adding an obstacle to
   * a vector
   * \param obstacles vector of obstacles
   */
-  void AddObstacle(std::vector<Obstacle*> obstacles);
+  void AddObstacle(std::vector<Obstacle*>* obstacles);
   /*!
   * Check if tRex is colliding with Obstacle
   * \param tRex
   * \param obstacle
   */
-  bool CheckCollision(TRex* trex, Obstacle* obstacle);
+  bool CheckCollision(TRex* trex, std::vector<Obstacle*>* obstacle);
   /*!
   * Displays Game Over screen
   */
-  void GameOver();
+  void GameOver(Game* currentGame);
   /*!
   * Remove all obstacles
   */
-  void DeleteObstacles();
+  void DeleteObstacles(std::vector<Obstacle*>* obstacleList);
   /*!
   * Clear obstacles that left the screen
   */
-  void ClearObstaclesThatPassed();
+  void ClearObstaclesThatPassed(std::vector<Obstacle*>* obstacleList);
   /*!
   * Handles events that occur periodically
   */
-  void HandlePeriodicIncrements();
+  void HandlePeriodicIncrements(clock_t currentTime);
   /*!
   * Updates text fields
   */
@@ -126,9 +130,9 @@ public:
 
 protected:
   //!Game Objects
-  TRex* tRex;
-  Horizon* horizonBump1;
-  Horizon* horizonBump2;
+  TRex*    tRex         = NULL;
+  Horizon* horizonBump1 = NULL;
+  Horizon* horizonBump2 = NULL;
   std::vector <Obstacle*> obstacles;
   std::vector <Pterodactyl*> pterodactyls;
 
@@ -139,16 +143,16 @@ protected:
   sf::Text gameOverText;
 
   //!Horizon and gap for tRex padding
-  sf::RectangleShape horizonLine;
-  sf::RectangleShape horizonLineGap;
+  sf::RectangleShape horizonLine = sf::RectangleShape(sf::Vector2f(0,0));
+  sf::RectangleShape horizonLineGap = sf::RectangleShape();
 
   //!Counters for obstacle spawn logic
-  int numberOfVisibleObstacles = 0;
-  int obstacleRespawnMaxDistance = WIDTH - OBSTACLE_RESPAWN_BASE_DISTANCE;
-  int showPterodactyl = SHOW_PTERODACTYL;
-  int obstacleDistance = 0;
+  int numberOfVisibleObstacles    = 0;
+  int obstacleDistance            = 0;
+  int obstacleRespawnMaxDistance  = WIDTH - OBSTACLE_RESPAWN_BASE_DISTANCE;
+  int showPterodactyl             = SHOW_PTERODACTYL;
   int obstacleRespawnBaseDistance = OBSTACLE_RESPAWN_BASE_DISTANCE;
-  float lastDistance = WIDTH;
+  float lastDistance              = WIDTH;
 
   //!Score and high score
   int highScore = 0;
@@ -157,18 +161,18 @@ protected:
   //!Global game logic variables
   bool firstFrame = false;
   bool keyPressed = false;
-  bool gameOver =  false;
+  bool gameOver   = false;
 
   //!Timers for framerate, and score increments
-  clock_t beginTime = clock();
+  clock_t beginTime  = clock();
   clock_t scoreTimer = clock();
 
   //!Configurable variables
-  float gravity =        GAME_GRAVITY;
-  float gameSpeed =      GAME_INITIAL_SPEED;
-  float gameSpeedDelta = GAME_SPEED_DELTA;
-  float jumpingSpeed =   JUMPING_SPEED;
+  float gravity         = GAME_GRAVITY;
+  float gameSpeed       = GAME_INITIAL_SPEED;
+  float gameSpeedDelta  = GAME_SPEED_DELTA;
+  float jumpingSpeed    = JUMPING_SPEED;
 
   //!Display window
-  sf::RenderWindow* window;
+  sf::RenderWindow* window = NULL;
 };

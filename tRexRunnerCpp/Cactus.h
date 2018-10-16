@@ -10,7 +10,7 @@
 class Cactus :
   public Obstacle
 {
-  public:
+ public:
   //! Default constructot
   Cactus(float distance, int type);
   //! Update method
@@ -21,7 +21,8 @@ class Cactus :
   void Update(float increment);
   //! Default destructor
   virtual ~Cactus();
-  private:
-  sf::Texture* cactusShape; /*! Texture for loading the cactus sprite shape*/
+
+ private:
+  sf::Texture* m_cactusShape = NULL; /*! Texture for loading the cactus sprite shape*/
 };
 
