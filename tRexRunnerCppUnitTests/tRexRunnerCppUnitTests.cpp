@@ -188,3 +188,18 @@ TEST_CASE("Score should increase by 1 every time time passed is GAME_SCORE_INCRE
     CHECK(testGame.GetScore() == testScore);
   }
 }
+
+TEST_CASE("DeleteObstacles should clear all obstacles from vector")
+{
+
+}
+
+TEST_CASE("ClearObstaclesThatPassed should clear all obstacles with positionX less than 0")
+{
+
+}
+
+TEST_CASE("MoveBumps should move horizon bumps by currentGameSpeed to the left")
+{
+
+}

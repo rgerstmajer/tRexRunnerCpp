@@ -1,11 +1,11 @@
 #include "Game.h"
 
-//Game::Game(sf::RenderWindow* renderWindow)
-//{
-//  window = renderWindow;
-//  horizonLine = sf::RectangleShape(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
-//  horizonLineGap = sf::RectangleShape(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * GAME_SCALE));
-//}
+Game::Game(sf::RenderWindow* renderWindow)
+{
+  window = renderWindow;
+  horizonLine = sf::RectangleShape(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH));
+  horizonLineGap = sf::RectangleShape(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * GAME_SCALE));
+}
 
 void Game::RunGame()
 {

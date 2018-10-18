@@ -113,7 +113,7 @@ void TRex::Run()
     Update();
     break;
   case DUCKING2:
-    m_state = RUNNING1;
+    m_state = RUNNING2;
     Update();
     break;
   default:

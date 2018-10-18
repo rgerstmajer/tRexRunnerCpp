@@ -29,11 +29,7 @@ public:
   /*!
   * Constructor
   */
-  Game(sf::RenderWindow* renderWindow) :
-  window(renderWindow),
-  horizonLine(sf::Vector2f(HORIZON_LENGTH, HORIZON_WIDTH)),
-  horizonLineGap(sf::Vector2f(TREX_STANDING_WIDTH, HORIZON_WIDTH * GAME_SCALE)),
-  font(sf::Font()){};
+  Game(sf::RenderWindow* renderWindow);
   /*!
   * Runs game
   */
