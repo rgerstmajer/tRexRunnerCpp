@@ -265,3 +265,13 @@ TEST_CASE("IsButtonPressed should return false (no buttons pressed during test")
   TestGame testGame(&testWindow);
   REQUIRE(testGame.IsButtonPressed(rand()) == false);
 }
+
+TEST_CASE("CheckCollision should return true if tRex is on top of obstacle")
+{
+  TestGame testGame(&testWindow);
+  TRex testTRex(5.0, 5.0);
+  Cactus* testCactus = new Cactus(TREX_STARTING_POSITION_X, rand());
+  std::vector<Obstacle*> testObstacles = { testCactus };
+  REQUIRE(testGame.CheckCollision(&testTRex, &testObstacles));
+
+}

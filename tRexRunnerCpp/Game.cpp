@@ -32,6 +32,8 @@ void Game::InitGame()
   m_tRex = new TRex(m_jumpingSpeed, m_gravity);
   m_horizonBump1 = new Horizon(1);
   m_horizonBump2 = new Horizon(2);
+  if (m_tRex == NULL || m_horizonBump1 == NULL || m_horizonBump2 == NULL)
+    m_window->close();
 }
 
 void Game::GameLogic()
@@ -203,24 +205,37 @@ void Game::UpdateAllObstacles(std::vector<Obstacle*>* obstacleList)
 void Game::AddObstacle(std::vector<Obstacle*>* obstacleList)
 {
   m_obstacleDistance = OBSTACLE_RESPAWN_BASE_DISTANCE + rand() % m_obstacleRespawnMaxDistance;
-  if (m_obstacleDistance >= m_showPterodactyl)
-  {
-    obstacleList->push_back(new Pterodactyl(m_obstacleDistance + m_lastDistance));
-    m_lastDistance += m_obstacleDistance;
+  try {
+    if (m_obstacleDistance >= m_showPterodactyl)
+    {
+      obstacleList->push_back(new Pterodactyl(m_obstacleDistance + m_lastDistance));
+      m_lastDistance += m_obstacleDistance;
+    }
+    else
+    {
+      obstacleList->push_back(new Cactus(m_obstacleDistance + m_lastDistance + WIDTH / 4, rand() % 4 + 1));
+      m_lastDistance += m_obstacleDistance;
+    }
+    m_numberOfVisibleObstacles++;
   }
-  else
+  catch (...)
   {
-    obstacleList->push_back(new Cactus(m_obstacleDistance + m_lastDistance + WIDTH / 4, rand() % 4 + 1));
-    m_lastDistance += m_obstacleDistance;
+    m_window->close();
   }
-  m_numberOfVisibleObstacles++;
 }
 
 bool Game::CheckCollision(TRex* tRex, std::vector<Obstacle*>* obstacleList)
 {
   if (!obstacleList->empty())
   {
-    return tRex->Colliding((*obstacleList)[0]);
+    try
+    {
+      return tRex->Colliding((*obstacleList)[0]);
+    }
+    catch (...)
+    {
+      m_window->close();
+    }
   }
   else
   {
