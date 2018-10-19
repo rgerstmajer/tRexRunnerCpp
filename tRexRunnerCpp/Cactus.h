@@ -11,7 +11,12 @@ class Cactus :
   public Obstacle
 {
  public:
-  //! Default constructot
+  //! Constructor
+  /*!
+  * Creates a cactus at distance, with certain type
+  * \param distance
+  * \param type
+  */
   Cactus(float distance, int type);
   //! Update method
   /*!

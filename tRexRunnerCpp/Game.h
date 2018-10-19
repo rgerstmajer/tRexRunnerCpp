@@ -14,7 +14,7 @@
 #include "Globals.h"
 #include "tinyxml2.h"
 
-//#include <vld.h>
+
 #include <windows.h>
 #include <sstream>
 #include <iomanip>
@@ -44,18 +44,22 @@ public:
   void GameLogic();
   /*!
   * Loads sfml text for scores
+  * \param fileName
   */
   void LoadTextFields(const char* fileName);
   /*!
   * Loads config file
+  * \param fileName
   */
   void LoadConfig(const char* fileName);
   /*!
   * Loads previous high score
+  * \param fileName
   */
   void LoadHighScore(const char* fileName);
   /*!
   * Writes high score to file
+  * \param fileName
   */
   void WriteScore(const char* fileName);
   /*!
@@ -66,38 +70,45 @@ public:
   /*!
   * Updates all obstacles ( moving,
   * removing and changing sprites )
+  * \param obstacleList vector of obstacles
   */
   void UpdateAllObstacles(std::vector<Obstacle*>* obstacleList);
   /*!
   * Adding an obstacle to
   * a vector
-  * \param obstacles vector of obstacles
+  * \param obstacleList vector of obstacles
   */
-  void AddObstacle(std::vector<Obstacle*>* obstacles);
+  void AddObstacle(std::vector<Obstacle*>* obstacleList);
   /*!
   * Check if tRex is colliding with Obstacle
   * \param tRex
-  * \param obstacle
+  * \param obstacleList vector of obstacles
   */
-  bool CheckCollision(TRex* trex, std::vector<Obstacle*>* obstacle);
+  bool CheckCollision(TRex* trex, std::vector<Obstacle*>* obstacleList);
   /*!
   * Displays Game Over screen
+  * \param currentGame pointer to game to end
   */
   void GameOver(Game* currentGame);
   /*!
   * Remove all obstacles
+  * \param obstacleList vector of obstacles
   */
   void DeleteObstacles(std::vector<Obstacle*>* obstacleList);
   /*!
   * Clear obstacles that left the screen
+  * \param obstacleList vector of obstacles
   */
   void ClearObstaclesThatPassed(std::vector<Obstacle*>* obstacleList);
   /*!
   * Handles events that occur periodically
+  * \param currentTime (clock_t)
   */
   void HandlePeriodicIncrements(clock_t currentTime);
   /*!
   * Updates text fields
+  * \param score
+  * \param highScore
   */
   void UpdateTextFields(int score, int highScore);
   /*!
@@ -106,12 +117,15 @@ public:
   void DrawEverything();
   /*!
   * Moves horizon bumps
+  * \param bump1, bump2, currentGameSpeed
   */
-  void MoveBumps(Horizon* bump1, Horizon* bump2,float currentGameSpeed);
+  void MoveBumps(Horizon* bump1, Horizon* bump2, float currentGameSpeed);
   /*!
   * Handle button presses
   * \param upArrow bool value of wether the UpArrowKey is pressed
   * \param downArrow bool value of wether the DownArrowKey is pressed
+  * \param isGameOver
+  * \param tRex
   */
   void HandleButtonPress(bool upArrow, bool downArrow, bool isGameOver, TRex* tRex);
   /*!
