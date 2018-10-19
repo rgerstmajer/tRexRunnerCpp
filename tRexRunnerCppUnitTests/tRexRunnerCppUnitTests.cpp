@@ -133,6 +133,16 @@ TEST_CASE("Cactus update method should move it by \"currentGameSpeed\" frames")
   REQUIRE(testCactus.GetPositionX() == 10 - GAME_INITIAL_SPEED);
 }
 
+TEST_CASE("Cactus should create all types of cacti")
+{
+  for (int i = 1; i < 4; i++)
+  {
+    Cactus* testCactus = new Cactus(rand(), i);
+    REQUIRE(testCactus != NULL);
+    delete(testCactus);
+  }
+}
+
 //HORIZON BUMPS
 
 Horizon testHorizon1(1);
@@ -189,17 +199,69 @@ TEST_CASE("Score should increase by 1 every time time passed is GAME_SCORE_INCRE
   }
 }
 
-TEST_CASE("DeleteObstacles should clear all obstacles from vector")
+TEST_CASE("DeleteObstacles should clear all obstacles from Obstacke vector")
 {
-
+  TestGame testGame(&testWindow);
+  Pterodactyl* testPterodactyl = new Pterodactyl(10);
+  Cactus* testCactus1 = new Cactus(0, 1);
+  Cactus* testCactus2 = new Cactus(10, 2);
+  Cactus* testCactus3 = new Cactus(20, 3);
+  Cactus* testCactus4 = new Cactus(30, 4);
+  std::vector<Obstacle*> testObstacles = { testPterodactyl, testCactus1, testCactus2, testCactus3, testCactus4 };
+  testGame.DeleteObstacles(&testObstacles);
+  REQUIRE(testObstacles.empty());
 }
 
-TEST_CASE("ClearObstaclesThatPassed should clear all obstacles with positionX less than 0")
+TEST_CASE("ClearObstaclesThatPassed should clear first obstacle if its positionX is less than 0")
 {
+  TestGame testGame(&testWindow);
+  Pterodactyl* testPterodactyl = new Pterodactyl(-10);
+  Cactus* testCactus1 = new Cactus(1, 1);
+  Cactus* testCactus2 = new Cactus(10, 2);
+  Cactus* testCactus3 = new Cactus(20, 3);
+  Cactus* testCactus4 = new Cactus(30, 4);
+  std::vector<Obstacle*> testObstacles = { testPterodactyl, testCactus1, testCactus2, testCactus3, testCactus4 };
+  testGame.ClearObstaclesThatPassed(&testObstacles);
+  CHECK(testObstacles.size() == 4);
+}
 
+TEST_CASE("UpdateAllObstacles should add obstacles untill there are MAX_OBSTACLE_COUNT")
+{
+  TestGame testGame(&testWindow);
+  std::vector<Obstacle*> testObstacles;
+  testGame.UpdateAllObstacles(&testObstacles);
+  REQUIRE(testObstacles.size() == MAX_OBSTACLE_COUNT);
 }
 
 TEST_CASE("MoveBumps should move horizon bumps by currentGameSpeed to the left")
 {
+  TestGame testGame(&testWindow);
+  Horizon* testHorizonBump1 = new Horizon(1);
+  Horizon* testHorizonBump2 = new Horizon(2);
+  float bump1FirstPosX = testHorizonBump1->GetPositionX();
+  float bump2FirstPosX = testHorizonBump2->GetPositionX();
+  testGame.MoveBumps(testHorizonBump1, testHorizonBump2, GAME_INITIAL_SPEED);
+  CHECK(bump1FirstPosX == testHorizonBump1->GetPositionX() + GAME_INITIAL_SPEED);
+  CHECK(bump1FirstPosX == testHorizonBump1->GetPositionX() + GAME_INITIAL_SPEED);
+}
 
+TEST_CASE("HandleButtonPress should make tRex jump if up key is pressed")
+{
+  TestGame testGame(&testWindow);
+  TRex testTRex(5.0, 5.0);
+  testGame.HandleButtonPress(true, false, false, &testTRex);
+  REQUIRE(testTRex.m_state == TRex::JUMPING);
+}
+TEST_CASE("HandleButtonPress should make tRex duck if down key is pressed")
+{
+  TestGame testGame(&testWindow);
+  TRex testTRex(5.0, 5.0);
+  testGame.HandleButtonPress(false, true, false, &testTRex);
+  REQUIRE(testTRex.m_state == TRex::DUCKING1);
+}
+
+TEST_CASE("IsButtonPressed should return false (no buttons pressed during test")
+{
+  TestGame testGame(&testWindow);
+  REQUIRE(testGame.IsButtonPressed(rand()) == false);
 }

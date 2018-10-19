@@ -14,7 +14,7 @@
 #include "Globals.h"
 #include "tinyxml2.h"
 
-#include <vld.h>
+//#include <vld.h>
 #include <windows.h>
 #include <sstream>
 #include <iomanip>
@@ -107,68 +107,67 @@ public:
   /*!
   * Moves horizon bumps
   */
-  void MoveBumps(Horizon* bump1, Horizon* bump2);
+  void MoveBumps(Horizon* bump1, Horizon* bump2,float currentGameSpeed);
   /*!
   * Handle button presses
   * \param upArrow bool value of wether the UpArrowKey is pressed
   * \param downArrow bool value of wether the DownArrowKey is pressed
   */
-  void HandleButtonPress(bool upArrow, bool downArrow, bool isGameOver);
+  void HandleButtonPress(bool upArrow, bool downArrow, bool isGameOver, TRex* tRex);
   /*!
   * Checks wether a key is pressed
   * \param int arrow (0 for UP, 1 for DOWN)
   */
   bool IsButtonPressed(int arrow);
 
-  int  GetScore() { return score; };
-  int  GetHighScore() { return highScore; };
-  void SetScore(int newScore) { score = newScore; };
+  int  GetScore() { return m_score; };
+  int  GetHighScore() { return m_highScore; };
+  void SetScore(int newScore) { m_score = newScore; };
 
 protected:
   //!Game Objects
-  TRex*    tRex         = NULL;
-  Horizon* horizonBump1 = NULL;
-  Horizon* horizonBump2 = NULL;
-  std::vector <Obstacle*> obstacles;
-  std::vector <Pterodactyl*> pterodactyls;
+  TRex*    m_tRex         = NULL;
+  Horizon* m_horizonBump1 = NULL;
+  Horizon* m_horizonBump2 = NULL;
+  std::vector <Obstacle*> m_obstacles;
 
   //!Text resources
-  sf::Font font;
-  sf::Text scoreText;
-  sf::Text highScoreText;
-  sf::Text gameOverText;
+  sf::Font m_font;
+  sf::Text m_scoreText;
+  sf::Text m_highScoreText;
+  sf::Text m_gameOverText;
 
   //!Horizon and gap for tRex padding
-  sf::RectangleShape horizonLine = sf::RectangleShape(sf::Vector2f(0,0));
-  sf::RectangleShape horizonLineGap = sf::RectangleShape();
+  sf::RectangleShape m_horizonLine = sf::RectangleShape(sf::Vector2f(0,0));
+  sf::RectangleShape m_horizonLineGap = sf::RectangleShape();
 
   //!Counters for obstacle spawn logic
-  int numberOfVisibleObstacles    = 0;
-  int obstacleDistance            = 0;
-  int obstacleRespawnMaxDistance  = WIDTH - OBSTACLE_RESPAWN_BASE_DISTANCE;
-  int showPterodactyl             = SHOW_PTERODACTYL;
-  int obstacleRespawnBaseDistance = OBSTACLE_RESPAWN_BASE_DISTANCE;
-  float lastDistance              = WIDTH;
+  int   m_numberOfVisibleObstacles    = 0;
+  int   m_obstacleDistance            = 0;
+  int   m_obstacleRespawnMaxDistance  = WIDTH - OBSTACLE_RESPAWN_BASE_DISTANCE;
+  int   m_showPterodactyl             = SHOW_PTERODACTYL;
+  int   m_obstacleRespawnBaseDistance = OBSTACLE_RESPAWN_BASE_DISTANCE;
+  float m_lastDistance              = WIDTH;
 
   //!Score and high score
-  int highScore = 0;
-  int score     = 0;
+  int m_highScore = 0;
+  int m_score     = 0;
 
   //!Global game logic variables
-  bool firstFrame = false;
-  bool keyPressed = false;
-  bool gameOver   = false;
+  bool m_firstFrame = false;
+  bool m_keyPressed = false;
+  bool m_gameOver   = false;
 
   //!Timers for framerate, and score increments
-  clock_t beginTime  = clock();
-  clock_t scoreTimer = clock();
+  clock_t m_beginTime  = clock();
+  clock_t m_scoreTimer = clock();
 
   //!Configurable variables
-  float gravity         = GAME_GRAVITY;
-  float gameSpeed       = GAME_INITIAL_SPEED;
-  float gameSpeedDelta  = GAME_SPEED_DELTA;
-  float jumpingSpeed    = JUMPING_SPEED;
+  float m_gravity         = GAME_GRAVITY;
+  float m_gameSpeed       = GAME_INITIAL_SPEED;
+  float m_gameSpeedDelta  = GAME_SPEED_DELTA;
+  float m_jumpingSpeed    = JUMPING_SPEED;
 
   //!Display window
-  sf::RenderWindow* window = NULL;
+  sf::RenderWindow* m_window = NULL;
 };
