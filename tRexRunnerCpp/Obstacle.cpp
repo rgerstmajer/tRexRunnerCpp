@@ -15,6 +15,7 @@ Obstacle::Obstacle()
 
 void Obstacle::Update(float increment)
 {
+  increment = (increment < 0) ? -increment : increment;
   m_sprite->move(-increment, 0);
 }
 

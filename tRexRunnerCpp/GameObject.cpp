@@ -42,7 +42,14 @@ sf::Sprite* GameObject::LoadShape(sf::Texture* texture,
   texture->update(pixels);
   delete [] pixels;
   pixels = NULL;
-  return (new sf::Sprite(*texture));
+  try {
+    return (new sf::Sprite(*texture));
+  }
+  catch (...)
+  {
+    printf("Could not create sprite");
+    return NULL;
+  }
 }
 
 bool GameObject::Colliding(GameObject* obstacle)

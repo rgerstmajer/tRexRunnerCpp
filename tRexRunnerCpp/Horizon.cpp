@@ -31,6 +31,7 @@ Horizon::Horizon(int type)
 
 void Horizon::Move(float increment) //Move bumps from right to left
 {
+  increment = (increment < 0) ? -increment : increment;
   m_sprite->move(-increment, 0);
   if (m_sprite->getPosition().x < 0)
     m_sprite->move(WIDTH + rand() % WIDTH, 0);

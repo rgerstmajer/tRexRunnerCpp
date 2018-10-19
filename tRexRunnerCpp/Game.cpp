@@ -132,7 +132,7 @@ void Game::LoadHighScore(const char* fileName)
   fHighScoreIn.open(fileName, std::ifstream::in);
   if (!fHighScoreIn.good())
   {
-    //TODO log failed to open highScore.bin, creating new file
+    printf("Failed to open highScore.bin, creating new file");
     std::ofstream fHighScoreOut(fileName, std::ofstream::out);
     if (!fHighScoreOut.good())
     {
@@ -160,7 +160,7 @@ void Game::WriteScore(const char* fileName)
   std::ofstream fHighScore(fileName, std::ofstream::out);
   if (!fHighScore.good())
   {
-    // TODO log failed to open or create highScore.bin
+    printf("Failed to open HighScore.bin");
   }
   else
   {
@@ -220,6 +220,7 @@ void Game::AddObstacle(std::vector<Obstacle*>* obstacleList)
   }
   catch (...)
   {
+    printf("Failed to add obstacles");
     m_window->close();
   }
 }
@@ -234,6 +235,7 @@ bool Game::CheckCollision(TRex* tRex, std::vector<Obstacle*>* obstacleList)
     }
     catch (...)
     {
+      printf("Failed to check obstacleList for collision.");
       m_window->close();
     }
   }
