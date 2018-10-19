@@ -1,0 +1,382 @@
+\hypertarget{class_game}{}\section{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+
+
+\mbox{\hyperlink{_game_8h_source}{Game.\+h}}.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_acfc33e4d3763b99843261d6f9c0a192c}{Game}} (sf\+::\+Render\+Window $\ast$render\+Window)
+\item 
+void \mbox{\hyperlink{class_game_aa7f79908f4a73b4affe1f7143fbe8fe1}{Run\+Game}} ()
+\item 
+void \mbox{\hyperlink{class_game_a343f029e4473cb18c93427620bb1ab29}{Init\+Game}} ()
+\item 
+void \mbox{\hyperlink{class_game_a362e7602108145252ff00a0d46a08570}{Game\+Logic}} ()
+\item 
+void \mbox{\hyperlink{class_game_a28b0ecbf20b95b6e910cd2b0a9581c69}{Load\+Text\+Fields}} (const char $\ast$file\+Name)
+\item 
+void \mbox{\hyperlink{class_game_ac23a2dbd9c1a1a22bf1e8a6d36d93653}{Load\+Config}} (const char $\ast$file\+Name)
+\item 
+void \mbox{\hyperlink{class_game_a120d03b55162ebdf60d5b3dbd8dba3c5}{Load\+High\+Score}} (const char $\ast$file\+Name)
+\item 
+void \mbox{\hyperlink{class_game_ae59d28483bdb8b832186dc70f2ebc6a8}{Write\+Score}} (const char $\ast$file\+Name)
+\item 
+void \mbox{\hyperlink{class_game_a11973be88ac6d1d31d32267e31917901}{Update\+Horizon\+Line\+Gap}} ()
+\item 
+void \mbox{\hyperlink{class_game_a347a4d559fbd7c69f99451ebb084f5c4}{Update\+All\+Obstacles}} (std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$obstacle\+List)
+\item 
+void \mbox{\hyperlink{class_game_aa36f190cadcc46da84557adf1229e064}{Add\+Obstacle}} (std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$obstacle\+List)
+\item 
+bool \mbox{\hyperlink{class_game_a8dcb29f9a319d8686aaa4d32b10272d6}{Check\+Collision}} (\mbox{\hyperlink{class_t_rex}{T\+Rex}} $\ast$trex, std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$obstacle\+List)
+\item 
+void \mbox{\hyperlink{class_game_a8de397531462daf2c23c300054b0d9ea}{Game\+Over}} (\mbox{\hyperlink{class_game}{Game}} $\ast$current\+Game)
+\item 
+void \mbox{\hyperlink{class_game_a821eed5ca9d14267db4548842577ba80}{Delete\+Obstacles}} (std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$obstacle\+List)
+\item 
+void \mbox{\hyperlink{class_game_af993aa3307a6736836b5b970e11e58af}{Clear\+Obstacles\+That\+Passed}} (std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$obstacle\+List)
+\item 
+void \mbox{\hyperlink{class_game_aa116962af22a3bd888c2d0479c044450}{Handle\+Periodic\+Increments}} (clock\+\_\+t current\+Time)
+\item 
+void \mbox{\hyperlink{class_game_aace69a639001358fe49feea1018d3d0b}{Update\+Text\+Fields}} (int score, int high\+Score)
+\item 
+void \mbox{\hyperlink{class_game_ae4d6a13f83743a6df902449bddd6c330}{Draw\+Everything}} ()
+\item 
+void \mbox{\hyperlink{class_game_a8ce652bb4568b3306301bbfe72bd91e4}{Move\+Bumps}} (\mbox{\hyperlink{class_horizon}{Horizon}} $\ast$bump1, \mbox{\hyperlink{class_horizon}{Horizon}} $\ast$bump2, float current\+Game\+Speed)
+\item 
+void \mbox{\hyperlink{class_game_a5d149afcdf6ca2a3e232afc7d48ce51c}{Handle\+Button\+Press}} (bool up\+Arrow, bool down\+Arrow, bool is\+Game\+Over, \mbox{\hyperlink{class_t_rex}{T\+Rex}} $\ast$t\+Rex)
+\item 
+bool \mbox{\hyperlink{class_game_acb69b74ad036b28d4da43111d11e394b}{Is\+Button\+Pressed}} (int arrow)
+\item 
+\mbox{\Hypertarget{class_game_a19258e358fc67ddc10bfcc2f2751276a}\label{class_game_a19258e358fc67ddc10bfcc2f2751276a}} 
+int {\bfseries Get\+Score} ()
+\item 
+\mbox{\Hypertarget{class_game_a30b70d3076897060d5487542ed65fdd7}\label{class_game_a30b70d3076897060d5487542ed65fdd7}} 
+int {\bfseries Get\+High\+Score} ()
+\item 
+\mbox{\Hypertarget{class_game_a3c9e3fb9b9331ab4e9d218a5e4931c71}\label{class_game_a3c9e3fb9b9331ab4e9d218a5e4931c71}} 
+void {\bfseries Set\+Score} (int new\+Score)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_a942d3d229fe732cf76cb19dcd833e48e}\label{class_game_a942d3d229fe732cf76cb19dcd833e48e}} 
+\mbox{\hyperlink{class_t_rex}{T\+Rex}} $\ast$ \mbox{\hyperlink{class_game_a942d3d229fe732cf76cb19dcd833e48e}{m\+\_\+t\+Rex}} = N\+U\+LL
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_game}{Game}} Objects. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a27c5e7248e0f35a7174060fe486813b9}\label{class_game_a27c5e7248e0f35a7174060fe486813b9}} 
+\mbox{\hyperlink{class_horizon}{Horizon}} $\ast$ {\bfseries m\+\_\+horizon\+Bump1} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{class_game_ae6b47fcd9434115b3efab51e38069fb6}\label{class_game_ae6b47fcd9434115b3efab51e38069fb6}} 
+\mbox{\hyperlink{class_horizon}{Horizon}} $\ast$ {\bfseries m\+\_\+horizon\+Bump2} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{class_game_afddd7ab41effad328b842bbd94ccaa04}\label{class_game_afddd7ab41effad328b842bbd94ccaa04}} 
+std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$ $>$ {\bfseries m\+\_\+obstacles}
+\item 
+\mbox{\Hypertarget{class_game_af5c5c39d0eabe68c3bfff3509900a489}\label{class_game_af5c5c39d0eabe68c3bfff3509900a489}} 
+sf\+::\+Font \mbox{\hyperlink{class_game_af5c5c39d0eabe68c3bfff3509900a489}{m\+\_\+font}}
+\begin{DoxyCompactList}\small\item\em Text resources. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_ad5bdaeb5c0db926cafb70b62e71f08e2}\label{class_game_ad5bdaeb5c0db926cafb70b62e71f08e2}} 
+sf\+::\+Text {\bfseries m\+\_\+score\+Text}
+\item 
+\mbox{\Hypertarget{class_game_ab9020bc8d30c2c0e74ae866c887efbc1}\label{class_game_ab9020bc8d30c2c0e74ae866c887efbc1}} 
+sf\+::\+Text {\bfseries m\+\_\+high\+Score\+Text}
+\item 
+\mbox{\Hypertarget{class_game_ae19995640862da4362d620dc5829e501}\label{class_game_ae19995640862da4362d620dc5829e501}} 
+sf\+::\+Text {\bfseries m\+\_\+game\+Over\+Text}
+\item 
+\mbox{\Hypertarget{class_game_a7a382d166c10579b4600f10a3569caf1}\label{class_game_a7a382d166c10579b4600f10a3569caf1}} 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_game_a7a382d166c10579b4600f10a3569caf1}{m\+\_\+horizon\+Line}} = sf\+::\+Rectangle\+Shape(sf\+::\+Vector2f(0,0))
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_horizon}{Horizon}} and gap for t\+Rex padding. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a3004ea5989d6af17ffcf8a522d95f903}\label{class_game_a3004ea5989d6af17ffcf8a522d95f903}} 
+sf\+::\+Rectangle\+Shape {\bfseries m\+\_\+horizon\+Line\+Gap} = sf\+::\+Rectangle\+Shape()
+\item 
+\mbox{\Hypertarget{class_game_a53330c83737c4a70bb70176366513c4e}\label{class_game_a53330c83737c4a70bb70176366513c4e}} 
+int \mbox{\hyperlink{class_game_a53330c83737c4a70bb70176366513c4e}{m\+\_\+number\+Of\+Visible\+Obstacles}} = 0
+\begin{DoxyCompactList}\small\item\em Counters for obstacle spawn logic. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_aa5474cb131212bb7780484b4339c41c6}\label{class_game_aa5474cb131212bb7780484b4339c41c6}} 
+int {\bfseries m\+\_\+obstacle\+Distance} = 0
+\item 
+\mbox{\Hypertarget{class_game_ac8c8c486cb77ec0c9d0512bfc0f0a813}\label{class_game_ac8c8c486cb77ec0c9d0512bfc0f0a813}} 
+int {\bfseries m\+\_\+obstacle\+Respawn\+Max\+Distance} = W\+I\+D\+TH -\/ O\+B\+S\+T\+A\+C\+L\+E\+\_\+\+R\+E\+S\+P\+A\+W\+N\+\_\+\+B\+A\+S\+E\+\_\+\+D\+I\+S\+T\+A\+N\+CE
+\item 
+\mbox{\Hypertarget{class_game_a03216b2f3878a92b479e1a92a6f4d7f5}\label{class_game_a03216b2f3878a92b479e1a92a6f4d7f5}} 
+int {\bfseries m\+\_\+show\+Pterodactyl} = S\+H\+O\+W\+\_\+\+P\+T\+E\+R\+O\+D\+A\+C\+T\+YL
+\item 
+\mbox{\Hypertarget{class_game_a2cf153630e23e8a7d57981112655ec91}\label{class_game_a2cf153630e23e8a7d57981112655ec91}} 
+int {\bfseries m\+\_\+obstacle\+Respawn\+Base\+Distance} = O\+B\+S\+T\+A\+C\+L\+E\+\_\+\+R\+E\+S\+P\+A\+W\+N\+\_\+\+B\+A\+S\+E\+\_\+\+D\+I\+S\+T\+A\+N\+CE
+\item 
+\mbox{\Hypertarget{class_game_a9392c71ce938005dd5f201997ce80de6}\label{class_game_a9392c71ce938005dd5f201997ce80de6}} 
+float {\bfseries m\+\_\+last\+Distance} = W\+I\+D\+TH
+\item 
+\mbox{\Hypertarget{class_game_a34102cab25af409643e0ab0f86027a9a}\label{class_game_a34102cab25af409643e0ab0f86027a9a}} 
+int \mbox{\hyperlink{class_game_a34102cab25af409643e0ab0f86027a9a}{m\+\_\+high\+Score}} = 0
+\begin{DoxyCompactList}\small\item\em Score and high score. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a7c2f7dfc65fb47611b0a145138cf59b2}\label{class_game_a7c2f7dfc65fb47611b0a145138cf59b2}} 
+int {\bfseries m\+\_\+score} = 0
+\item 
+\mbox{\Hypertarget{class_game_a2f2686e263b39bdf81ef071363928581}\label{class_game_a2f2686e263b39bdf81ef071363928581}} 
+bool \mbox{\hyperlink{class_game_a2f2686e263b39bdf81ef071363928581}{m\+\_\+first\+Frame}} = false
+\begin{DoxyCompactList}\small\item\em Global game logic variables. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a17045a29463bb86ebde69d9584a2c29f}\label{class_game_a17045a29463bb86ebde69d9584a2c29f}} 
+bool {\bfseries m\+\_\+key\+Pressed} = false
+\item 
+\mbox{\Hypertarget{class_game_a9a7a387339eb7cb24e7d81c48e96f766}\label{class_game_a9a7a387339eb7cb24e7d81c48e96f766}} 
+bool {\bfseries m\+\_\+game\+Over} = false
+\item 
+\mbox{\Hypertarget{class_game_ab6548bdea5f609731a3a1616893329e1}\label{class_game_ab6548bdea5f609731a3a1616893329e1}} 
+clock\+\_\+t \mbox{\hyperlink{class_game_ab6548bdea5f609731a3a1616893329e1}{m\+\_\+begin\+Time}} = clock()
+\begin{DoxyCompactList}\small\item\em Timers for framerate, and score increments. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a19eb63c3b67044de77c3e91b605d1aa8}\label{class_game_a19eb63c3b67044de77c3e91b605d1aa8}} 
+clock\+\_\+t {\bfseries m\+\_\+score\+Timer} = clock()
+\item 
+\mbox{\Hypertarget{class_game_a9c9496efddab7f0270b82cc9294cce91}\label{class_game_a9c9496efddab7f0270b82cc9294cce91}} 
+float \mbox{\hyperlink{class_game_a9c9496efddab7f0270b82cc9294cce91}{m\+\_\+gravity}} = G\+A\+M\+E\+\_\+\+G\+R\+A\+V\+I\+TY
+\begin{DoxyCompactList}\small\item\em Configurable variables. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a8adc590508c4a6e7d2c8ce15f2fa161f}\label{class_game_a8adc590508c4a6e7d2c8ce15f2fa161f}} 
+float {\bfseries m\+\_\+game\+Speed} = G\+A\+M\+E\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+P\+E\+ED
+\item 
+\mbox{\Hypertarget{class_game_a1af039f161a1a990c1e89656ba7b395d}\label{class_game_a1af039f161a1a990c1e89656ba7b395d}} 
+float {\bfseries m\+\_\+game\+Speed\+Delta} = G\+A\+M\+E\+\_\+\+S\+P\+E\+E\+D\+\_\+\+D\+E\+L\+TA
+\item 
+\mbox{\Hypertarget{class_game_aa1896e45ea2e038e4bda938b2e74995f}\label{class_game_aa1896e45ea2e038e4bda938b2e74995f}} 
+float {\bfseries m\+\_\+jumping\+Speed} = J\+U\+M\+P\+I\+N\+G\+\_\+\+S\+P\+E\+ED
+\item 
+\mbox{\Hypertarget{class_game_aa1aa5d5c0048064e80f7b7684a323d32}\label{class_game_aa1aa5d5c0048064e80f7b7684a323d32}} 
+sf\+::\+Render\+Window $\ast$ \mbox{\hyperlink{class_game_aa1aa5d5c0048064e80f7b7684a323d32}{m\+\_\+window}} = N\+U\+LL
+\begin{DoxyCompactList}\small\item\em Display window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{_game_8h_source}{Game.\+h}}. 
+
+\mbox{\hyperlink{class_game}{Game}} class header file
+
+Created\+: 20.\+08.\+2018. Author \+: Robert Gerstmajer 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_acfc33e4d3763b99843261d6f9c0a192c}\label{class_game_acfc33e4d3763b99843261d6f9c0a192c}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\subsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window $\ast$}]{render\+Window }\end{DoxyParamCaption})}
+
+Constructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_aa36f190cadcc46da84557adf1229e064}\label{class_game_aa36f190cadcc46da84557adf1229e064}} 
+\index{Game@{Game}!Add\+Obstacle@{Add\+Obstacle}}
+\index{Add\+Obstacle@{Add\+Obstacle}!Game@{Game}}
+\subsubsection{\texorpdfstring{Add\+Obstacle()}{AddObstacle()}}
+{\footnotesize\ttfamily void Game\+::\+Add\+Obstacle (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$}]{obstacle\+List }\end{DoxyParamCaption})}
+
+Adding an obstacle to a vector 
+\begin{DoxyParams}{Parameters}
+{\em obstacle\+List} & vector of obstacles \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a8dcb29f9a319d8686aaa4d32b10272d6}\label{class_game_a8dcb29f9a319d8686aaa4d32b10272d6}} 
+\index{Game@{Game}!Check\+Collision@{Check\+Collision}}
+\index{Check\+Collision@{Check\+Collision}!Game@{Game}}
+\subsubsection{\texorpdfstring{Check\+Collision()}{CheckCollision()}}
+{\footnotesize\ttfamily bool Game\+::\+Check\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_t_rex}{T\+Rex}} $\ast$}]{trex,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$}]{obstacle\+List }\end{DoxyParamCaption})}
+
+Check if t\+Rex is colliding with \mbox{\hyperlink{class_obstacle}{Obstacle}} 
+\begin{DoxyParams}{Parameters}
+{\em t\+Rex} & \\
+\hline
+{\em obstacle\+List} & vector of obstacles \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_af993aa3307a6736836b5b970e11e58af}\label{class_game_af993aa3307a6736836b5b970e11e58af}} 
+\index{Game@{Game}!Clear\+Obstacles\+That\+Passed@{Clear\+Obstacles\+That\+Passed}}
+\index{Clear\+Obstacles\+That\+Passed@{Clear\+Obstacles\+That\+Passed}!Game@{Game}}
+\subsubsection{\texorpdfstring{Clear\+Obstacles\+That\+Passed()}{ClearObstaclesThatPassed()}}
+{\footnotesize\ttfamily void Game\+::\+Clear\+Obstacles\+That\+Passed (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$}]{obstacle\+List }\end{DoxyParamCaption})}
+
+Clear obstacles that left the screen 
+\begin{DoxyParams}{Parameters}
+{\em obstacle\+List} & vector of obstacles \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a821eed5ca9d14267db4548842577ba80}\label{class_game_a821eed5ca9d14267db4548842577ba80}} 
+\index{Game@{Game}!Delete\+Obstacles@{Delete\+Obstacles}}
+\index{Delete\+Obstacles@{Delete\+Obstacles}!Game@{Game}}
+\subsubsection{\texorpdfstring{Delete\+Obstacles()}{DeleteObstacles()}}
+{\footnotesize\ttfamily void Game\+::\+Delete\+Obstacles (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$}]{obstacle\+List }\end{DoxyParamCaption})}
+
+Remove all obstacles 
+\begin{DoxyParams}{Parameters}
+{\em obstacle\+List} & vector of obstacles \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_ae4d6a13f83743a6df902449bddd6c330}\label{class_game_ae4d6a13f83743a6df902449bddd6c330}} 
+\index{Game@{Game}!Draw\+Everything@{Draw\+Everything}}
+\index{Draw\+Everything@{Draw\+Everything}!Game@{Game}}
+\subsubsection{\texorpdfstring{Draw\+Everything()}{DrawEverything()}}
+{\footnotesize\ttfamily void Game\+::\+Draw\+Everything (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Draws all elements present \mbox{\Hypertarget{class_game_a362e7602108145252ff00a0d46a08570}\label{class_game_a362e7602108145252ff00a0d46a08570}} 
+\index{Game@{Game}!Game\+Logic@{Game\+Logic}}
+\index{Game\+Logic@{Game\+Logic}!Game@{Game}}
+\subsubsection{\texorpdfstring{Game\+Logic()}{GameLogic()}}
+{\footnotesize\ttfamily void Game\+::\+Game\+Logic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Runs game logic \mbox{\Hypertarget{class_game_a8de397531462daf2c23c300054b0d9ea}\label{class_game_a8de397531462daf2c23c300054b0d9ea}} 
+\index{Game@{Game}!Game\+Over@{Game\+Over}}
+\index{Game\+Over@{Game\+Over}!Game@{Game}}
+\subsubsection{\texorpdfstring{Game\+Over()}{GameOver()}}
+{\footnotesize\ttfamily void Game\+::\+Game\+Over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} $\ast$}]{current\+Game }\end{DoxyParamCaption})}
+
+Displays \mbox{\hyperlink{class_game}{Game}} Over screen 
+\begin{DoxyParams}{Parameters}
+{\em current\+Game} & pointer to game to end \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a5d149afcdf6ca2a3e232afc7d48ce51c}\label{class_game_a5d149afcdf6ca2a3e232afc7d48ce51c}} 
+\index{Game@{Game}!Handle\+Button\+Press@{Handle\+Button\+Press}}
+\index{Handle\+Button\+Press@{Handle\+Button\+Press}!Game@{Game}}
+\subsubsection{\texorpdfstring{Handle\+Button\+Press()}{HandleButtonPress()}}
+{\footnotesize\ttfamily void Game\+::\+Handle\+Button\+Press (\begin{DoxyParamCaption}\item[{bool}]{up\+Arrow,  }\item[{bool}]{down\+Arrow,  }\item[{bool}]{is\+Game\+Over,  }\item[{\mbox{\hyperlink{class_t_rex}{T\+Rex}} $\ast$}]{t\+Rex }\end{DoxyParamCaption})}
+
+Handle button presses 
+\begin{DoxyParams}{Parameters}
+{\em up\+Arrow} & bool value of wether the Up\+Arrow\+Key is pressed \\
+\hline
+{\em down\+Arrow} & bool value of wether the Down\+Arrow\+Key is pressed \\
+\hline
+{\em is\+Game\+Over} & \\
+\hline
+{\em t\+Rex} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_aa116962af22a3bd888c2d0479c044450}\label{class_game_aa116962af22a3bd888c2d0479c044450}} 
+\index{Game@{Game}!Handle\+Periodic\+Increments@{Handle\+Periodic\+Increments}}
+\index{Handle\+Periodic\+Increments@{Handle\+Periodic\+Increments}!Game@{Game}}
+\subsubsection{\texorpdfstring{Handle\+Periodic\+Increments()}{HandlePeriodicIncrements()}}
+{\footnotesize\ttfamily void Game\+::\+Handle\+Periodic\+Increments (\begin{DoxyParamCaption}\item[{clock\+\_\+t}]{current\+Time }\end{DoxyParamCaption})}
+
+Handles events that occur periodically 
+\begin{DoxyParams}{Parameters}
+{\em current\+Time} & (clock\+\_\+t) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a343f029e4473cb18c93427620bb1ab29}\label{class_game_a343f029e4473cb18c93427620bb1ab29}} 
+\index{Game@{Game}!Init\+Game@{Init\+Game}}
+\index{Init\+Game@{Init\+Game}!Game@{Game}}
+\subsubsection{\texorpdfstring{Init\+Game()}{InitGame()}}
+{\footnotesize\ttfamily void Game\+::\+Init\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initializes t\+Rex and horizon \mbox{\Hypertarget{class_game_acb69b74ad036b28d4da43111d11e394b}\label{class_game_acb69b74ad036b28d4da43111d11e394b}} 
+\index{Game@{Game}!Is\+Button\+Pressed@{Is\+Button\+Pressed}}
+\index{Is\+Button\+Pressed@{Is\+Button\+Pressed}!Game@{Game}}
+\subsubsection{\texorpdfstring{Is\+Button\+Pressed()}{IsButtonPressed()}}
+{\footnotesize\ttfamily bool Game\+::\+Is\+Button\+Pressed (\begin{DoxyParamCaption}\item[{int}]{arrow }\end{DoxyParamCaption})}
+
+Checks wether a key is pressed 
+\begin{DoxyParams}{Parameters}
+{\em int} & arrow (0 for UP, 1 for D\+O\+WN) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_ac23a2dbd9c1a1a22bf1e8a6d36d93653}\label{class_game_ac23a2dbd9c1a1a22bf1e8a6d36d93653}} 
+\index{Game@{Game}!Load\+Config@{Load\+Config}}
+\index{Load\+Config@{Load\+Config}!Game@{Game}}
+\subsubsection{\texorpdfstring{Load\+Config()}{LoadConfig()}}
+{\footnotesize\ttfamily void Game\+::\+Load\+Config (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+Name }\end{DoxyParamCaption})}
+
+Loads config file 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a120d03b55162ebdf60d5b3dbd8dba3c5}\label{class_game_a120d03b55162ebdf60d5b3dbd8dba3c5}} 
+\index{Game@{Game}!Load\+High\+Score@{Load\+High\+Score}}
+\index{Load\+High\+Score@{Load\+High\+Score}!Game@{Game}}
+\subsubsection{\texorpdfstring{Load\+High\+Score()}{LoadHighScore()}}
+{\footnotesize\ttfamily void Game\+::\+Load\+High\+Score (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+Name }\end{DoxyParamCaption})}
+
+Loads previous high score 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a28b0ecbf20b95b6e910cd2b0a9581c69}\label{class_game_a28b0ecbf20b95b6e910cd2b0a9581c69}} 
+\index{Game@{Game}!Load\+Text\+Fields@{Load\+Text\+Fields}}
+\index{Load\+Text\+Fields@{Load\+Text\+Fields}!Game@{Game}}
+\subsubsection{\texorpdfstring{Load\+Text\+Fields()}{LoadTextFields()}}
+{\footnotesize\ttfamily void Game\+::\+Load\+Text\+Fields (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+Name }\end{DoxyParamCaption})}
+
+Loads sfml text for scores 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a8ce652bb4568b3306301bbfe72bd91e4}\label{class_game_a8ce652bb4568b3306301bbfe72bd91e4}} 
+\index{Game@{Game}!Move\+Bumps@{Move\+Bumps}}
+\index{Move\+Bumps@{Move\+Bumps}!Game@{Game}}
+\subsubsection{\texorpdfstring{Move\+Bumps()}{MoveBumps()}}
+{\footnotesize\ttfamily void Game\+::\+Move\+Bumps (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_horizon}{Horizon}} $\ast$}]{bump1,  }\item[{\mbox{\hyperlink{class_horizon}{Horizon}} $\ast$}]{bump2,  }\item[{float}]{current\+Game\+Speed }\end{DoxyParamCaption})}
+
+Moves horizon bumps 
+\begin{DoxyParams}{Parameters}
+{\em bump1,bump2,current\+Game\+Speed} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_aa7f79908f4a73b4affe1f7143fbe8fe1}\label{class_game_aa7f79908f4a73b4affe1f7143fbe8fe1}} 
+\index{Game@{Game}!Run\+Game@{Run\+Game}}
+\index{Run\+Game@{Run\+Game}!Game@{Game}}
+\subsubsection{\texorpdfstring{Run\+Game()}{RunGame()}}
+{\footnotesize\ttfamily void Game\+::\+Run\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Runs game \mbox{\Hypertarget{class_game_a347a4d559fbd7c69f99451ebb084f5c4}\label{class_game_a347a4d559fbd7c69f99451ebb084f5c4}} 
+\index{Game@{Game}!Update\+All\+Obstacles@{Update\+All\+Obstacles}}
+\index{Update\+All\+Obstacles@{Update\+All\+Obstacles}!Game@{Game}}
+\subsubsection{\texorpdfstring{Update\+All\+Obstacles()}{UpdateAllObstacles()}}
+{\footnotesize\ttfamily void Game\+::\+Update\+All\+Obstacles (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_obstacle}{Obstacle}} $\ast$$>$ $\ast$}]{obstacle\+List }\end{DoxyParamCaption})}
+
+Updates all obstacles ( moving, removing and changing sprites ) 
+\begin{DoxyParams}{Parameters}
+{\em obstacle\+List} & vector of obstacles \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a11973be88ac6d1d31d32267e31917901}\label{class_game_a11973be88ac6d1d31d32267e31917901}} 
+\index{Game@{Game}!Update\+Horizon\+Line\+Gap@{Update\+Horizon\+Line\+Gap}}
+\index{Update\+Horizon\+Line\+Gap@{Update\+Horizon\+Line\+Gap}!Game@{Game}}
+\subsubsection{\texorpdfstring{Update\+Horizon\+Line\+Gap()}{UpdateHorizonLineGap()}}
+{\footnotesize\ttfamily void Game\+::\+Update\+Horizon\+Line\+Gap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Updates horizon line gap to make t\+Rex appear in front \mbox{\Hypertarget{class_game_aace69a639001358fe49feea1018d3d0b}\label{class_game_aace69a639001358fe49feea1018d3d0b}} 
+\index{Game@{Game}!Update\+Text\+Fields@{Update\+Text\+Fields}}
+\index{Update\+Text\+Fields@{Update\+Text\+Fields}!Game@{Game}}
+\subsubsection{\texorpdfstring{Update\+Text\+Fields()}{UpdateTextFields()}}
+{\footnotesize\ttfamily void Game\+::\+Update\+Text\+Fields (\begin{DoxyParamCaption}\item[{int}]{score,  }\item[{int}]{high\+Score }\end{DoxyParamCaption})}
+
+Updates text fields 
+\begin{DoxyParams}{Parameters}
+{\em score} & \\
+\hline
+{\em high\+Score} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_ae59d28483bdb8b832186dc70f2ebc6a8}\label{class_game_ae59d28483bdb8b832186dc70f2ebc6a8}} 
+\index{Game@{Game}!Write\+Score@{Write\+Score}}
+\index{Write\+Score@{Write\+Score}!Game@{Game}}
+\subsubsection{\texorpdfstring{Write\+Score()}{WriteScore()}}
+{\footnotesize\ttfamily void Game\+::\+Write\+Score (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+Name }\end{DoxyParamCaption})}
+
+Writes high score to file 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Game.\+h\item 
+Game.\+cpp\end{DoxyCompactItemize}

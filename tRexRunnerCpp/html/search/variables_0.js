@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['_5fdocument',['_document',['../classtinyxml2_1_1_x_m_l_node.html#a8d2d2be0bb6797625551eb0e91f0ff62',1,'tinyxml2::XMLNode']]],
-  ['_5felementjustopened',['_elementJustOpened',['../classtinyxml2_1_1_x_m_l_printer.html#ac07169d58b465214a2b1fa306e617c26',1,'tinyxml2::XMLPrinter']]],
-  ['_5ffirstchild',['_firstChild',['../classtinyxml2_1_1_x_m_l_node.html#aa20c91e4213dc930c5bdf420322ca342',1,'tinyxml2::XMLNode']]],
-  ['_5flastchild',['_lastChild',['../classtinyxml2_1_1_x_m_l_node.html#a099b6560ae44ab9edb8453aaf1a3747b',1,'tinyxml2::XMLNode']]],
-  ['_5fnext',['_next',['../classtinyxml2_1_1_x_m_l_node.html#a27e985496b37dd00eb5b9cf59b9e3fb1',1,'tinyxml2::XMLNode']]],
-  ['_5fparent',['_parent',['../classtinyxml2_1_1_x_m_l_node.html#a176dd1c4965c21c366de192164aa2c13',1,'tinyxml2::XMLNode']]],
-  ['_5fparselinenum',['_parseLineNum',['../classtinyxml2_1_1_x_m_l_node.html#ab336ed023e15be202ff3b410be01b804',1,'tinyxml2::XMLNode']]],
-  ['_5fprev',['_prev',['../classtinyxml2_1_1_x_m_l_node.html#a9739eb0fb9a1188266052055e7a6bf6b',1,'tinyxml2::XMLNode']]],
-  ['_5fstack',['_stack',['../classtinyxml2_1_1_x_m_l_printer.html#a99d59e67e084714541bee3ae43884bef',1,'tinyxml2::XMLPrinter']]],
-  ['_5fuserdata',['_userData',['../classtinyxml2_1_1_x_m_l_node.html#ac2d5cc463a6c95ec5907d57a119c56da',1,'tinyxml2::XMLNode']]],
-  ['_5fvalue',['_value',['../classtinyxml2_1_1_x_m_l_node.html#a3ea9884098b8379de2bb5ab3fc85c0fc',1,'tinyxml2::XMLNode']]]
+  ['m_5fbegintime',['m_beginTime',['../class_game.html#ab6548bdea5f609731a3a1616893329e1',1,'Game']]],
+  ['m_5ffirstframe',['m_firstFrame',['../class_game.html#a2f2686e263b39bdf81ef071363928581',1,'Game']]],
+  ['m_5ffont',['m_font',['../class_game.html#af5c5c39d0eabe68c3bfff3509900a489',1,'Game']]],
+  ['m_5fgravity',['m_gravity',['../class_game.html#a9c9496efddab7f0270b82cc9294cce91',1,'Game']]],
+  ['m_5fhighscore',['m_highScore',['../class_game.html#a34102cab25af409643e0ab0f86027a9a',1,'Game']]],
+  ['m_5fhorizonline',['m_horizonLine',['../class_game.html#a7a382d166c10579b4600f10a3569caf1',1,'Game']]],
+  ['m_5fnumberofvisibleobstacles',['m_numberOfVisibleObstacles',['../class_game.html#a53330c83737c4a70bb70176366513c4e',1,'Game']]],
+  ['m_5ftrex',['m_tRex',['../class_game.html#a942d3d229fe732cf76cb19dcd833e48e',1,'Game']]],
+  ['m_5fwindow',['m_window',['../class_game.html#aa1aa5d5c0048064e80f7b7684a323d32',1,'Game']]]
 ];

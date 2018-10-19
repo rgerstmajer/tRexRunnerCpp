@@ -18,12 +18,12 @@ Inheritance diagram for Cactus\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_cactus_a7af2b09f8e3efd82ee3d5dc1b5ad24d7}{Cactus}} ()
-\begin{DoxyCompactList}\small\item\em Default constructot. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_cactus_a44cd240a41740db3216ce9d18ea9a8aa}{Init}} (int distance, int type)
-\begin{DoxyCompactList}\small\item\em Initialization method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_cactus_a1db8ad82bbfb944cf480d84b55ebd837}{Cactus}} (float distance, int type)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cactus_aa432a0a002a0027ca294813d11cb76f3}{Update}} (float increment)
+\begin{DoxyCompactList}\small\item\em Update method. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_cactus_aad137061a9d2432ac47f4c28b23644c3}\label{class_cactus_aad137061a9d2432ac47f4c28b23644c3}} 
-\mbox{\hyperlink{class_cactus_aad137061a9d2432ac47f4c28b23644c3}{$\sim$\+Cactus}} ()
+virtual \mbox{\hyperlink{class_cactus_aad137061a9d2432ac47f4c28b23644c3}{$\sim$\+Cactus}} ()
 \begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -36,42 +36,47 @@ void \mbox{\hyperlink{class_cactus_a44cd240a41740db3216ce9d18ea9a8aa}{Init}} (in
 Created\+: 20.\+08.\+2018. Author \+: Robert Gerstmajer 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_cactus_a7af2b09f8e3efd82ee3d5dc1b5ad24d7}\label{class_cactus_a7af2b09f8e3efd82ee3d5dc1b5ad24d7}} 
+\mbox{\Hypertarget{class_cactus_a1db8ad82bbfb944cf480d84b55ebd837}\label{class_cactus_a1db8ad82bbfb944cf480d84b55ebd837}} 
 \index{Cactus@{Cactus}!Cactus@{Cactus}}
 \index{Cactus@{Cactus}!Cactus@{Cactus}}
 \subsubsection{\texorpdfstring{Cactus()}{Cactus()}}
-{\footnotesize\ttfamily Cactus\+::\+Cactus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Cactus\+::\+Cactus (\begin{DoxyParamCaption}\item[{float}]{distance,  }\item[{int}]{type }\end{DoxyParamCaption})}
 
 
 
-Default constructot. 
+Constructor. 
 
 Cactus.\+cpp.
 
-Implementation of the \mbox{\hyperlink{class_cactus}{Cactus}} class
-
+Creates a cactus at distance, with certain type 
+\begin{DoxyParams}{Parameters}
+{\em distance} & \\
+\hline
+{\em type} & Implementation of the \mbox{\hyperlink{class_cactus}{Cactus}} class\\
+\hline
+\end{DoxyParams}
 Created\+: 20.\+08.\+2018. Author \+: Robert Gerstmajer 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_cactus_a44cd240a41740db3216ce9d18ea9a8aa}\label{class_cactus_a44cd240a41740db3216ce9d18ea9a8aa}} 
-\index{Cactus@{Cactus}!Init@{Init}}
-\index{Init@{Init}!Cactus@{Cactus}}
-\subsubsection{\texorpdfstring{Init()}{Init()}}
-{\footnotesize\ttfamily void Cactus\+::\+Init (\begin{DoxyParamCaption}\item[{int}]{distance,  }\item[{int}]{type }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_cactus_aa432a0a002a0027ca294813d11cb76f3}\label{class_cactus_aa432a0a002a0027ca294813d11cb76f3}} 
+\index{Cactus@{Cactus}!Update@{Update}}
+\index{Update@{Update}!Cactus@{Cactus}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Cactus\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{increment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Initialization method. 
+Update method. 
 
-Initializes random cactus sprite on random distance.
-
-
+Moves sprite to the left according to increment 
 \begin{DoxyParams}{Parameters}
-{\em distance} & Distance of the cactus being initialized \\
-\hline
-{\em type} & Type of cactus (1-\/4) \\
+{\em increment} & How much to move the sprite \\
 \hline
 \end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_obstacle_ad7bd00104a2c53cfb7421ca5986644af}{Obstacle}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
